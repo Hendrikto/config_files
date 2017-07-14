@@ -1,0 +1,16 @@
+[color]
+	ui = true
+[user]
+	name = Hendrikto
+	email = hendrik.to@gmail.com
+[core]
+	editor = subl3 -a -w
+[alias]
+	co = checkout
+	s = status
+	h = show HEAD
+	it = "!git init && git commit --allow-empty -m \"Initial commit\""
+[credential]
+	helper = cache
+[push]
+	default = simple
