@@ -1,4 +1,10 @@
-all: gitconfig xconfig zshconfig
+all: bashconfig gitconfig xconfig zshconfig
+
+bashconfig: .bashrc
+	ln -rs .bashrc ~/.bashrc
+
+remove_bashconfig:
+	rm -f ~/.bashrc
 
 gitconfig: .gitconfig
 	ln -rs .gitconfig ~/.gitconfig
@@ -19,4 +25,4 @@ zshconfig: .zshrc .zprofile
 remove_zshconfig:
 	rm -f ~/.zprofile ~/.zshrc
 
-remove_all: remove_gitconfig remove_xconfig remove_zshconfig
+remove_all: remove_bashconfig remove_gitconfig remove_xconfig remove_zshconfig
