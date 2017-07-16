@@ -46,7 +46,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-remote-diff
 	fi
 }
 
-function +vi-git-remote-diff() {
++vi-git-remote-diff() {
 	local ahead behind gitstatus
 
 	ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
