@@ -37,12 +37,25 @@ zstyle ':vcs_info:git*' formats '[%b%m%u%c]'
 zstyle ':vcs_info:*' unstagedstr '×'
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:git*+set-message:*' hooks git-remote-diff
 
 +vi-git-untracked() {
 	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
 		git status --porcelain | grep '??' &> /dev/null ; then
 		hook_com[misc]+='°'
 	fi
+}
+
+function +vi-git-remote-diff() {
+	local ahead behind gitstatus
+
+	ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+	(( $ahead )) && gitstatus+=" ↑${ahead}"
+
+	behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+	(( $behind )) && gitstatus+=" ↓${behind}"
+
+	hook_com[staged]+=${gitstatus}
 }
 
 precmd() {
