@@ -1,3 +1,6 @@
+alias ls='ls --color=auto'
+alias l='ls -AFGhl'
+
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
 HISTFILE=~/.zsh_hist
