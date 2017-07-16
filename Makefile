@@ -1,4 +1,4 @@
-all: gitconfig xconfig
+all: gitconfig xconfig zshconfig
 
 gitconfig: .gitconfig
 	ln -rs .gitconfig ~/.gitconfig
@@ -12,4 +12,10 @@ xconfig: .xinitrc
 remove_xconfig:
 	rm -f ~/.xinitrc
 
-remove_all: remove_gitconfig remove_xconfig
+zshconfig: .zshrc
+	ln -rs .zshrc ~/.zshrc
+
+remove_zshconfig:
+	rm -f ~/.zshrc
+
+remove_all: remove_gitconfig remove_xconfig remove_zshconfig
