@@ -20,6 +20,8 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
+export CFLAGS="-march=native"
+
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
 HISTFILE=~/.zsh_hist
