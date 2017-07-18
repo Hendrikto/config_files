@@ -1,5 +1,7 @@
 all: bashconfig gitconfig xconfig zshconfig
 
+remove_all: remove_bashconfig remove_gitconfig remove_xconfig remove_zshconfig
+
 bashconfig: .bashrc
 	ln -rs .bashrc ~/.bashrc
 
@@ -27,5 +29,3 @@ zshconfig: .zshrc .zprofile
 
 remove_zshconfig:
 	rm -f ~/.zprofile ~/.zshrc
-
-remove_all: remove_bashconfig remove_gitconfig remove_xconfig remove_zshconfig
