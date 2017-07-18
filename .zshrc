@@ -22,6 +22,8 @@ bindkey "\e[F" end-of-line
 
 export CFLAGS="-march=native"
 
+source /usr/share/chruby/chruby.sh
+
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
 HISTFILE=~/.zsh_hist
