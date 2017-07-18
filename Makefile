@@ -12,11 +12,14 @@ gitconfig: .gitconfig
 remove_gitconfig:
 	rm -f ~/.gitconfig
 
-xconfig: .xinitrc
+xconfig: .xinitrc .Xresources .Xresources.d
 	ln -rs .xinitrc ~/.xinitrc
+	ln -rs .Xresources ~/.Xresources
+	ln -rs .Xresources.d ~/.Xresources.d
 
 remove_xconfig:
-	rm -f ~/.xinitrc
+	rm -f ~/.xinitrc ~/.Xresources
+	rm -rf ~/.Xresources.d
 
 zshconfig: .zshrc .zprofile
 	ln -rs .zprofile ~/.zprofile

@@ -1,0 +1,5 @@
+XTerm*faceName: Source Code Pro,Source Code Pro Semibold
+XTerm*faceSize: 12
+XTerm.vt100.locale: true
+XTerm.vt100.foreground: grey74
+XTerm.vt100.background: black
