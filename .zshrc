@@ -20,7 +20,7 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
-export CFLAGS="-march=native"
+export CFLAGS="-O2 -march=native"
 
 source /usr/share/chruby/chruby.sh
 
