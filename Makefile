@@ -1,31 +1,31 @@
-all: bashconfig gitconfig xconfig zshconfig
+all: bash git xorg zsh
 
-remove_all: remove_bashconfig remove_gitconfig remove_xconfig remove_zshconfig
+remove_all: remove_bash remove_git remove_xorg remove_zsh
 
-bashconfig: .bashrc
+bash: .bashrc
 	ln -rs .bashrc ~/.bashrc
 
-remove_bashconfig:
+remove_bash:
 	rm -f ~/.bashrc
 
-gitconfig: .gitconfig
+git: .gitconfig
 	ln -rs .gitconfig ~/.gitconfig
 
-remove_gitconfig:
+remove_git:
 	rm -f ~/.gitconfig
 
-xconfig: .xinitrc .Xresources .Xresources.d
+xorg: .xinitrc .Xresources .Xresources.d
 	ln -rs .xinitrc ~/.xinitrc
 	ln -rs .Xresources ~/.Xresources
 	ln -rs .Xresources.d ~/.Xresources.d
 
-remove_xconfig:
+remove_xorg:
 	rm -f ~/.xinitrc ~/.Xresources
 	rm -rf ~/.Xresources.d
 
-zshconfig: .zshrc .zprofile
+zsh: .zshrc .zprofile
 	ln -rs .zprofile ~/.zprofile
 	ln -rs .zshrc ~/.zshrc
 
-remove_zshconfig:
+remove_zsh:
 	rm -f ~/.zprofile ~/.zshrc
