@@ -1,6 +1,6 @@
-all: bash git xorg zsh
+all: bash git i3 xorg zsh
 
-remove_all: remove_bash remove_git remove_xorg remove_zsh
+remove_all: remove_bash remove_git remove_i3 remove_xorg remove_zsh
 
 bash: .bashrc
 	ln -rs .bashrc ~/.bashrc
@@ -13,6 +13,12 @@ git: .gitconfig
 
 remove_git:
 	rm -f ~/.gitconfig
+
+i3: .i3
+	ln -rs .i3 ~/.config/i3/config
+
+remove_i3:
+	rm -f ~/.config/i3/config
 
 xorg: .xinitrc .Xresources .Xresources.d
 	ln -rs .xinitrc ~/.xinitrc
