@@ -28,11 +28,12 @@ remove_i3status:
 
 xorg: .xinitrc .Xresources .Xresources.d
 	ln -rs .xinitrc ~/.xinitrc
+	ln -rs .xserverrc ~/.xserverrc
 	ln -rs .Xresources ~/.Xresources
 	ln -rs .Xresources.d ~/.Xresources.d
 
 remove_xorg:
-	rm -f ~/.xinitrc ~/.Xresources
+	rm -f ~/.xinitrc ~/.xserverrc ~/.Xresources
 	rm -rf ~/.Xresources.d
 
 zsh: .zshrc .zprofile
