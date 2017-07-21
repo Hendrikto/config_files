@@ -174,7 +174,7 @@ exec --no-startup-id nm-applet
 
 # Quickstart
 bindsym $mod+F1 exec google-chrome-stable
-bindsym $mod+F2 exec expl.sh
+bindsym $mod+F2 exec xterm mc
 bindsym $mod+F10 exec lxtask
 bindsym $mod+F11 exec --no-startup-id maim -us ~/pics/screenshot$(date +%s).png
 bindsym $mod+F12 exec pavucontrol
