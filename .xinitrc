@@ -1,7 +1,3 @@
-# Merge X resources if they exist
-if [ -f ~/.Xresources ]; then
-	xrdb -merge -I$HOME ~/.Xresources
-fi
-
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources &
 setxkbmap de
 exec i3
