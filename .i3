@@ -188,8 +188,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle &
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec sudo backlight_control change +5 && $refresh_i3status
-bindsym XF86MonBrightnessDown exec sudo backlight_control change -5 && $refresh_i3status
+bindsym XF86MonBrightnessUp exec sudo backlight_control +5 && $refresh_i3status
+bindsym XF86MonBrightnessDown exec sudo backlight_control -5 && $refresh_i3status
 
 # Move workspace to another monitor
 bindsym $mod+m move workspace to output left
