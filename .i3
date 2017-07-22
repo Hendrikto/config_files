@@ -166,6 +166,8 @@ bar {
 }
 
 # ========== CUSTOM ==========
+set $refresh_i3status pkill -USR1 -x i3status
+
 # Compton Compositor
 exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclose
 
@@ -186,10 +188,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $aux_out
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle & pactl set-sink-mute 2 toggle # mute sound
 
 # Sreen brightness controls
-# increase screen brightness
-bindsym XF86MonBrightnessUp exec sudo backlight_control change +5 && pkill -USR1 -x i3status
-# decrease screen brightness
-bindsym XF86MonBrightnessDown exec sudo backlight_control change -5 && pkill -USR1 -x i3status
+bindsym XF86MonBrightnessUp exec sudo backlight_control change +5 && $refresh_i3status
+bindsym XF86MonBrightnessDown exec sudo backlight_control change -5 && $refresh_i3status
 
 # Move workspace to another monitor
 bindsym $mod+m move workspace to output left
