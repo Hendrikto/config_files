@@ -169,9 +169,6 @@ bar {
 # Compton Compositor
 exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclose
 
-# Network Manager Applet
-exec --no-startup-id nm-applet
-
 # Quickstart
 bindsym $mod+F1 exec google-chrome-stable
 bindsym $mod+F2 exec xterm mc
