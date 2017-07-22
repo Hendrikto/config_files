@@ -187,9 +187,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle & pactl 
 
 # Sreen brightness controls
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec sudo backlight_control change +5 && killall -USR1 i3status
+bindsym XF86MonBrightnessUp exec sudo backlight_control change +5 && pkill -USR1 -x i3status
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec sudo backlight_control change -5 && killall -USR1 i3status
+bindsym XF86MonBrightnessDown exec sudo backlight_control change -5 && pkill -USR1 -x i3status
 
 # Move workspace to another monitor
 bindsym $mod+m move workspace to output left
