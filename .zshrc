@@ -21,6 +21,7 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
 export CFLAGS="-O2 -march=native"
+export QT_QPA_PLATFORMTHEME=gtk2
 
 source /usr/share/chruby/chruby.sh
 
