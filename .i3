@@ -182,10 +182,10 @@ bindsym $mod+F12 exec pavucontrol
 bindsym $mod+Escape exec i3lock --color=$color_dark
 
 # Pulse Audio controls
-set $aux_out alsa_output.pci-0000_00_1b.0.analog-stereo
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $aux_out +2% # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $aux_out -2% # decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle & pactl set-sink-mute 2 toggle # mute sound
+set $audio_device 0
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +2% &
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -2% &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle &
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec sudo backlight_control change +5 && $refresh_i3status
