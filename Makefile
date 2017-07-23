@@ -42,3 +42,13 @@ zsh: .zshrc .zprofile
 
 remove_zsh:
 	rm -f ~/.zprofile ~/.zshrc
+
+systemwide: sysctl
+
+remove_systemwide: remove_sysctl
+
+sysctl: .sysctl
+	sudo ln -rs .sysctl /etc/sysctl.d/99-sysctl.conf
+
+remove_sysctl:
+	sudo rm -f /etc/sysctl.d/99-sysctl.conf
