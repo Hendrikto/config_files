@@ -210,6 +210,3 @@ client.unfocused        $color_dark $color_dark $color_primary_light
 client.urgent           $color_accent $color_accent $color_dark
 client.placeholder      $color_primary_dark $color_primary_dark $color_primary_light
 client.background       $color_dark
-
-# Set background color
-exec --no-startup-id feh --bg-scale ~/.wp.png
