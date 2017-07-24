@@ -31,7 +31,7 @@ font pango:Source Code Pro 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec --no-startup-id xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -173,7 +173,7 @@ exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclo
 
 # Quickstart
 bindsym $mod+F1 exec google-chrome-stable
-bindsym $mod+F2 exec xterm mc
+bindsym $mod+F2 exec --no-startup-id xterm mc
 bindsym $mod+F10 exec lxtask
 bindsym $mod+F11 exec --no-startup-id maim -us ~/pics/screenshot$(date +%s).png
 bindsym $mod+F12 exec pavucontrol
