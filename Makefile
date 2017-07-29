@@ -4,9 +4,10 @@ remove_all: remove_bash remove_git remove_i3 remove_i3status remove_xorg remove_
 
 bash: .bashrc
 	ln -rs .bashrc ~/.bashrc
+	ln -rs .bash_profile ~/.bash_profile
 
 remove_bash:
-	rm -f ~/.bashrc
+	rm -f ~/.bashrc ~/.bash_profile
 
 git: .gitconfig
 	ln -rs .gitconfig ~/.gitconfig
