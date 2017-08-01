@@ -34,6 +34,10 @@ zstyle :compinstall filename '/home/hendrik/.zshrc'
 
 compinit
 
+################################################################################
+# Custom prompt                                                                #
+################################################################################
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
