@@ -1,5 +1,15 @@
 alias l='ls -AFGhl'
 
+source /usr/share/chruby/chruby.sh
+
+setopt HIST_IGNORE_DUPS
+SAVEHIST=1000
+HISTFILE=~/.zsh_hist
+
+################################################################################
+# Terminal control codes                                                       #
+################################################################################
+
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 bindkey "\e[5~" beginning-of-history
@@ -19,14 +29,12 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
+################################################################################
+# Environment variables                                                        #
+################################################################################
+
 export CFLAGS="-O2 -march=native"
 export QT_QPA_PLATFORMTHEME=gtk2
-
-source /usr/share/chruby/chruby.sh
-
-setopt HIST_IGNORE_DUPS
-SAVEHIST=1000
-HISTFILE=~/.zsh_hist
 
 ################################################################################
 # Autocomplete                                                                 #
