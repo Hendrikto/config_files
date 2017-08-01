@@ -1,4 +1,3 @@
-alias ls='ls --color=auto'
 alias l='ls -AFGhl'
 
 bindkey "\e[1~" beginning-of-line
@@ -67,3 +66,18 @@ precmd() {
 setopt PROMPT_SUBST
 PROMPT='%F{blue}%n%f %F{yellow}%~%f %(!.$.%%) '
 RPROMPT='${vcs_info_msg_0_}'
+
+################################################################################
+# Color output (https://wiki.archlinux.org/index.php/Color_output_in_console)  #
+################################################################################
+
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
