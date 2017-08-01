@@ -28,6 +28,10 @@ setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
 HISTFILE=~/.zsh_hist
 
+################################################################################
+# Autocomplete                                                                 #
+################################################################################
+
 autoload -Uz compinit
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '/home/hendrik/.zshrc'
