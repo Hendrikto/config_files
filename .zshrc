@@ -41,6 +41,7 @@ export QT_QPA_PLATFORMTHEME=gtk2
 ################################################################################
 
 autoload -Uz compinit
+zstyle ':completion:*' completer _complete _approximate _ignored
 zstyle ':completion:*' menu select
 
 compinit
