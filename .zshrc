@@ -41,8 +41,7 @@ export QT_QPA_PLATFORMTHEME=gtk2
 ################################################################################
 
 autoload -Uz compinit
-zstyle ':completion:*' completer _complete _ignored
-zstyle :compinstall filename '/home/hendrik/.zshrc'
+zstyle ':completion:*' menu select
 
 compinit
 
