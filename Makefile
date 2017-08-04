@@ -44,9 +44,15 @@ zsh: .zshrc .zprofile
 remove_zsh:
 	rm -f ~/.zprofile ~/.zshrc
 
-systemwide: sysctl
+systemwide: nftables sysctl
 
-remove_systemwide: remove_sysctl
+remove_systemwide: remove_nftables remove_sysctl
+
+nftables: .nftables
+	sudo ln -rs $< /etc/nftables.conf
+
+remove_nftables:
+	sudo rm -f /etc/nftables.conf
 
 sysctl: .sysctl
 	sudo ln -rs .sysctl /etc/sysctl.d/99-sysctl.conf
