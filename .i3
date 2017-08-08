@@ -182,7 +182,7 @@ bindsym $mod+F12 exec pavucontrol
 bindsym $mod+Escape exec i3lock --color=$color_dark
 
 # Pulse Audio controls
-set $audio_device 0
+set $audio_device $(pacmd list-sinks | grep -oPm1 "index: \K(\d)")
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +2% &
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -2% &
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle &
