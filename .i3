@@ -195,7 +195,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo backlight_control -5 && 
 bindsym $mod+m move workspace to output left
 
 # Floating mode
-for_window [class="Shutter" instance="shutter"] floating enable
 for_window [class="Tk" instance="tk"] floating enable
 for_window [class="Google-chrome" instance="google-chrome" window_role="pop-up"] floating enable
 for_window [class="Steam" instance="Steam" title=".* - Chat"] floating enable
