@@ -10,24 +10,22 @@ HISTFILE=~/.zsh_hist
 # Terminal control codes                                                       #
 ################################################################################
 
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-bindkey "\e[5~" beginning-of-history
-bindkey "\e[6~" end-of-history
-bindkey "\e[7~" beginning-of-line
-bindkey "\e[3~" delete-char
-bindkey "\e[2~" quoted-insert
 bindkey "\e[5C" forward-word
 bindkey "\e[5D" backward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 bindkey "\e[1;5C" forward-word
 bindkey "\e[1;5D" backward-word
-bindkey "\e[8~" end-of-line
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
+
+[[ -n "$terminfo[khome]" ]] && bindkey "$terminfo[khome]" beginning-of-line
+[[ -n "$terminfo[kend]" ]] && bindkey "$terminfo[kend]" end-of-line
+[[ -n "$terminfo[kich1]" ]] && bindkey "$terminfo[kich1]" overwrite-mode
+[[ -n "$terminfo[kbs]" ]] && bindkey "$terminfo[kbs]" backward-delete-char
+[[ -n "$terminfo[kdch1]" ]] && bindkey "$terminfo[kdch1]" delete-char
+[[ -n "$terminfo[kcuu1]" ]] && bindkey "$terminfo[kcuu1]" up-line-or-history
+[[ -n "$terminfo[kcud1]" ]] && bindkey "$terminfo[kcud1]" down-line-or-history
+[[ -n "$terminfo[kcub1]" ]] && bindkey "$terminfo[kcub1]" backward-char
+[[ -n "$terminfo[kcuf1]" ]] && bindkey "$terminfo[kcuf1]" forward-char
 
 ################################################################################
 # Environment variables                                                        #
