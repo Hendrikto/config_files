@@ -22,6 +22,9 @@ table inet filter {
 		# allow ssh
 		#tcp dport ssh accept
 
+		# allow Factorio
+		udp dport 34197 accept
+
 		# everything else
 		drop
 	}
