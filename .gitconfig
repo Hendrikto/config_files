@@ -7,7 +7,7 @@
 	editor = subl3 -a -w
 [alias]
 	co = checkout
-	s = status
+	s = status --short --branch
 	h = show HEAD
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
 [credential]
