@@ -32,6 +32,7 @@ bindkey "\e[1;5D" backward-word
 ################################################################################
 
 export CFLAGS="-O2 -march=native"
+export PATH=$PATH:~/.local/bin
 export QT_QPA_PLATFORMTHEME=gtk2
 
 ################################################################################
