@@ -190,6 +190,21 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_d
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -2% &
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle &
 
+# VLC controls
+set $vlc_sock ~/.vlc.sock
+
+mode "vlc" {
+	bindsym k exec --no-startup-id nc -NU $vlc_sock <<< "pause"
+	bindsym j exec --no-startup-id nc -NU $vlc_sock <<< "prev"
+	bindsym l exec --no-startup-id nc -NU $vlc_sock <<< "next"
+	bindsym q exec --no-startup-id nc -NU $vlc_sock <<< "quit"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+Menu mode "vlc"
+
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo backlight_control +5 && $refresh_i3status &
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo backlight_control -5 && $refresh_i3status &
