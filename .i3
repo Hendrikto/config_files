@@ -176,6 +176,7 @@ exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclo
 # Quickstart
 bindsym $mod+F1 exec google-chrome-stable
 bindsym $mod+F2 exec --no-startup-id xterm mc
+bindsym $mod+F3 exec --no-startup-id vlc -LZI rc ~/music
 bindsym $mod+F10 exec lxtask
 bindsym $mod+F11 exec --no-startup-id maim -us ~/pics/screenshot$(date +%s).png
 bindsym $mod+F12 exec pavucontrol
