@@ -169,7 +169,7 @@ bar {
 # CUSTOM                                                                       #
 ################################################################################
 set $refresh_i3status pkill -USR1 -x i3status
-set $vlc_sock $HOME/.vlc.sock
+set $vlc_sock /tmp/.vlc.sock
 
 # Compton Compositor
 exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclose
