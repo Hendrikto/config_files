@@ -16,7 +16,7 @@ order += "volume master"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery 0"
-order += "load"
+order += "path_exists VLC"
 order += "tztime local"
 
 volume master {
@@ -47,10 +47,12 @@ battery 0 {
         last_full_capacity = true
 }
 
-tztime local {
-        format = "%d-%m-%Y %H:%M:%S"
+path_exists VLC {
+        path = "/tmp/.vlc.sock"
+        format = "♬"
+        format_down = "☒"
 }
 
-load {
-        format = "%1min"
+tztime local {
+        format = "%d-%m-%Y %H:%M:%S"
 }
