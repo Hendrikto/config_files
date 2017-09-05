@@ -169,6 +169,7 @@ bar {
 # CUSTOM                                                                       #
 ################################################################################
 set $refresh_i3status pkill -USR1 -x i3status
+set $vlc_sock $HOME/.vlc.sock
 
 # Compton Compositor
 exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclose
@@ -176,7 +177,7 @@ exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclo
 # Quickstart
 bindsym $mod+F1 exec google-chrome-stable
 bindsym $mod+F2 exec --no-startup-id xterm mc
-bindsym $mod+F3 exec --no-startup-id vlc -LZI rc ~/music
+bindsym $mod+F3 exec --no-startup-id vlc -LZI rc --rc-fake-tty --rc-unix=$vlc_sock ~/music
 bindsym $mod+F10 exec lxtask
 bindsym $mod+F11 exec --no-startup-id maim -us ~/pics/screenshot$(date +%s).png
 bindsym $mod+F12 exec pavucontrol
@@ -191,8 +192,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle &
 
 # VLC controls
-set $vlc_sock ~/.vlc.sock
-
 mode "vlc" {
 	bindsym k exec --no-startup-id nc -NU $vlc_sock <<< "pause"
 	bindsym j exec --no-startup-id nc -NU $vlc_sock <<< "prev"
