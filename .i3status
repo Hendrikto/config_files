@@ -7,9 +7,9 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        output_format = "none"
-        colors = true
-        interval = 5
+	output_format = "none"
+	colors = true
+	interval = 5
 }
 
 order += "volume master"
@@ -20,39 +20,39 @@ order += "path_exists VLC"
 order += "tztime local"
 
 volume master {
-        format = "🔊 %volume"
-        format_muted = "🔇 %volume"
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
+	format = "🔊 %volume"
+	format_muted = "🔇 %volume"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
 }
 
 wireless _first_ {
-        format_up = "📶 %essid %ip (%quality)"
-        format_down = "📶 down"
+	format_up = "📶 %essid %ip (%quality)"
+	format_down = "📶 down"
 }
 
 ethernet _first_ {
-        # if you use %speed, i3status requires root privileges
-        format_up = "🖧 %ip (%speed)"
-        format_down = "🖧 down"
+	# if you use %speed, i3status requires root privileges
+	format_up = "🖧 %ip (%speed)"
+	format_down = "🖧 down"
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
-        status_bat = "🔋"
-        status_chr = "🔌"
-        status_full = "⚡"
-        status_unk = "🔋?"
-        last_full_capacity = true
+	format = "%status %percentage %remaining"
+	status_bat = "🔋"
+	status_chr = "🔌"
+	status_full = "⚡"
+	status_unk = "🔋?"
+	last_full_capacity = true
 }
 
 path_exists VLC {
-        path = "/tmp/.vlc.sock"
-        format = "♬"
-        format_down = "☒"
+	path = "/tmp/.vlc.sock"
+	format = "♬"
+	format_down = "☒"
 }
 
 tztime local {
-        format = "%d-%m-%Y %H:%M:%S"
+	format = "%d-%m-%Y %H:%M:%S"
 }
