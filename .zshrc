@@ -36,7 +36,7 @@ bindkey "\e[1;5D" backward-word
 # Environment variables                                                        #
 ################################################################################
 
-export CFLAGS="-O2 -march=native"
+export CFLAGS='-O2 -march=native'
 export EDITOR='subl3'
 export PATH=$PATH:~/.local/bin
 export QT_QPA_PLATFORMTHEME=gtk2
