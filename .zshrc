@@ -1,5 +1,9 @@
 alias l='ls -AFGhl'
 
+o() {
+    xdg-open $1 2>/dev/null &
+}
+
 source /usr/share/chruby/chruby.sh
 
 setopt HIST_IGNORE_DUPS
