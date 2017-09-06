@@ -1,3 +1,4 @@
+alias e=$EDITOR
 alias l='ls -AFGhl'
 
 o() {
