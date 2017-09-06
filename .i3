@@ -168,7 +168,7 @@ bar {
 ################################################################################
 # CUSTOM                                                                       #
 ################################################################################
-set $audio_device $(pacmd list-sinks | grep -oPm1 "index: \K(\d)")
+set $audio_device $(pacmd list-sinks | grep -oPm1 "index: \K(\d)$")
 set $refresh_i3status pkill -USR1 -x i3status
 set $vlc_sock /tmp/.vlc.sock
 
