@@ -168,7 +168,6 @@ bar {
 ################################################################################
 # CUSTOM                                                                       #
 ################################################################################
-set $audio_device $(pacmd list-sinks | grep -oPm1 "index: \K(\d)$")
 set $refresh_i3status pkill -USR1 -x i3status
 set $vlc_sock /tmp/.vlc.sock
 
@@ -187,9 +186,9 @@ bindsym $mod+F12 exec pavucontrol
 bindsym $mod+Escape exec i3lock --color=$color_dark
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +2% &
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -2% &
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle &
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% &
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &
 
 # VLC controls
 mode "vlc" {
