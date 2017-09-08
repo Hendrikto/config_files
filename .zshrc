@@ -1,5 +1,6 @@
 alias e=$EDITOR
-alias l='ls -AFGhl'
+alias l='ls -AFGh'
+alias ll='l -l'
 
 o() {
     xdg-open $1 2>/dev/null &
