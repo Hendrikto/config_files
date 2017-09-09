@@ -246,7 +246,7 @@ bindsym $mod+Escape mode "system state"
 # finds out, if available)
 bar {
 	i3bar_command i3bar --transparency
-	status_command i3status | i3status_extensions
+	status_command i3status
 	tray_output primary
 	colors {
 		background #000000c0
