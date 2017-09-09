@@ -16,7 +16,6 @@ general {
 order += "volume master"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "battery 0"
 order += "tztime local"
 
 volume master {
@@ -35,15 +34,6 @@ wireless _first_ {
 ethernet _first_ {
 	format_up = "🖧 %ip (%speed)"
 	format_down = "🖧 down"
-}
-
-battery 0 {
-	format = "%status %percentage %remaining"
-	status_bat = "🔋"
-	status_chr = "🔌"
-	status_full = "⚡"
-	status_unk = "🔋?"
-	last_full_capacity = true
 }
 
 tztime local {
