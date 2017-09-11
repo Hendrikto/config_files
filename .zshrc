@@ -1,11 +1,3 @@
-alias e=$EDITOR
-alias l='ls -AFGh'
-alias ll='l -l'
-
-o() {
-    xdg-open $1 2>/dev/null &
-}
-
 source /usr/share/chruby/chruby.sh
 
 setopt HIST_IGNORE_DUPS
@@ -41,6 +33,18 @@ export CFLAGS='-O2 -march=native'
 export EDITOR='subl3'
 export PATH=$PATH:~/.local/bin
 export QT_QPA_PLATFORMTHEME=gtk2
+
+################################################################################
+# Alias / Functions                                                            #
+################################################################################
+
+alias e=$EDITOR
+alias l='ls -AFGh'
+alias ll='l -l'
+
+o() {
+    xdg-open $1 2>/dev/null &
+}
 
 ################################################################################
 # Autocomplete                                                                 #
