@@ -186,7 +186,7 @@ bindsym $mod+F12 exec pavucontrol
 mode "system state" {
 	bindsym l mode "default"; exec i3lock --color=$color_dark
 	bindsym r mode "default"; exec systemctl reboot
-	bindsym s mode "default"; exec systemctl powerdown
+	bindsym s mode "default"; exec systemctl poweroff
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
