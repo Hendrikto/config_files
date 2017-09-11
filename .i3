@@ -182,8 +182,17 @@ bindsym $mod+F10 exec lxtask
 bindsym $mod+F11 exec --no-startup-id maim -us ~/pics/screenshot$(date +%s).png
 bindsym $mod+F12 exec pavucontrol
 
-# i3lock
-bindsym $mod+Escape exec i3lock --color=$color_dark
+# System state controls
+mode "system state" {
+	bindsym l mode "default"; exec i3lock --color=$color_dark
+	bindsym r mode "default"; exec systemctl reboot
+	bindsym s mode "default"; exec systemctl powerdown
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+Escape mode "system state"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% &
