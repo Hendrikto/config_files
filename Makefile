@@ -16,12 +16,14 @@ remove_git:
 	rm -f ~/.gitconfig
 
 i3: .i3
+	mkdir -p ~/.config/i3
 	ln -rs $< ~/.config/i3/config
 
 remove_i3:
 	rm -f ~/.config/i3/config
 
 i3status: .i3status
+	mkdir -p ~/.config/i3status
 	ln -rs $< ~/.config/i3status/config
 
 remove_i3status:
