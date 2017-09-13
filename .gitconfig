@@ -4,7 +4,7 @@
 	name = Hendrikto
 	email = hendrik.to@gmail.com
 [core]
-	editor = subl3 -a -w
+	editor = subl -w
 [alias]
 	co = checkout
 	s = status --short --branch
