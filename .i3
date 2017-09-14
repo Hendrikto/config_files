@@ -168,6 +168,7 @@ bar {
 ################################################################################
 # CUSTOM                                                                       #
 ################################################################################
+set $capture_path /tmp/capture.png
 set $refresh_i3status pkill -USR1 -x i3status
 set $vlc_sock /tmp/.vlc.sock
 
@@ -184,7 +185,7 @@ bindsym $mod+F12 exec pavucontrol
 
 # System state controls
 mode "system state" {
-	bindsym l mode "default"; exec i3lock --color=$color_dark
+	bindsym l mode "default"; exec maim $capture_path && convert $capture_path -scale 20% -scale 500% $capture_path && i3lock -i $capture_path
 	bindsym r mode "default"; exec systemctl reboot
 	bindsym s mode "default"; exec systemctl poweroff
 
