@@ -1,0 +1,3 @@
+--enable-native-gpu-memory-buffers
+--force-gpu-rasterization
+--ignore-gpu-blacklist
