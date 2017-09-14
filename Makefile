@@ -1,6 +1,6 @@
-all: bash git i3 i3status xorg zsh
+all: bash chrome git i3 i3status xorg zsh
 
-remove_all: remove_bash remove_git remove_i3 remove_i3status remove_xorg remove_zsh
+remove_all: remove_bash remove_chrome remove_git remove_i3 remove_i3status remove_xorg remove_zsh
 
 bash: .bashrc .bash_profile
 	ln -rs $< ~/.bashrc
@@ -8,6 +8,13 @@ bash: .bashrc .bash_profile
 
 remove_bash:
 	rm -f ~/.bashrc ~/.bash_profile
+
+chrome: .chrome
+	mkdir -p ~/.config
+	ln -rs $< ~/.config/chrome-flags.conf
+
+remove_chrome:
+	rm -f ~/.config/chrome-flags.conf
 
 git: .gitconfig
 	ln -rs $< ~/.gitconfig
