@@ -1,3 +1,5 @@
+.PHONY: xorg
+
 all: bash chrome git i3 i3status xorg zsh
 
 remove_all: remove_bash remove_chrome remove_git remove_i3 remove_i3status remove_xorg remove_zsh
@@ -36,11 +38,8 @@ i3status: .i3status
 remove_i3status:
 	rm -f ~/.config/i3status/config
 
-xorg: .xinitrc .Xresources .Xresources.d
-	ln -rs $< ~/.xinitrc
-	ln -rs .xserverrc ~/.xserverrc
-	ln -rs .Xresources ~/.Xresources
-	ln -rs .Xresources.d ~/.Xresources.d
+xorg: $@
+	ln -rs $@/.[!.]* ~
 
 remove_xorg:
 	rm -f ~/.xinitrc ~/.xserverrc ~/.Xresources
