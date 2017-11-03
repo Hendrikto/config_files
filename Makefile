@@ -1,4 +1,4 @@
-.PHONY: bash chrome i3 xorg zsh
+.PHONY: bash chrome git i3 xorg zsh
 
 all: bash chrome git i3 xorg zsh
 
@@ -17,8 +17,8 @@ chrome: $@
 remove_chrome:
 	rm -f ~/.config/chrome-flags.conf
 
-git: .gitconfig
-	ln -rs $< ~/.gitconfig
+git: $@
+	ln -rs $@/.[!.]* ~
 
 remove_git:
 	rm -f ~/.gitconfig
