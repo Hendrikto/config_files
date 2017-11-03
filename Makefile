@@ -1,8 +1,8 @@
 .PHONY: bash i3 xorg
 
-all: bash chrome git i3 i3status xorg zsh
+all: bash chrome git i3 xorg zsh
 
-remove_all: remove_bash remove_chrome remove_git remove_i3 remove_i3status remove_xorg remove_zsh
+remove_all: remove_bash remove_chrome remove_git remove_i3 remove_xorg remove_zsh
 
 bash: $@
 	ln -rs $@/.[!.]* ~
