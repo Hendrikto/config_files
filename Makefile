@@ -1,4 +1,4 @@
-.PHONY: bash i3 xorg zsh
+.PHONY: bash chrome i3 xorg zsh
 
 all: bash chrome git i3 xorg zsh
 
@@ -10,9 +10,9 @@ bash: $@
 remove_bash:
 	rm -f ~/.bash{rc,_profile}
 
-chrome: .chrome
+chrome: $@
 	mkdir -p ~/.config
-	ln -rs $< ~/.config/chrome-flags.conf
+	ln -rs $@/* ~/.config
 
 remove_chrome:
 	rm -f ~/.config/chrome-flags.conf
