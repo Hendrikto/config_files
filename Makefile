@@ -34,8 +34,7 @@ xorg: $@
 	ln -rs $@/.[!.]* ~
 
 remove_xorg:
-	rm -f ~/.xinitrc ~/.xserverrc ~/.Xresources
-	rm -rf ~/.Xresources.d
+	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
 zsh: $@
 	ln -rs $@/.[!.]* ~
