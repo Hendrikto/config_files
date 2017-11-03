@@ -1,4 +1,4 @@
-.PHONY: bash i3 xorg
+.PHONY: bash i3 xorg zsh
 
 all: bash chrome git i3 xorg zsh
 
@@ -37,12 +37,11 @@ remove_xorg:
 	rm -f ~/.xinitrc ~/.xserverrc ~/.Xresources
 	rm -rf ~/.Xresources.d
 
-zsh: .zshrc .zprofile
-	ln -rs $< ~/.zshrc
-	ln -rs .zprofile ~/.zprofile
+zsh: $@
+	ln -rs $@/.[!.]* ~
 
 remove_zsh:
-	rm -f ~/.zprofile ~/.zshrc
+	rm -f ~/.{zprofile,zshrc}
 
 systemwide: nftables sysctl
 
