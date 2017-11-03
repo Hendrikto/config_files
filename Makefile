@@ -24,6 +24,7 @@ remove_git:
 	rm -f ~/.gitconfig
 
 i3: $@
+	mkdir -p ~/.config
 	ln -rs $@/* ~/.config
 
 remove_i3:
