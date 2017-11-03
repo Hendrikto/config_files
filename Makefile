@@ -1,15 +1,14 @@
-.PHONY: i3 xorg
+.PHONY: bash i3 xorg
 
 all: bash chrome git i3 i3status xorg zsh
 
 remove_all: remove_bash remove_chrome remove_git remove_i3 remove_i3status remove_xorg remove_zsh
 
-bash: .bashrc .bash_profile
-	ln -rs $< ~/.bashrc
-	ln -rs .bash_profile ~/.bash_profile
+bash: $@
+	ln -rs $@/.[!.]* ~
 
 remove_bash:
-	rm -f ~/.bashrc ~/.bash_profile
+	rm -f ~/.bash{rc,_profile}
 
 chrome: .chrome
 	mkdir -p ~/.config
