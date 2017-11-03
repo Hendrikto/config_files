@@ -1,4 +1,4 @@
-.PHONY: xorg
+.PHONY: i3 xorg
 
 all: bash chrome git i3 i3status xorg zsh
 
