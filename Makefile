@@ -42,6 +42,8 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
+.PHONY: sysctl
+
 systemwide: nftables sysctl
 
 remove_systemwide: remove_nftables remove_sysctl
@@ -52,8 +54,8 @@ nftables: .nftables
 remove_nftables:
 	sudo rm -f /etc/nftables.conf
 
-sysctl: .sysctl
-	sudo ln -rs $< /etc/sysctl.d/99-sysctl.conf
+sysctl: $@
+	sudo ln -rs $@/* /etc/sysctl.d
 
 remove_sysctl:
 	sudo rm -f /etc/sysctl.d/99-sysctl.conf
