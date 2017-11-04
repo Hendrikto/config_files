@@ -42,14 +42,14 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-.PHONY: sysctl
+.PHONY: nftables sysctl
 
 systemwide: nftables sysctl
 
 remove_systemwide: remove_nftables remove_sysctl
 
-nftables: .nftables
-	sudo ln -rs $< /etc/nftables.conf
+nftables: $@
+	sudo ln -rs $@/* /etc
 
 remove_nftables:
 	sudo rm -f /etc/nftables.conf
