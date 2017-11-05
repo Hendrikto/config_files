@@ -28,7 +28,7 @@ i3: $@
 	ln -rs $@/* ~/.config
 
 remove_i3:
-	rm -f ~/.config/i3{,status}
+	rm -rf ~/.config/i3{,status}
 
 xorg: $@
 	ln -rs $@/.[!.]* ~
