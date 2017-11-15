@@ -1,4 +1,4 @@
-source /usr/share/chruby/chruby.sh
+[[ -e /usr/share/chruby/chruby.sh ]] && source /usr/share/chruby/chruby.sh
 
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
