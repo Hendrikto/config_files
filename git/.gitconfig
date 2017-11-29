@@ -9,7 +9,7 @@
 [alias]
 	co = checkout
 	s = status --short --branch
-	h = show HEAD
+	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
 [credential]
 	helper = cache
