@@ -176,7 +176,7 @@ set $vlc_sock /tmp/.vlc.sock
 exec --no-startup-id compton -b --backend glx --vsync opengl --no-fading-openclose
 
 # Quickstart
-bindsym $mod+F1 exec google-chrome-stable
+bindsym $mod+F1 exec firefox
 bindsym $mod+F2 exec --no-startup-id xterm mc
 bindsym $mod+F3 exec --no-startup-id vlc -LZI rc --rc-fake-tty --rc-unix=$vlc_sock ~/music
 bindsym $mod+F10 exec lxtask
