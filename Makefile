@@ -1,8 +1,8 @@
-.PHONY: bash chrome git i3 xorg zsh
+.PHONY: bash chrome firefox git i3 xorg zsh
 
-all: bash chrome git i3 xorg zsh
+all: bash chrome firefox git i3 xorg zsh
 
-remove_all: remove_bash remove_chrome remove_git remove_i3 remove_xorg remove_zsh
+remove_all: remove_bash remove_chrome remove_firefox remove_git remove_i3 remove_xorg remove_zsh
 
 bash: $@
 	ln -rs $@/.[!.]* ~
@@ -16,6 +16,15 @@ chrome: $@
 
 remove_chrome:
 	rm -f ~/.config/chrome-flags.conf
+
+firefox: $@
+	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
+	mkdir -p $(profile)
+	ln -rs $@/* $(profile)
+
+remove_firefox:
+	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
+	rm -f $(profile)/chrome
 
 git: $@
 	ln -rs $@/.[!.]* ~
