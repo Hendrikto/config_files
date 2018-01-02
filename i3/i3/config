@@ -217,8 +217,8 @@ mode "vlc" {
 bindsym $mod+Menu mode "vlc"
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo backlight_control +5 && $refresh_i3status &
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo backlight_control -5 && $refresh_i3status &
+bindsym XF86MonBrightnessUp exec --no-startup-id backlight_control +5 && $refresh_i3status &
+bindsym XF86MonBrightnessDown exec --no-startup-id backlight_control -5 && $refresh_i3status &
 
 # Move workspace to another monitor
 bindsym $mod+m move workspace to output left
