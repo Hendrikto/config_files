@@ -51,17 +51,24 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-.PHONY: nftables sysctl
+.PHONY: nftables reflector sysctl
 
-systemwide: nftables sysctl
+systemwide: nftables reflector sysctl
 
-remove_systemwide: remove_nftables remove_sysctl
+remove_systemwide: remove_nftables remove_reflector remove_sysctl
 
 nftables: $@
 	sudo ln -rs $@/* /etc
 
 remove_nftables:
 	sudo rm -f /etc/nftables.conf
+
+reflector: $@
+	sudo mkdir -p /etc/pacman.d/hooks
+	sudo ln -rs $@/* /etc/pacman.d/hooks
+
+remove_reflector:
+	sudo rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
 
 sysctl: $@
 	sudo ln -rs $@/* /etc/sysctl.d
