@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pacman-mirrorlist
+
+[Action]
+Description = Updating pacman-mirrorlist with reflector, and removing pacnew...
+When = PostTransaction
+Depends = reflector
+Exec = /bin/bash -c "reflector --country DE --country NL --fastest 10 --sort rate --save /etc/pacman.d/mirrorlist && rm -f /etc/pacman.d/mirrorlist.pacnew"
