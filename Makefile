@@ -51,11 +51,17 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-.PHONY: nftables reflector sysctl
+.PHONY: fontconfig nftables reflector sysctl
 
-systemwide: nftables reflector sysctl
+systemwide: fontconfig nftables reflector sysctl
 
-remove_systemwide: remove_nftables remove_reflector remove_sysctl
+remove_systemwide: remove_fontconfig remove_nftables remove_reflector remove_sysctl
+
+fontconfig: $@
+	sudo ln -rs $@/* /etc/fonts
+
+remove_fontconfig:
+	sudo rm -f /etc/fonts/local.conf
 
 nftables: $@
 	sudo ln -rs $@/* /etc
