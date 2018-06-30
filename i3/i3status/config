@@ -50,7 +50,7 @@ battery 0 {
 path_exists VLC {
 	path = "/tmp/.vlc.sock"
 	format = "♬"
-	format_down = "☒"
+	format_down = "❌"
 }
 
 tztime local {
