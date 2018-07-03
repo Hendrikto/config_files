@@ -11,7 +11,7 @@
 	s = status --short --branch
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
-	purge = "!f() { git push -d origin \"$1\"; git branch -d \"$1\"; }; f"
+	purge = "!f() { git push -d $(git s | grep -oP '(?<=\\.\\.\\.)\\w+(?=/)') \"$1\"; git branch -d \"$1\"; }; f"
 [credential]
 	helper = cache
 [push]
