@@ -39,8 +39,8 @@ export QT_QPA_PLATFORMTHEME=gtk2
 ################################################################################
 
 alias e=$EDITOR
-alias l='ls -AFGh'
-alias ll='l -l'
+alias l='exa --git-ignore'
+alias ll='exa -la --git'
 
 o() {
     xdg-open $1 2>/dev/null &
