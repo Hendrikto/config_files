@@ -183,8 +183,9 @@ bindsym $mod+F12 exec pavucontrol
 # System state controls
 mode "system state" {
 	bindsym l mode "default"; exec maim $capture_path && convert $capture_path -scale 20% -scale 500% $capture_path && i3lock -i $capture_path
+	bindsym p mode "default"; exec systemctl poweroff
 	bindsym r mode "default"; exec systemctl reboot
-	bindsym s mode "default"; exec systemctl poweroff
+	bindsym s mode "default"; exec systemctl suspend
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
