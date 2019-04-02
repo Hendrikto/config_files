@@ -51,11 +51,11 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-.PHONY: fontconfig nftables reflector sysctl
+.PHONY: fontconfig nftables reflector sysctl systemd-networkd
 
-systemwide: fontconfig nftables reflector sysctl
+systemwide: fontconfig nftables reflector sysctl systemd-networkd
 
-remove_systemwide: remove_fontconfig remove_nftables remove_reflector remove_sysctl
+remove_systemwide: remove_fontconfig remove_nftables remove_reflector remove_sysctl remove_systemd-networkd
 
 fontconfig: $@
 	sudo ln -rs $@/* /etc/fonts
@@ -81,3 +81,9 @@ sysctl: $@
 
 remove_sysctl:
 	sudo rm -f /etc/sysctl.d/99-sysctl.conf
+
+systemd-networkd: $@
+	sudo ln -rs $@/* /etc/systemd/network
+
+remove_systemd-networkd: $@
+	sudo rm -f /etc/systemd/network/20-wired.network
