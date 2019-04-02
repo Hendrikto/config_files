@@ -51,11 +51,13 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-.PHONY: fontconfig nftables reflector sysctl systemd-networkd
+SYSTEM = fontconfig nftables reflector sysctl systemd-networkd
 
-systemwide: fontconfig nftables reflector sysctl systemd-networkd
+.PHONY: $(SYSTEM)
 
-remove_systemwide: remove_fontconfig remove_nftables remove_reflector remove_sysctl remove_systemd-networkd
+systemwide: $(SYSTEM)
+
+remove_systemwide: $(SYSTEM:%=remove_%)
 
 fontconfig: $@
 	sudo ln -rs $@/* /etc/fonts
