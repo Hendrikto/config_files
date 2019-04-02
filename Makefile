@@ -1,8 +1,10 @@
-.PHONY: bash chrome firefox git i3 xorg zsh
+USER = bash chrome firefox git i3 xorg zsh
 
-all: bash chrome firefox git i3 xorg zsh
+.PHONY: $(USER)
 
-remove_all: remove_bash remove_chrome remove_firefox remove_git remove_i3 remove_xorg remove_zsh
+all: $(USER)
+
+remove_all: $(USER:%=remove_%)
 
 bash: $@
 	ln -rs $@/.[!.]* ~
