@@ -87,7 +87,7 @@ remove_sysctl:
 	sudo rm -f /etc/sysctl.d/99-sysctl.conf
 
 systemd-networkd: $@
-	sudo ln -rs $@/* /etc/systemd/network
+	sudo cp $@/* /etc/systemd/network
 
 remove_systemd-networkd: $@
 	sudo rm -f /etc/systemd/network/20-wired.network
