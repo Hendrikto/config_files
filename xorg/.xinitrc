@@ -4,4 +4,5 @@ xrandr --auto
 setxkbmap de
 xset dpms 0 0 0
 xset s 0 0
+compton -b
 exec i3
