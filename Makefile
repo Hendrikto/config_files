@@ -1,4 +1,4 @@
-USER = bash chrome firefox git i3 xorg zsh
+USER = bash chrome compton firefox git i3 xorg zsh
 
 .PHONY: $(USER)
 
@@ -18,6 +18,13 @@ chrome: $@
 
 remove_chrome:
 	rm -f ~/.config/chrome-flags.conf
+
+compton: $@
+	mkdir -p ~/.config
+	ln -rs $@ ~/.config
+
+remove_compton:
+	rm -rf ~/.config/compton
 
 firefox: $@
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
