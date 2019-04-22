@@ -12,6 +12,7 @@
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
 	purge = "!f() { git push -d $(git s | grep -oP '(?<=\\.\\.\\.)\\w+(?=/)') \"$1\"; git branch -d \"$1\"; }; f"
+	l = log
 [credential]
 	helper = cache
 [push]
