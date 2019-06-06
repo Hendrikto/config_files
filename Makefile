@@ -1,3 +1,5 @@
+XDG_CONFIG_HOME ?= $(HOME)/.config
+
 USER = bash chrome compton firefox git i3 xorg zsh
 
 .PHONY: $(USER)
@@ -6,25 +8,26 @@ all: $(USER)
 
 remove_all: $(USER:%=remove_%)
 
+$(XDG_CONFIG_HOME):
+	mkdir -p $(XDG_CONFIG_HOME)
+
 bash: $@
 	ln -rs $@/.[!.]* ~
 
 remove_bash:
 	rm -f ~/.bash{rc,_profile}
 
-chrome: $@
-	mkdir -p ~/.config
-	ln -rs $@/* ~/.config
+chrome: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@/* $(XDG_CONFIG_HOME)
 
 remove_chrome:
-	rm -f ~/.config/chrome-flags.conf
+	rm -f $(XDG_CONFIG_HOME)/chrome-flags.conf
 
-compton: $@
-	mkdir -p ~/.config
-	ln -rs $@ ~/.config
+compton: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@ $(XDG_CONFIG_HOME)
 
 remove_compton:
-	rm -rf ~/.config/compton
+	rm -f $(XDG_CONFIG_HOME)/compton
 
 firefox: $@
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
@@ -35,18 +38,17 @@ remove_firefox:
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
 	rm -f $(profile)/chrome
 
-git: $@
-	ln -rs $@ ~/.config
+git: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@ $(XDG_CONFIG_HOME)
 
 remove_git:
-	rm -f ~/.config/git
+	rm -f $(XDG_CONFIG_HOME)/git
 
-i3: $@
-	mkdir -p ~/.config
-	ln -rs $@/* ~/.config
+i3: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@/* $(XDG_CONFIG_HOME)
 
 remove_i3:
-	rm -rf ~/.config/i3{,status}
+	rm -f $(XDG_CONFIG_HOME)/i3{,status}
 
 xorg: $@
 	ln -rs $@/.[!.]* ~
