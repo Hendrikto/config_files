@@ -36,10 +36,10 @@ remove_firefox:
 	rm -f $(profile)/chrome
 
 git: $@
-	ln -rs $@/.[!.]* ~
+	ln -rs $@ ~/.config
 
 remove_git:
-	rm -f ~/.gitconfig
+	rm -f ~/.config/git
 
 i3: $@
 	mkdir -p ~/.config
