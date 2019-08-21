@@ -1,12 +1,19 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
-USER = bash chrome compton firefox git i3 xorg/user zsh
+.PHONY: all remove_all
 
-.PHONY: $(USER)
+all: user system
 
-all: $(USER)
+remove_all: remove_user remove_system
 
-remove_all: $(USER:%=remove_%)
+USER := bash chrome compton firefox git i3 xorg/user zsh
+REMOVE_USER := $(USER:%=remove_%)
+
+.PHONY: user $(USER) remove_user $(REMOVE_USER)
+
+user: $(USER)
+
+remove_user: $(REMOVE_USER)
 
 $(XDG_CONFIG_HOME):
 	mkdir -p $(XDG_CONFIG_HOME)
@@ -62,13 +69,14 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM = fontconfig nftables reflector sysctl systemd-networkd xorg/system
+SYSTEM := fontconfig nftables reflector sysctl systemd-networkd xorg/system
+REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
-.PHONY: $(SYSTEM)
+.PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
 
-systemwide: $(SYSTEM)
+system: $(SYSTEM)
 
-remove_systemwide: $(SYSTEM:%=remove_%)
+remove_system: $(REMOVE_SYSTEM)
 
 fontconfig: $@
 	sudo ln -rs $@/* /etc/fonts
