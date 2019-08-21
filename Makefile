@@ -1,6 +1,6 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
-USER = bash chrome compton firefox git i3 xorg zsh
+USER = bash chrome compton firefox git i3 xorg/user zsh
 
 .PHONY: $(USER)
 
@@ -50,10 +50,10 @@ i3: $@ $(XDG_CONFIG_HOME)
 remove_i3:
 	rm -f $(XDG_CONFIG_HOME)/i3{,status}
 
-xorg: $@
+xorg/user: $@
 	ln -rs $@/.[!.]* ~
 
-remove_xorg:
+remove_xorg/user:
 	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
 zsh: $@
@@ -62,7 +62,7 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM = fontconfig nftables reflector sysctl systemd-networkd
+SYSTEM = fontconfig nftables reflector sysctl systemd-networkd xorg/system
 
 .PHONY: $(SYSTEM)
 
@@ -100,3 +100,9 @@ systemd-networkd: $@
 
 remove_systemd-networkd: $@
 	sudo rm -f /etc/systemd/network/20-wired.network
+
+xorg/system: $@
+	sudo ln -rs $@/* /etc/X11/xorg.conf.d
+
+remove_xorg/system:
+	sudo rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
