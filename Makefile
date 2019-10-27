@@ -6,7 +6,7 @@ all: user system
 
 remove_all: remove_user remove_system
 
-USER := bash chrome compton firefox git i3 xorg/user zsh
+USER := bash chrome compton firefox git i3 kitty xorg/user zsh
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -56,6 +56,12 @@ i3: $@ $(XDG_CONFIG_HOME)
 
 remove_i3:
 	rm -f $(XDG_CONFIG_HOME)/i3{,status}
+
+kitty: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@ $(XDG_CONFIG_HOME)
+
+remove_kitty:
+	rm -f $(XDG_CONFIG_HOME)/kitty
 
 xorg/user: $@
 	ln -rs $@/.[!.]* ~
