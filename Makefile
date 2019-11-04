@@ -122,6 +122,7 @@ remove_systemd-networkd: $@
 	sudo rm -f /etc/systemd/network/20-ether.network
 
 systemd-resolved: $@
+	sudo mkdir -p /etc/systemd/resolved.conf.d
 	sudo cp $@/* /etc/systemd/resolved.conf.d
 
 remove_systemd-resolved:
