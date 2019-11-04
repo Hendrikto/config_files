@@ -81,7 +81,7 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM := fontconfig nftables reflector sysctl systemd-networkd xorg/system
+SYSTEM := fontconfig nftables reflector sysctl systemd-networkd systemd-resolved xorg/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -120,6 +120,12 @@ systemd-networkd: $@
 
 remove_systemd-networkd: $@
 	sudo rm -f /etc/systemd/network/20-wired.network
+
+systemd-resolved: $@
+	sudo cp $@/* /etc/systemd/resolved.conf.d
+
+remove_systemd-resolved:
+	sudo rm -f /etc/systemd/resolved.conf.d/dns.conf
 
 xorg/system: $@
 	sudo ln -rs $@/* /etc/X11/xorg.conf.d
