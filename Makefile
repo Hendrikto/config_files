@@ -6,7 +6,7 @@ all: user system
 
 remove_all: remove_user remove_system
 
-USER := bash chrome compton firefox git i3 kitty procps xorg/user zsh
+USER := bash chrome firefox git i3 kitty picom procps xorg/user zsh
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -29,12 +29,6 @@ chrome: $@ $(XDG_CONFIG_HOME)
 
 remove_chrome:
 	rm -f $(XDG_CONFIG_HOME)/chrome-flags.conf
-
-compton: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@ $(XDG_CONFIG_HOME)
-
-remove_compton:
-	rm -f $(XDG_CONFIG_HOME)/compton
 
 firefox: $@
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
@@ -62,6 +56,12 @@ kitty: $@ $(XDG_CONFIG_HOME)
 
 remove_kitty:
 	rm -f $(XDG_CONFIG_HOME)/kitty
+
+picom: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@ $(XDG_CONFIG_HOME)
+
+remove_picom:
+	rm -f $(XDG_CONFIG_HOME)/picom
 
 procps: $@ $(XDG_CONFIG_HOME)
 	ln -rs $@ $(XDG_CONFIG_HOME)
