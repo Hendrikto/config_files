@@ -8,6 +8,8 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
 	co = checkout
+	d = diff
+	dc = diff --cached
 	s = status --short --branch
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
