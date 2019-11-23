@@ -232,7 +232,7 @@ for_window [class="Google-chrome" instance="google-chrome" window_role="pop-up"]
 for_window [class="Steam" instance="Steam" title=".* - Chat"] floating enable
 
 # Disable window borders
-new_window normal 0
+default_border normal 0
 
 # Colorscheme
 client.focused          $color_primary $color_primary $color_primary_lighter
