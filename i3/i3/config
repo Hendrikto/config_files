@@ -233,6 +233,7 @@ for_window [class="Steam" instance="Steam" title=".* - Chat"] floating enable
 
 # Disable window borders
 default_border normal 0
+default_floating_border normal 0
 
 # Colorscheme
 client.focused          $color_primary $color_primary $color_primary_lighter
