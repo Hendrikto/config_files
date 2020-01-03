@@ -39,8 +39,8 @@ export QT_QPA_PLATFORMTHEME=gtk2
 ################################################################################
 
 alias e=$EDITOR
-alias l='exa --git-ignore'
-alias ll='exa -la --git'
+alias l='exa --git-ignore --group-directories-first'
+alias ll='exa -la --git --group-directories-first'
 alias t='exa --tree'
 
 o() {
