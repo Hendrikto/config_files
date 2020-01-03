@@ -42,6 +42,7 @@ alias e=$EDITOR
 alias l='exa --git-ignore --group-directories-first'
 alias ll='exa -la --git --group-directories-first'
 alias t='l --tree'
+alias tl='ll --tree'
 
 o() {
     xdg-open $1 2>/dev/null &
