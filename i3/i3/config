@@ -4,14 +4,6 @@
 
 set $mod Mod4
 
-# Colors
-set $color_primary #009688
-set $color_primary_light #B2DFDB
-set $color_primary_lighter #F7FBFB
-set $color_primary_dark #00796B
-set $color_dark #212121
-set $color_accent #CDDC39
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Source Code Pro 8
@@ -164,8 +156,10 @@ bar {
 		statusline #ffffff
 		separator #808080
 
-		focused_workspace $color_primary_dark $color_primary $color_primary_lighter
-		urgent_workspace $color_primary_dark $color_accent $color_dark
+		focused_workspace  #301040e0 #301040e0 #ffffffe0
+		active_workspace   #000000e0 #000000e0 #e0e0e0e0
+		inactive_workspace #000000e0 #000000e0 #e0e0e0e0
+		urgent_workspace   #c0c02ae0 #c0c02ae0 #000000e0
 	}
 }
 
@@ -236,9 +230,9 @@ default_border normal 0
 default_floating_border normal 0
 
 # Colorscheme
-client.focused          $color_primary $color_primary $color_primary_lighter
-client.focused_inactive $color_primary_dark $color_primary_dark $color_primary_light
-client.unfocused        $color_dark $color_dark $color_primary_light
-client.urgent           $color_accent $color_accent $color_dark
-client.placeholder      $color_primary_dark $color_primary_dark $color_primary_light
-client.background       $color_dark
+client.focused          #301040e0 #301040e0 #ffffffe0
+client.focused_inactive #240c30e0 #240c30e0 #e0e0e0e0
+client.unfocused        #000000e0 #000000e0 #e0e0e0e0
+client.urgent           #c0c02ae0 #c0c02ae0 #000000e0
+client.placeholder      #000000e0 #000000e0 #e0e0e0e0
+client.background       #000000e0
