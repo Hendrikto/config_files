@@ -81,7 +81,7 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM := battery_warning fontconfig nftables reflector sysctl systemd-networkd systemd-resolved xorg/system
+SYSTEM := battery_warning dbus fontconfig nftables reflector sysctl systemd-networkd systemd-resolved xorg/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -96,6 +96,12 @@ battery_warning: $@
 
 remove_battery_warning:
 	sudo rm -f /etc/systemd/system/battery_warning.service.d/override.conf
+
+dbus: $@
+	sudo ln -rs $@/dbus.service.d /etc/systemd/system/dbus.service.d
+
+remove_dbus:
+	sudo rm -f /etc/systemd/system/dbus.service.d
 
 fontconfig: $@
 	sudo ln -rs $@/* /etc/fonts
