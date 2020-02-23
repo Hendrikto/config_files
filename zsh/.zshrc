@@ -93,8 +93,12 @@ precmd() {
 	vcs_info
 }
 
+color_prompt() {
+	printf '%%F{%s}%%K{%s}%s%%k%%f' $1 $2 $3
+}
+
 setopt PROMPT_SUBST
-PROMPT='%F{blue}%n%f %F{yellow}%~%f %(!.$.%%) '
+PROMPT=$(color_prompt black blue ' %n ')$(color_prompt blue yellow )$(color_prompt black yellow ' %~ ')$(color_prompt yellow black )$'\n''%(!.$.❯) '
 RPROMPT='${vcs_info_msg_0_}'
 
 ################################################################################
