@@ -176,6 +176,7 @@ bindsym $mod+F2 exec --no-startup-id kitty mc
 bindsym $mod+F3 exec --no-startup-id vlc -LZI rc --rc-fake-tty --rc-unix=$vlc_sock ~/music
 bindsym $mod+F10 exec lxtask
 bindsym $mod+F11 exec --no-startup-id maim --hidecursor --select ~/pictures/screenshot$(date +%s).png
+bindsym $mod+Shift+F11 exec --no-startup-id maim --hidecursor --select | xclip -selection clipboard -target image/png
 bindsym $mod+F12 exec pavucontrol
 
 # System state controls
