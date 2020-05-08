@@ -247,7 +247,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 ######################################### Power Management #########################################
 
 mode "system state" {
-	bindsym l mode "default"; exec maim --format=bmp | convert bmp:- -scale 20% -scale 500% rgb:- | i3lock --image=/dev/stdin --raw=1920x1080:rgb
+	bindsym l mode "default"; exec maim --format=bmp | convert bmp:- -scale 20% -scale 500% rgb:- | i3lock --image=/dev/stdin --raw=$(xrandr | grep -oP 'current \K\d+ x \d+' | tr -d ' '):rgb
 	bindsym p mode "default"; exec systemctl poweroff
 	bindsym r mode "default"; exec systemctl reboot
 	bindsym s mode "default"; exec systemctl suspend
