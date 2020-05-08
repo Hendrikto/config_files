@@ -183,7 +183,7 @@ bindsym $mod+F12 exec pavucontrol
 
 # System state controls
 mode "system state" {
-	bindsym l mode "default"; exec maim | convert png:- -scale 20% -scale 500% rgb:- | i3lock --image=/dev/stdin --raw=1920x1080:rgb
+	bindsym l mode "default"; exec maim | convert png:- -scale 20% -scale 500% rgb:- | i3lock --image=/dev/stdin --raw=3840x1080:rgb
 	bindsym p mode "default"; exec systemctl poweroff
 	bindsym r mode "default"; exec systemctl reboot
 	bindsym s mode "default"; exec systemctl suspend
