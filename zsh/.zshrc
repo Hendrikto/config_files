@@ -89,6 +89,15 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-remote-diff
 	(( $behind )) && hook_com[staged]+=" ↓$behind"
 }
 
+venv_info() {
+	if [[ -n $VIRTUAL_ENV ]]; then
+		venv_prompt=$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' $VIRTUAL_ENV/pyvenv.cfg)
+		venv_prompt=$(color_prompt yellow 208 )$(color_prompt black 208 " $venv_prompt ")$(color_prompt 208 black )
+	else
+		venv_prompt=$(color_prompt yellow black )
+	fi
+}
+
 precmd() {
 	vcs_info
 }
