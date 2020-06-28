@@ -64,6 +64,9 @@ compinit
 # Custom prompt                                                                #
 ################################################################################
 
+# disable default virtualenv prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
@@ -100,6 +103,7 @@ venv_info() {
 
 precmd() {
 	vcs_info
+	venv_info
 }
 
 color_prompt() {
@@ -107,8 +111,8 @@ color_prompt() {
 }
 
 setopt PROMPT_SUBST
-PROMPT=$(color_prompt black blue ' %n ')$(color_prompt blue yellow )$(color_prompt black yellow ' %~ ')$(color_prompt yellow black )$'\n''%(!.$.❯) '
 RPROMPT='${vcs_info_msg_0_}'
+PROMPT=$(color_prompt black blue ' %n ')$(color_prompt blue yellow )$(color_prompt black yellow ' %~ ')'${venv_prompt}'$'\n''%(!.$.❯) '
 
 ################################################################################
 # Color output (https://wiki.archlinux.org/index.php/Color_output_in_console)  #
