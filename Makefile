@@ -81,7 +81,7 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM := battery_warning dbus fontconfig nftables reflector sysctl systemd-networkd systemd-resolved xorg/system
+SYSTEM := battery_warning dbus fontconfig nftables nsswitch reflector sysctl systemd-networkd systemd-resolved xorg/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -114,6 +114,12 @@ nftables: $@
 
 remove_nftables:
 	sudo rm -f /etc/nftables.conf
+
+nsswitch: $@
+	sudo ln -rs $@/* /etc
+
+remove_nsswitch:
+	sudo rm -f /etc/nsswitch.conf
 
 reflector: $@
 	sudo mkdir -p /etc/pacman.d/hooks
