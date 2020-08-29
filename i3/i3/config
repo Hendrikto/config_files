@@ -169,6 +169,9 @@ bar {
 set $refresh_i3status pkill -USR1 -x i3status
 set $vlc_sock /tmp/.vlc.sock
 
+# Status bar
+bindsym $mod+b exec --no-startup-id i3-msg bar mode toggle
+
 # Quickstart
 bindsym $mod+F1 exec firefox
 bindsym $mod+Shift+F1 exec firefox -private-window
