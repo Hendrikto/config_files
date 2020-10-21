@@ -10,11 +10,11 @@
 	co = checkout
 	d = diff
 	dc = diff --cached
-	s = status --short --branch
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
-	purge = "!f() { git push -d $(git s | grep -oP '(?<=\\.\\.\\.)\\w+(?=/)') \"$1\"; git branch -d \"$1\"; }; f"
 	l = log
+	purge = "!f() { git push -d $(git s | grep -oP '(?<=\\.\\.\\.)\\w+(?=/)') \"$1\"; git branch -d \"$1\"; }; f"
+	s = status --short --branch
 [credential]
 	helper = cache
 [push]
