@@ -120,6 +120,7 @@ PROMPT=$(color_prompt black blue ' %n ')$(color_prompt blue yellow )$(color_p
 
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+alias ip='ip --color=auto'
 alias ls='ls --color=auto'
 
 export LESS_TERMCAP_md=$'\e[01;31m'
