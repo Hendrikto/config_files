@@ -10,6 +10,7 @@
 	co = checkout
 	d = diff
 	dc = diff --cached
+	fp = fetch --prune
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty -m \"Initial commit\""
 	l = log
