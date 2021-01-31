@@ -1,6 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+HISTFILE=~/.cache/bash/history
+
 alias ls='ls --color=auto'
 alias l='ls -AFGh'
 alias ll='l -l'

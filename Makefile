@@ -20,9 +20,11 @@ $(XDG_CONFIG_HOME):
 
 bash: $@
 	ln -rs $@/.[!.]* ~
+	mkdir -p ~/.cache/bash
 
 remove_bash:
 	rm -f ~/.bash{rc,_profile}
+	rm -fr ~/.cache/bash
 
 chrome: $@ $(XDG_CONFIG_HOME)
 	ln -rs $@/* $(XDG_CONFIG_HOME)
