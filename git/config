@@ -21,6 +21,8 @@
 	helper = cache
 [push]
 	default = simple
+[init]
+	defaultBranch = master
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
