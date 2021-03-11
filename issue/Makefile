@@ -1,2 +1,2 @@
 %: issue-%
-	sudo tee /etc/issue < $<
+	sudo ln -rs $< /etc/issue
