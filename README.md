@@ -1,5 +1,5 @@
 # config_files
-Dotfiles and other confiugration files.
+Dotfiles and other configuration files.
 
 ## Usage
 ### Dotfiles
