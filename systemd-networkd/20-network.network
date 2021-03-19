@@ -1,6 +1,7 @@
 # Documentation: `man 5 networkd.conf`
 
 [Match]
+Driver=! veth
 Type=ether wlan
 
 [Network]
