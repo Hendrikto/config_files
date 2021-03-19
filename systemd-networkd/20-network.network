@@ -1,4 +1,5 @@
 [Match]
+Driver=! veth
 Type=ether wlan
 
 [Network]
