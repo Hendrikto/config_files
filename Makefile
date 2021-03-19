@@ -6,6 +6,13 @@ all: user system
 
 remove_all: remove_user remove_system
 
+.PHONY: ensure_root
+ensure_root:
+ifneq ($(shell id -u), 0)
+	@echo 'This rule requires root privileges.'
+	@exit 1
+endif
+
 USER := bash chrome firefox git i3 kitty picom procps xorg/user zsh
 REMOVE_USER := $(USER:%=remove_%)
 
@@ -92,65 +99,65 @@ system: $(SYSTEM)
 
 remove_system: $(REMOVE_SYSTEM)
 
-battery_warning: $@
-	sudo mkdir -p /etc/systemd/system/battery_warning.service.d/
-	sudo ln -rs $@/* /etc/systemd/system/battery_warning.service.d/
+battery_warning: ensure_root $@
+	mkdir -p /etc/systemd/system/battery_warning.service.d/
+	ln -rs $@/* /etc/systemd/system/battery_warning.service.d/
 
-remove_battery_warning:
-	sudo rm -f /etc/systemd/system/battery_warning.service.d/override.conf
+remove_battery_warning: ensure_root
+	rm -f /etc/systemd/system/battery_warning.service.d/override.conf
 
-dbus: $@
-	sudo ln -rs $@/dbus.service.d /etc/systemd/system/dbus.service.d
+dbus: ensure_root $@
+	ln -rs $@/dbus.service.d /etc/systemd/system/dbus.service.d
 
-remove_dbus:
-	sudo rm -f /etc/systemd/system/dbus.service.d
+remove_dbus: ensure_root
+	rm -f /etc/systemd/system/dbus.service.d
 
-fontconfig: $@
-	sudo ln -rs $@/* /etc/fonts
+fontconfig: ensure_root $@
+	ln -rs $@/* /etc/fonts
 
-remove_fontconfig:
-	sudo rm -f /etc/fonts/local.conf
+remove_fontconfig: ensure_root
+	rm -f /etc/fonts/local.conf
 
-nftables: $@
-	sudo ln -rs $@/* /etc
+nftables: ensure_root $@
+	ln -rs $@/* /etc
 
-remove_nftables:
-	sudo rm -f /etc/nftables.conf
+remove_nftables: ensure_root
+	rm -f /etc/nftables.conf
 
-nsswitch: $@
-	sudo ln -rs $@/* /etc
+nsswitch: ensure_root $@
+	ln -rs $@/* /etc
 
-remove_nsswitch:
-	sudo rm -f /etc/nsswitch.conf
+remove_nsswitch: ensure_root
+	rm -f /etc/nsswitch.conf
 
-reflector: $@
-	sudo mkdir -p /etc/pacman.d/hooks
-	sudo ln -rs $@/* /etc/pacman.d/hooks
+reflector: ensure_root $@
+	mkdir -p /etc/pacman.d/hooks
+	ln -rs $@/* /etc/pacman.d/hooks
 
-remove_reflector:
-	sudo rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
+remove_reflector: ensure_root
+	rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
 
-sysctl: $@
-	sudo ln -rs $@/* /etc/sysctl.d
+sysctl: ensure_root $@
+	ln -rs $@/* /etc/sysctl.d
 
-remove_sysctl:
-	sudo rm -f /etc/sysctl.d/99-sysctl.conf
+remove_sysctl: ensure_root
+	rm -f /etc/sysctl.d/99-sysctl.conf
 
-systemd-networkd: $@
-	sudo cp $@/* /etc/systemd/network
+systemd-networkd: ensure_root $@
+	cp $@/* /etc/systemd/network
 
-remove_systemd-networkd: $@
-	sudo rm -f /etc/systemd/network/20-network.network
+remove_systemd-networkd: ensure_root $@
+	rm -f /etc/systemd/network/20-network.network
 
-systemd-resolved: $@
-	sudo mkdir -p /etc/systemd/resolved.conf.d
-	sudo cp $@/* /etc/systemd/resolved.conf.d
+systemd-resolved: ensure_root $@
+	mkdir -p /etc/systemd/resolved.conf.d
+	cp $@/* /etc/systemd/resolved.conf.d
 
-remove_systemd-resolved:
-	sudo rm -f /etc/systemd/resolved.conf.d/dns.conf
+remove_systemd-resolved: ensure_root
+	rm -f /etc/systemd/resolved.conf.d/dns.conf
 
-xorg/system: $@
-	sudo ln -rs $@/* /etc/X11/xorg.conf.d
+xorg/system: ensure_root $@
+	ln -rs $@/* /etc/X11/xorg.conf.d
 
-remove_xorg/system:
-	sudo rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
+remove_xorg/system: ensure_root
+	rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
