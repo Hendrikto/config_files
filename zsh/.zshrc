@@ -41,6 +41,10 @@ export EDITOR='subl'
 export PATH=$PATH:~/.local/bin
 export QT_QPA_PLATFORMTHEME=gtk2
 
+python_startup=$XDG_CONFIG_HOME/python/startup.py
+[[ -f $python_startup ]] && export PYTHONSTARTUP=$python_startup
+unset python_startup
+
 ################################################################################
 # Alias / Functions                                                            #
 ################################################################################
