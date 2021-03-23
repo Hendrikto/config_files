@@ -13,7 +13,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git i3 kitty picom procps xorg/user zsh
+USER := bash chrome firefox git i3 kitty picom procps python xorg/user zsh
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -77,6 +77,12 @@ procps: $@ $(XDG_CONFIG_HOME)
 
 remove_procps:
 	rm -f $(XDG_CONFIG_HOME)/procps
+
+python: $@ $(XDG_CONFIG_HOME)
+	ln -rs $@ $(XDG_CONFIG_HOME)
+
+remove_python:
+	rm -r $(XDG_CONFIG_HOME)/python
 
 xorg/user: $@
 	ln -rs $@/.[!.]* ~
