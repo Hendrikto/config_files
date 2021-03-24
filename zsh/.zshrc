@@ -141,3 +141,4 @@ export LESS_TERMCAP_us=$'\e[01;32m'
 
 zsh_syntax_highlighting=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -e $zsh_syntax_highlighting ]] && source $zsh_syntax_highlighting
+unset zsh_syntax_highlighting
