@@ -1,4 +1,4 @@
-[[ -e /usr/share/chruby/chruby.sh ]] && source /usr/share/chruby/chruby.sh
+[[ -f /usr/share/chruby/chruby.sh ]] && source /usr/share/chruby/chruby.sh
 
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
@@ -140,5 +140,5 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[01;32m'
 
 zsh_syntax_highlighting=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -e $zsh_syntax_highlighting ]] && source $zsh_syntax_highlighting
+[[ -f $zsh_syntax_highlighting ]] && source $zsh_syntax_highlighting
 unset zsh_syntax_highlighting
