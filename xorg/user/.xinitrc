@@ -1,5 +1,5 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources &
-[[ -f ~/.fehbg ]] && ~/.fehbg &
+[[ -x ~/.fehbg ]] && ~/.fehbg &
 xrandr --auto
 setxkbmap de
 xset -dpms
