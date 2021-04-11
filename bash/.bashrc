@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-HISTFILE=~/.cache/bash/history
+HISTFILE=${XDG_CACHE_HOME}/bash/history
 
 alias ls='ls --color=auto'
 alias l='ls -AFGh'

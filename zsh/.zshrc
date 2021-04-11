@@ -2,7 +2,7 @@
 
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=${XDG_CACHE_HOME}/zsh/history
 
 REPORTTIME=5
 

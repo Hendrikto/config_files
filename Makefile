@@ -1,3 +1,5 @@
+# Fallbacks in case pam_env is not configured
+XDG_CACHE_HOME ?= $(HOME)/.cache
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
 .PHONY: all remove_all
@@ -22,16 +24,19 @@ user: $(USER)
 
 remove_user: $(REMOVE_USER)
 
+$(XDG_CACHE_HOME):
+	mkdir -p $(XDG_CACHE_HOME)
+
 $(XDG_CONFIG_HOME):
 	mkdir -p $(XDG_CONFIG_HOME)
 
-bash: $@
+bash: $@ $(XDG_CACHE_HOME)
 	ln -rs $@/.[!.]* ~
-	mkdir -p ~/.cache/bash
+	mkdir -p $(XDG_CACHE_HOME)/bash
 
 remove_bash:
 	rm -f ~/.bash{rc,_profile}
-	rm -fr ~/.cache/bash
+	rm -fr $(XDG_CACHE_HOME)/bash
 
 chrome: $@ $(XDG_CONFIG_HOME)
 	ln -rs $@/* $(XDG_CONFIG_HOME)
