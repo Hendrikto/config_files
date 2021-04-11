@@ -78,8 +78,8 @@ color_prompt() {
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats '[%b%m%u%c]'
-zstyle ':vcs_info:git*' actionformats "[%b%u%c %a]"
+zstyle ':vcs_info:git*' formats '[%b%m%c%u]'
+zstyle ':vcs_info:git*' actionformats "[%b%c%u %a]"
 zstyle ':vcs_info:*' unstagedstr $(color_prompt yellow black '○')
 zstyle ':vcs_info:*' stagedstr $(color_prompt green black '◉')
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-remote-diff
@@ -87,7 +87,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-remote-diff
 +vi-git-untracked() {
 	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
 		git status --porcelain | grep '??' &> /dev/null ; then
-		hook_com[staged]+=$(color_prompt red black '∆')
+		hook_com[unstaged]+=$(color_prompt red black '∆')
 	fi
 }
 
@@ -96,8 +96,8 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-remote-diff
 
 	ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
 	behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
-	(( $ahead )) && hook_com[staged]+=$(color_prompt blue black " ↑${ahead}")
-	(( $behind )) && hook_com[staged]+=$(color_prompt blue black " ↓${behind}")
+	(( $ahead )) && hook_com[unstaged]+=$(color_prompt blue black " ↑${ahead}")
+	(( $behind )) && hook_com[unstaged]+=$(color_prompt blue black " ↓${behind}")
 }
 
 venv_info() {
