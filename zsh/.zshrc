@@ -31,11 +31,6 @@ bindkey "\e[1;5D" backward-word
 # Environment variables                                                        #
 ################################################################################
 
-# XDG base directories
-export XDG_CACHE_HOME=~/.cache
-export XDG_CONFIG_HOME=~/.config
-export XDG_DATA_HOME=~/.local/share
-
 export CFLAGS='-O2 -march=native'
 export EDITOR='subl'
 export PATH=$PATH:~/.local/bin
