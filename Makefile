@@ -96,7 +96,7 @@ zsh: $@
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM := battery_warning dbus fontconfig nftables nsswitch reflector sysctl systemd-networkd systemd-resolved xorg/system
+SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector sysctl systemd-networkd systemd-resolved xorg/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -135,6 +135,12 @@ nsswitch: ensure_root $@
 
 remove_nsswitch: ensure_root
 	rm -f /etc/nsswitch.conf
+
+pam: ensure_root $@
+	ln -rs $@/pam_env.conf /etc/security/pam_env.conf
+
+remove_pam: ensure_root
+	rm -f /etc/security/pam_env.conf
 
 reflector: ensure_root $@
 	mkdir -p /etc/pacman.d/hooks
