@@ -95,11 +95,13 @@ xorg/user: $@
 remove_xorg/user:
 	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
-zsh: $@
+zsh: $@ $(XDG_CACHE_HOME)
 	ln -rs $@/.[!.]* ~
+	mkdir -p $(XDG_CACHE_HOME)/zsh
 
 remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
+	rm -rf $(XDG_CACHE_HOME)/zsh
 
 SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector sysctl systemd-networkd systemd-resolved xorg/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
