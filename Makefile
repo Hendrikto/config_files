@@ -2,6 +2,9 @@
 XDG_CACHE_HOME ?= $(HOME)/.cache
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
+# Create absolute symbolic links
+LINK = ln --symbolic $(realpath $(wildcard $(1))) $(2)
+
 .PHONY: all remove_all
 
 all: user system
@@ -31,7 +34,7 @@ $(XDG_CONFIG_HOME):
 	mkdir -p $(XDG_CONFIG_HOME)
 
 bash: $@ $(XDG_CACHE_HOME)
-	ln -rs $@/.[!.]* ~
+	$(call LINK,$@/.[!.]*,~)
 	mkdir -p $(XDG_CACHE_HOME)/bash
 
 remove_bash:
@@ -39,7 +42,7 @@ remove_bash:
 	rm -fr $(XDG_CACHE_HOME)/bash
 
 chrome: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@/* $(XDG_CONFIG_HOME)
+	$(call LINK,$@/*,$(XDG_CONFIG_HOME))
 
 remove_chrome:
 	rm -f $(XDG_CONFIG_HOME)/chrome-flags.conf
@@ -47,56 +50,56 @@ remove_chrome:
 firefox: $@
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
 	mkdir -p $(profile)
-	ln -rs $@/* $(profile)
+	$(call LINK,$@/*,$(profile))
 
 remove_firefox:
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
 	rm -f $(profile)/chrome
 
 git: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_git:
 	rm -f $(XDG_CONFIG_HOME)/git
 
 i3: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@/* $(XDG_CONFIG_HOME)
+	$(call LINK,$@/*,$(XDG_CONFIG_HOME))
 
 remove_i3:
 	rm -f $(XDG_CONFIG_HOME)/i3{,status}
 
 kitty: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_kitty:
 	rm -f $(XDG_CONFIG_HOME)/kitty
 
 picom: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_picom:
 	rm -f $(XDG_CONFIG_HOME)/picom
 
 procps: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_procps:
 	rm -f $(XDG_CONFIG_HOME)/procps
 
 python: $@ $(XDG_CONFIG_HOME)
-	ln -rs $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_python:
 	rm -r $(XDG_CONFIG_HOME)/python
 
 xorg/user: $@
-	ln -rs $@/.[!.]* ~
+	$(call LINK,$@/.[!.]*,~)
 
 remove_xorg/user:
 	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
 zsh: $@ $(XDG_CACHE_HOME)
-	ln -rs $@/.[!.]* ~
+	$(call LINK,$@/.[!.]*,~)
 	mkdir -p $(XDG_CACHE_HOME)/zsh
 
 remove_zsh:
@@ -114,50 +117,50 @@ remove_system: $(REMOVE_SYSTEM)
 
 battery_warning: ensure_root $@
 	mkdir -p /etc/systemd/system/battery_warning.service.d/
-	ln -rs $@/* /etc/systemd/system/battery_warning.service.d/
+	$(call LINK,$@/*,/etc/systemd/system/battery_warning.service.d)
 
 remove_battery_warning: ensure_root
 	rm -f /etc/systemd/system/battery_warning.service.d/override.conf
 
 dbus: ensure_root $@
-	ln -rs $@/dbus.service.d /etc/systemd/system/dbus.service.d
+	$(call LINK,$@/dbus.service.d,/etc/systemd/system)
 
 remove_dbus: ensure_root
 	rm -f /etc/systemd/system/dbus.service.d
 
 fontconfig: ensure_root $@
-	ln -rs $@/* /etc/fonts
+	$(call LINK,$@/*,/etc/fonts)
 
 remove_fontconfig: ensure_root
 	rm -f /etc/fonts/local.conf
 
 nftables: ensure_root $@
-	ln -rs $@/* /etc
+	$(call LINK,$@/*,/etc)
 
 remove_nftables: ensure_root
 	rm -f /etc/nftables.conf
 
 nsswitch: ensure_root $@
-	ln -rs $@/* /etc
+	$(call LINK,$@/*,/etc)
 
 remove_nsswitch: ensure_root
 	rm -f /etc/nsswitch.conf
 
 pam: ensure_root $@
-	ln -rs $@/pam_env.conf /etc/security/pam_env.conf
+	$(call LINK,$@/pam_env.conf,/etc/security/pam_env.conf)
 
 remove_pam: ensure_root
 	rm -f /etc/security/pam_env.conf
 
 reflector: ensure_root $@
 	mkdir -p /etc/pacman.d/hooks
-	ln -rs $@/* /etc/pacman.d/hooks
+	$(call LINK,$@/*,/etc/pacman.d/hooks)
 
 remove_reflector: ensure_root
 	rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
 
 sysctl: ensure_root $@
-	ln -rs $@/* /etc/sysctl.d
+	$(call LINK,$@/*,/etc/sysctl.d)
 
 remove_sysctl: ensure_root
 	rm -f /etc/sysctl.d/99-sysctl.conf
@@ -176,7 +179,7 @@ remove_systemd-resolved: ensure_root
 	rm -f /etc/systemd/resolved.conf.d/dns.conf
 
 xorg/system: ensure_root $@
-	ln -rs $@/* /etc/X11/xorg.conf.d
+	$(call LINK,$@/*,/etc/X11/xorg.conf.d)
 
 remove_xorg/system: ensure_root
 	rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
