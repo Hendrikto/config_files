@@ -3,4 +3,4 @@ ensure_root:
 	@cd .. && make --silent ensure_root
 
 %: issue-% ensure_root
-	ln -s $(realpath $<) /etc/issue
+	ln -s --force $(realpath $<) /etc/issue
