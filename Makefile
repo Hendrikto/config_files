@@ -3,7 +3,7 @@ XDG_CACHE_HOME ?= $(HOME)/.cache
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
 # Create absolute symbolic links
-LINK = ln --symbolic $(realpath $(wildcard $(1))) $(2)
+LINK = ln --force --symbolic $(realpath $(wildcard $(1))) $(2)
 
 .PHONY: all remove_all
 
