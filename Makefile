@@ -106,7 +106,7 @@ remove_zsh:
 	rm -f ~/.{zprofile,zshrc}
 	rm -rf $(XDG_CACHE_HOME)/zsh
 
-SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector sysctl systemd-networkd systemd-resolved xorg/system
+SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service sysctl systemd-networkd systemd-resolved xorg/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -158,6 +158,12 @@ reflector: ensure_root $@
 
 remove_reflector: ensure_root
 	rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
+
+shadow.service: ensure_root $@
+	$(call LINK,$@/*,/etc/systemd/system)
+
+remove_shadow.service: ensure_root
+	rm -r /etc/systemd/system/shadow.service.d
 
 sysctl: ensure_root $@
 	$(call LINK,$@/*,/etc/sysctl.d)
