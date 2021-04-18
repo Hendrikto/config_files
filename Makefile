@@ -116,11 +116,10 @@ system: $(SYSTEM)
 remove_system: $(REMOVE_SYSTEM)
 
 battery_warning: ensure_root $@
-	mkdir -p /etc/systemd/system/battery_warning.service.d/
-	$(call LINK,$@/*,/etc/systemd/system/battery_warning.service.d)
+	$(call LINK,$@/battery_warning.service.d,/etc/systemd/system)
 
 remove_battery_warning: ensure_root
-	rm -f /etc/systemd/system/battery_warning.service.d/override.conf
+	rm -f /etc/systemd/system/battery_warning.service.d
 
 dbus: ensure_root $@
 	$(call LINK,$@/dbus.service.d,/etc/systemd/system)
@@ -160,7 +159,7 @@ remove_reflector: ensure_root
 	rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
 
 shadow.service: ensure_root $@
-	$(call LINK,$@/*,/etc/systemd/system)
+	$(call LINK,$@/shadow.service.d,/etc/systemd/system)
 
 remove_shadow.service: ensure_root
 	rm -r /etc/systemd/system/shadow.service.d
