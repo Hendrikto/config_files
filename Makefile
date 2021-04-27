@@ -106,7 +106,7 @@ remove_zsh/user:
 	rm -f ~/.{zprofile,zshrc}
 	rm -rf $(XDG_CACHE_HOME)/zsh
 
-SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service shell sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -163,6 +163,12 @@ shadow.service: ensure_root $@
 
 remove_shadow.service: ensure_root
 	rm -r /etc/systemd/system/shadow.service.d
+
+shell: ensure_root $@
+	$(call LINK,$@/shellrc.d,/etc)
+
+remove_shell: ensure_root
+	rm -f /etc/shellrc.d
 
 sysctl: ensure_root $@
 	$(call LINK,$@/*,/etc/sysctl.d)
