@@ -106,7 +106,7 @@ remove_zsh/user:
 	rm -f ~/.{zprofile,zshrc}
 	rm -rf $(XDG_CACHE_HOME)/zsh
 
-SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service sysctl systemd-networkd systemd-resolved xorg/system
+SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -188,3 +188,9 @@ xorg/system: ensure_root $@
 
 remove_xorg/system: ensure_root
 	rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
+
+zsh/system: ensure_root $@
+	$(call LINK,$@/*,/etc/zsh)
+
+remove_zsh/system: ensure_root
+	rm -f /etc/zsh/zshrc
