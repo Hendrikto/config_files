@@ -18,7 +18,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git i3 kitty picom procps python xorg/user zsh
+USER := bash chrome firefox git i3 kitty picom procps python xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -98,11 +98,11 @@ xorg/user: $@
 remove_xorg/user:
 	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
-zsh: $@ $(XDG_CACHE_HOME)
+zsh/user: $@ $(XDG_CACHE_HOME)
 	$(call LINK,$@/.[!.]*,~)
 	mkdir -p $(XDG_CACHE_HOME)/zsh
 
-remove_zsh:
+remove_zsh/user:
 	rm -f ~/.{zprofile,zshrc}
 	rm -rf $(XDG_CACHE_HOME)/zsh
 
