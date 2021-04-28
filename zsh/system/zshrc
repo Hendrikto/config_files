@@ -1,0 +1,9 @@
+emulate sh
+
+if [[ -d '/etc/shellrc.d' ]]; then
+	for script in /etc/shellrc.d/*.sh; do
+		[[ -r "${script}" ]] && source "${script}"
+	done
+fi
+
+emulate zsh
