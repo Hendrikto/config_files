@@ -2,7 +2,7 @@
 #                                      Environment Variables                                       #
 ####################################################################################################
 
-export CFLAGS='-O2 -march=native'
+export CFLAGS='-O2 -march=native -mtune=native'
 export EDITOR='subl'
 export PATH="${PATH}":~/.local/bin
 export QT_QPA_PLATFORMTHEME='gtk2'
