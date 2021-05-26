@@ -19,6 +19,8 @@ bindkey '\e\e[D' 'backward-word'
 bindkey '\e[1;5C' 'forward-word'
 bindkey '\e[1;5D' 'backward-word'
 
+bindkey '^U' 'backward-kill-line'
+
 bindkey '\e[3~' 'delete-char'
 
 ################################################################################
