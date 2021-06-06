@@ -174,7 +174,7 @@ bindsym $mod+b exec --no-startup-id i3-msg bar mode toggle
 
 # Quickstart
 bindsym $mod+F1 exec firefox
-bindsym $mod+Shift+F1 exec firefox -private-window
+bindsym $mod+Shift+F1 exec firefox --private-window
 bindsym $mod+F2 exec --no-startup-id kitty mc
 bindsym $mod+F3 exec --no-startup-id vlc -LZI rc --rc-fake-tty --rc-unix=$vlc_sock ~/music
 bindsym $mod+F10 exec lxtask
