@@ -1,6 +1,6 @@
 # Fallbacks in case pam_env is not configured
-XDG_CACHE_HOME ?= $(HOME)/.cache
 XDG_CONFIG_HOME ?= $(HOME)/.config
+XDG_STATE_HOME ?= $(HOME)/.local/state
 
 # Create absolute symbolic links
 LINK = ln --force --symbolic $(realpath $(wildcard $(1))) $(2)
@@ -27,19 +27,18 @@ user: $(USER)
 
 remove_user: $(REMOVE_USER)
 
-$(XDG_CACHE_HOME):
-	mkdir -p $(XDG_CACHE_HOME)
-
 $(XDG_CONFIG_HOME):
 	mkdir -p $(XDG_CONFIG_HOME)
 
-bash: $@ $(XDG_CACHE_HOME)
+$(XDG_STATE_HOME):
+	mkdir -p --mode=750 $(XDG_STATE_HOME)
+
+bash: $@ $(XDG_STATE_HOME)
 	$(call LINK,$@/.[!.]*,~)
-	mkdir -p $(XDG_CACHE_HOME)/bash
+	mkdir -p $(XDG_STATE_HOME)/bash
 
 remove_bash:
 	rm -f ~/.bash{rc,_profile}
-	rm -fr $(XDG_CACHE_HOME)/bash
 
 chrome: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@/*,$(XDG_CONFIG_HOME))
@@ -98,13 +97,12 @@ xorg/user: $@
 remove_xorg/user:
 	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
-zsh/user: $@ $(XDG_CACHE_HOME)
+zsh/user: $@ $(XDG_STATE_HOME)
 	$(call LINK,$@/.[!.]*,~)
-	mkdir -p $(XDG_CACHE_HOME)/zsh
+	mkdir -p $(XDG_STATE_HOME)/zsh
 
 remove_zsh/user:
 	rm -f ~/.{zprofile,zshrc}
-	rm -rf $(XDG_CACHE_HOME)/zsh
 
 SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service shell sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)

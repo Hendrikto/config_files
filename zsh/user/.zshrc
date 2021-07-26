@@ -4,7 +4,7 @@ unset chruby
 
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
-HISTFILE="${XDG_CACHE_HOME}/zsh/history"
+HISTFILE="${XDG_STATE_HOME}/zsh/history"
 
 REPORTTIME=5
 

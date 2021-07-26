@@ -20,11 +20,11 @@ def register_readline():
         pass
 
     if readline.get_current_history_length() == 0:
-        # If no history was loaded, default to $XDG_CACHE_HOME/python/history. The guard is
+        # If no history was loaded, default to $XDG_STATE_HOME/python/history. The guard is
         # necessary to avoid doubling history size at each interpreter exit when readline was
         # already configured through a PYTHONSTARTUP hook, see:
         # http://bugs.python.org/issue5845#msg198636
-        cache_home = Path(os.environ.get('XDG_CACHE_HOME', '~/.cache')).expanduser()
+        cache_home = Path(os.environ.get('XDG_STATE_HOME', '~/.local/state')).expanduser()
         history = cache_home / 'python/history'
 
         try:
