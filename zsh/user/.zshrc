@@ -29,6 +29,8 @@ bindkey '\e[3~' 'delete-char'
 
 alias e='${EDITOR}'
 
+alias top='top -u !0'
+
 o() {
 	xdg-open "${1}" 2>'/dev/null' &
 }
