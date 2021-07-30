@@ -1,12 +1,23 @@
-chruby='/usr/share/chruby/chruby.sh'
-[[ -r "${chruby}" ]] && source "${chruby}"
-unset chruby
-
 setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
 HISTFILE="${XDG_STATE_HOME}/zsh/history"
 
 REPORTTIME=5
+
+################################################################################
+# Scripts                                                                      #
+################################################################################
+
+src() {
+	if [[ -r "${1}" ]]; then
+		source "${1}"
+	fi
+}
+
+src '/usr/share/chruby/chruby.sh'
+src '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+
+unset -f src
 
 ################################################################################
 # Terminal control codes                                                       #
@@ -107,7 +118,3 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip --color=auto'
 alias ls='ls --color=auto'
-
-zsh_syntax_highlighting='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-[[ -r "${zsh_syntax_highlighting}" ]] && source "${zsh_syntax_highlighting}"
-unset zsh_syntax_highlighting
