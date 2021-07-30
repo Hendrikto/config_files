@@ -35,12 +35,23 @@ bindkey '^U' 'backward-kill-line'
 bindkey '\e[3~' 'delete-char'
 
 ################################################################################
-# Alias / Functions                                                            #
+# Aliases                                                                      #
 ################################################################################
 
 alias e='${EDITOR}'
 
 alias top='top -u !0'
+
+#################################### Colors ####################################
+
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip --color=auto'
+alias ls='ls --color=auto'
+
+################################################################################
+# Functions                                                                    #
+################################################################################
 
 o() {
 	xdg-open "${1}" 2>'/dev/null' &
@@ -109,12 +120,3 @@ precmd() {
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
 PROMPT="$(color_prompt 'black' 'blue' ' %n ')$(color_prompt 'blue' 'yellow' '')$(color_prompt 'black' 'yellow' ' %~ ')"'${venv_prompt}'$'\n''%(!.$.❯) '
-
-################################################################################
-# Color output (https://wiki.archlinux.org/index.php/Color_output_in_console)  #
-################################################################################
-
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ip='ip --color=auto'
-alias ls='ls --color=auto'
