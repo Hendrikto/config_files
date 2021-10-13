@@ -1,0 +1,9 @@
+table inet filter {
+	chain input {
+		#tcp dport ssh accept comment "allow ssh"
+
+		#tcp dport 18080 accept comment "allow Monero"
+
+		#udp dport 34197 accept comment "allow Factorio"
+	}
+}

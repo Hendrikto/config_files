@@ -132,10 +132,13 @@ remove_fontconfig: ensure_root
 	rm -f /etc/fonts/local.conf
 
 nftables: ensure_root $@
-	$(call LINK,$@/*,/etc)
+	$(call LINK,$@/nftables.conf,/etc)
+	mkdir -p /etc/nftables.conf.d
+	cp --interactive $@/nftables.conf.d/* /etc/nftables.conf.d
 
 remove_nftables: ensure_root
 	rm -f /etc/nftables.conf
+	rmdir --ignore-fail-on-non-empty /etc/nftables.conf.d
 
 nsswitch: ensure_root $@
 	$(call LINK,$@/*,/etc)
