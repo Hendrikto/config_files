@@ -4,8 +4,8 @@
 	name = Hendrikto
 	email = hendrik.to@gmail.com
 [core]
-	editor = subl -w
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = subl --wait
+	pager = diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
 [alias]
 	co = checkout
 	d = diff
