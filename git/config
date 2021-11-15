@@ -12,7 +12,7 @@
 	dc = diff --cached
 	fp = fetch --prune
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
-	it = "!git init && git commit --allow-empty -m \"Initial commit\""
+	it = "!git init && git commit --allow-empty -m 'Initial commit'"
 	l = log
 	lo = log --oneline
 	purge = "!f() { git push -d $(git s | grep -oP '(?<=\\.\\.\\.)\\w+(?=/)') \"$1\"; git branch -d \"$1\"; }; f"
