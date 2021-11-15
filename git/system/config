@@ -1,9 +1,3 @@
-[user]
-	name = Hendrikto
-	email = hendrik.to@gmail.com
-[core]
-	editor = subl --wait
-	pager = diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
 [alias]
 	co = checkout
 	d = diff
@@ -17,12 +11,15 @@
 	s = status --short --branch
 [credential]
 	helper = cache
-[push]
-	default = simple
-[init]
-	defaultBranch = master
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[init]
+	defaultBranch = master
+[push]
+	default = simple
+[user]
+	name = Hendrikto
+	email = hendrik.to@gmail.com

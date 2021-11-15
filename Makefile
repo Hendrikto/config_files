@@ -18,7 +18,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git i3 kitty picom procps python xorg/user zsh/user
+USER := bash chrome firefox git/user i3 kitty picom procps python xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -55,10 +55,10 @@ remove_firefox:
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
 	rm -f $(profile)/chrome
 
-git: $@ $(XDG_CONFIG_HOME)
-	$(call LINK,$@,$(XDG_CONFIG_HOME))
+git/user: $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME)/git)
 
-remove_git:
+remove_git/user:
 	rm -f $(XDG_CONFIG_HOME)/git
 
 i3: $@ $(XDG_CONFIG_HOME)
@@ -104,7 +104,7 @@ zsh/user: $@ $(XDG_STATE_HOME)
 remove_zsh/user:
 	rm -f ~/.{zprofile,zshrc}
 
-SYSTEM := battery_warning dbus fontconfig nftables nsswitch pam reflector shadow.service shell sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := battery_warning dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -130,6 +130,12 @@ fontconfig: ensure_root $@
 
 remove_fontconfig: ensure_root
 	rm -f /etc/fonts/local.conf
+
+git/system: ensure_root $@
+	$(call LINK,$@/config,/etc/gitconfig)
+
+remove_git/system: ensure_root
+	rm -f /etc/gitconfig
 
 nftables: ensure_root $@
 	$(call LINK,$@/nftables.conf,/etc)
