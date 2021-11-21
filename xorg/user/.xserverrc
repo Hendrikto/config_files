@@ -1,1 +1,3 @@
+# Documentation: `man 1 xinit`
+
 exec /usr/bin/X -nolisten tcp "$@" "vt${XDG_VTNR}"

@@ -1,3 +1,8 @@
+# Documentation: `man 1 python` (PYTHONSTARTUP)
+
+# Documentation: https://docs.python.org/3/library/site.html#rlcompleter-config
+# Documentation: https://docs.python.org/3/library/readline.html
+
 import sys
 
 

@@ -1,3 +1,5 @@
+# Documentation: `man 5 networkd.conf`
+
 [Match]
 Type=ether wlan
 

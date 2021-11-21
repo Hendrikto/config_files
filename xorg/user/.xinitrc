@@ -1,3 +1,5 @@
+# Documentation: `man 1 xinit`
+
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-~/.config}"
 display_setup="${XDG_CONFIG_HOME}/hendrik/display_setup.sh"
 
