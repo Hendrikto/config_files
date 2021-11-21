@@ -192,6 +192,8 @@ remove_systemd-networkd: ensure_root $@
 systemd-resolved: ensure_root $@
 	mkdir -p /etc/systemd/resolved.conf.d
 	cp $@/* /etc/systemd/resolved.conf.d
+	# enable recommended mode of operation
+	$(call LINK,/run/systemd/resolve/stub-resolv.conf,/etc/resolv.conf)
 
 remove_systemd-resolved: ensure_root
 	rm -f /etc/systemd/resolved.conf.d/dns.conf
