@@ -89,7 +89,7 @@ python: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_python:
-	rm -r $(XDG_CONFIG_HOME)/python
+	rm -f $(XDG_CONFIG_HOME)/python
 
 xorg/user: $@
 	$(call LINK,$@/.[!.]*,~)
@@ -169,7 +169,7 @@ shadow.service: ensure_root $@
 	$(call LINK,$@/shadow.service.d,/etc/systemd/system)
 
 remove_shadow.service: ensure_root
-	rm -r /etc/systemd/system/shadow.service.d
+	rm -f /etc/systemd/system/shadow.service.d
 
 shell: ensure_root $@
 	$(call LINK,$@/shellrc.d,/etc)
