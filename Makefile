@@ -38,13 +38,13 @@ bash: $@ $(XDG_STATE_HOME)
 	mkdir -p $(XDG_STATE_HOME)/bash
 
 remove_bash:
-	rm -f ~/.bash{rc,_profile}
+	$(RM) ~/.bash{rc,_profile}
 
 chrome: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@/*,$(XDG_CONFIG_HOME))
 
 remove_chrome:
-	rm -f $(XDG_CONFIG_HOME)/chrome-flags.conf
+	$(RM) $(XDG_CONFIG_HOME)/chrome-flags.conf
 
 firefox: $@
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
@@ -53,56 +53,56 @@ firefox: $@
 
 remove_firefox:
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
-	rm -f $(profile)/chrome
+	$(RM) $(profile)/chrome
 
 git/user: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME)/git)
 
 remove_git/user:
-	rm -f $(XDG_CONFIG_HOME)/git
+	$(RM) $(XDG_CONFIG_HOME)/git
 
 i3: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@/*,$(XDG_CONFIG_HOME))
 
 remove_i3:
-	rm -f $(XDG_CONFIG_HOME)/i3{,status}
+	$(RM) $(XDG_CONFIG_HOME)/i3{,status}
 
 kitty: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_kitty:
-	rm -f $(XDG_CONFIG_HOME)/kitty
+	$(RM) $(XDG_CONFIG_HOME)/kitty
 
 picom: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_picom:
-	rm -f $(XDG_CONFIG_HOME)/picom
+	$(RM) $(XDG_CONFIG_HOME)/picom
 
 procps: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_procps:
-	rm -f $(XDG_CONFIG_HOME)/procps
+	$(RM) $(XDG_CONFIG_HOME)/procps
 
 python: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 remove_python:
-	rm -f $(XDG_CONFIG_HOME)/python
+	$(RM) $(XDG_CONFIG_HOME)/python
 
 xorg/user: $@
 	$(call LINK,$@/.[!.]*,~)
 
 remove_xorg/user:
-	rm -f ~/.{xinitrc,xserverrc,Xresources{,.d}}
+	$(RM) ~/.{xinitrc,xserverrc,Xresources{,.d}}
 
 zsh/user: $@ $(XDG_STATE_HOME)
 	$(call LINK,$@/.[!.]*,~)
 	mkdir -p $(XDG_STATE_HOME)/zsh
 
 remove_zsh/user:
-	rm -f ~/.{zprofile,zshrc}
+	$(RM) ~/.{zprofile,zshrc}
 
 SYSTEM := battery_warning dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
@@ -117,25 +117,25 @@ battery_warning: ensure_root $@
 	$(call LINK,$@/battery_warning.service.d,/etc/systemd/system)
 
 remove_battery_warning: ensure_root
-	rm -f /etc/systemd/system/battery_warning.service.d
+	$(RM) /etc/systemd/system/battery_warning.service.d
 
 dbus: ensure_root $@
 	$(call LINK,$@/dbus.service.d,/etc/systemd/system)
 
 remove_dbus: ensure_root
-	rm -f /etc/systemd/system/dbus.service.d
+	$(RM) /etc/systemd/system/dbus.service.d
 
 fontconfig: ensure_root $@
 	$(call LINK,$@/*,/etc/fonts)
 
 remove_fontconfig: ensure_root
-	rm -f /etc/fonts/local.conf
+	$(RM) /etc/fonts/local.conf
 
 git/system: ensure_root $@
 	$(call LINK,$@/config,/etc/gitconfig)
 
 remove_git/system: ensure_root
-	rm -f /etc/gitconfig
+	$(RM) /etc/gitconfig
 
 nftables: ensure_root $@
 	$(call LINK,$@/nftables.conf,/etc)
@@ -143,51 +143,51 @@ nftables: ensure_root $@
 	cp --interactive $@/nftables.conf.d/* /etc/nftables.conf.d
 
 remove_nftables: ensure_root
-	rm -f /etc/nftables.conf
+	$(RM) /etc/nftables.conf
 	rmdir --ignore-fail-on-non-empty /etc/nftables.conf.d
 
 nsswitch: ensure_root $@
 	$(call LINK,$@/*,/etc)
 
 remove_nsswitch: ensure_root
-	rm -f /etc/nsswitch.conf
+	$(RM) /etc/nsswitch.conf
 
 pam: ensure_root $@
 	$(call LINK,$@/pam_env.conf,/etc/security/pam_env.conf)
 
 remove_pam: ensure_root
-	rm -f /etc/security/pam_env.conf
+	$(RM) /etc/security/pam_env.conf
 
 reflector: ensure_root $@
 	mkdir -p /etc/pacman.d/hooks
 	$(call LINK,$@/*,/etc/pacman.d/hooks)
 
 remove_reflector: ensure_root
-	rm -f /etc/pacman.d/hooks/mirrorupgrade.hook
+	$(RM) /etc/pacman.d/hooks/mirrorupgrade.hook
 
 shadow.service: ensure_root $@
 	$(call LINK,$@/shadow.service.d,/etc/systemd/system)
 
 remove_shadow.service: ensure_root
-	rm -f /etc/systemd/system/shadow.service.d
+	$(RM) /etc/systemd/system/shadow.service.d
 
 shell: ensure_root $@
 	$(call LINK,$@/shellrc.d,/etc)
 
 remove_shell: ensure_root
-	rm -f /etc/shellrc.d
+	$(RM) /etc/shellrc.d
 
 sysctl: ensure_root $@
 	$(call LINK,$@/*,/etc/sysctl.d)
 
 remove_sysctl: ensure_root
-	rm -f /etc/sysctl.d/99-sysctl.conf
+	$(RM) /etc/sysctl.d/99-sysctl.conf
 
 systemd-networkd: ensure_root $@
 	cp $@/* /etc/systemd/network
 
 remove_systemd-networkd: ensure_root $@
-	rm -f /etc/systemd/network/20-network.network
+	$(RM) /etc/systemd/network/20-network.network
 
 systemd-resolved: ensure_root $@
 	mkdir -p /etc/systemd/resolved.conf.d
@@ -196,16 +196,16 @@ systemd-resolved: ensure_root $@
 	$(call LINK,/run/systemd/resolve/stub-resolv.conf,/etc/resolv.conf)
 
 remove_systemd-resolved: ensure_root
-	rm -f /etc/systemd/resolved.conf.d/dns.conf
+	$(RM) /etc/systemd/resolved.conf.d/dns.conf
 
 xorg/system: ensure_root $@
 	$(call LINK,$@/*,/etc/X11/xorg.conf.d)
 
 remove_xorg/system: ensure_root
-	rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
+	$(RM) /etc/X11/xorg.conf.d/30-touchpad.conf
 
 zsh/system: ensure_root $@
 	$(call LINK,$@/*,/etc/zsh)
 
 remove_zsh/system: ensure_root
-	rm -f /etc/zsh/zshrc
+	$(RM) /etc/zsh/zshrc
