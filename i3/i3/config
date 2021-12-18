@@ -17,12 +17,26 @@ set $term kitty
 #                                           Color Scheme                                           #
 ####################################################################################################
 
-client.focused          #301040e0 #301040e0 #ffffffe0
-client.focused_inactive #240c30e0 #240c30e0 #e0e0e0e0
-client.unfocused        #000000e0 #000000e0 #e0e0e0e0
-client.urgent           #c0c02ae0 #c0c02ae0 #000000e0
-client.placeholder      #000000e0 #000000e0 #e0e0e0e0
-client.background       #000000e0
+# This is based on the Aura Theme Sway port [0].
+#
+# version: 1.0.0
+#
+# [0]: https://github.com/daltonmenezes/aura-theme/tree/main/packages/sway
+
+set $c_primary #a277ff
+set $c_secondary #61ffca
+set $c_background #15141b
+set $c_text #edecee
+set $c_comment #6d6d6d
+
+# class                  # border       # background   # text   # indicator    # child border
+client.focused           $c_primary     $c_background  $c_text  $c_secondary   $c_primary
+client.focused_inactive  $c_comment     $c_background  $c_text  $c_comment     $c_comment
+client.unfocused         $c_background  $c_background  $c_text  $c_background  $c_background
+client.urgent            $c_secondary   $c_background  $c_text  $c_primary     $c_secondary
+# i3-specific
+client.placeholder       $c_background  $c_background  $c_text  $c_background  $c_background
+client.background        $c_background
 
 # See "Bar" section for i3-bar color configuration.
 # It has to be set inside the `bar { }` block.
