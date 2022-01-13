@@ -18,7 +18,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git/user i3 kitty picom procps python xorg/user zsh/user
+USER := bash chrome firefox git/user i3 i3status kitty picom procps python xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -61,11 +61,17 @@ git/user: $@ $(XDG_CONFIG_HOME)
 remove_git/user:
 	$(RM) $(XDG_CONFIG_HOME)/git
 
-i3: $@ $(XDG_CONFIG_HOME)
-	$(call LINK,$@/*,$(XDG_CONFIG_HOME))
+i3: i3/$@ $(XDG_CONFIG_HOME)
+	$(call LINK,i3/$@,$(XDG_CONFIG_HOME))
 
 remove_i3:
-	$(RM) $(XDG_CONFIG_HOME)/i3{,status}
+	$(RM) $(XDG_CONFIG_HOME)/i3
+
+i3status: i3/$@ $(XDG_CONFIG_HOME)
+	$(call LINK,i3/$@,$(XDG_CONFIG_HOME))
+
+remove_i3status:
+	$(RM) $(XDG_CONFIG_HOME)/i3status
 
 kitty: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
