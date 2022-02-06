@@ -110,7 +110,7 @@ zsh/user: $@ $(XDG_STATE_HOME)
 remove_zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
 
-SYSTEM := battery_warning dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := battery_warning dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sudo sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 REMOVE_SYSTEM := $(SYSTEM:%=remove_%)
 
 .PHONY: system $(SYSTEM) remove_system $(REMOVE_SYSTEM)
@@ -182,6 +182,12 @@ shell: ensure_root $@
 
 remove_shell: ensure_root
 	$(RM) /etc/shellrc.d
+
+sudo: ensure_root $@
+	$(call LINK,$@/sudoers.d/*,/etc/sudoers.d)
+
+remove_sudo: ensure_root
+	$(RM) /etc/sudoers.d/group-wheel
 
 sysctl: ensure_root $@
 	$(call LINK,$@/*,/etc/sysctl.d)
