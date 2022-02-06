@@ -207,19 +207,6 @@ bindsym XF86AudioPlay exec --no-startup-id nc -NU $vlc_sock <<< "pause"
 bindsym XF86AudioPrev exec --no-startup-id nc -NU $vlc_sock <<< "prev"
 bindsym XF86AudioNext exec --no-startup-id nc -NU $vlc_sock <<< "next"
 
-# VLC controls
-mode "vlc" {
-	bindsym k exec --no-startup-id nc -NU $vlc_sock <<< "pause"
-	bindsym j exec --no-startup-id nc -NU $vlc_sock <<< "prev"
-	bindsym l exec --no-startup-id nc -NU $vlc_sock <<< "next"
-	bindsym q exec --no-startup-id nc -NU $vlc_sock <<< "quit"
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-
-bindsym $mod+Menu mode "vlc"
-
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id backlight_control +5 && $refresh_i3status &
 bindsym XF86MonBrightnessDown exec --no-startup-id backlight_control -5 && $refresh_i3status &
