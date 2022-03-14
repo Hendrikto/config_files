@@ -203,7 +203,7 @@ remove_systemd-networkd: ensure_root $@
 
 systemd-resolved: ensure_root $@
 	mkdir -p /etc/systemd/resolved.conf.d
-	cp $@/* /etc/systemd/resolved.conf.d
+	$(call LINK,$@/*,/etc/systemd/resolved.conf.d)
 	# enable recommended mode of operation
 	$(call LINK,/run/systemd/resolve/stub-resolv.conf,/etc/resolv.conf)
 
