@@ -196,7 +196,7 @@ remove_sysctl: ensure_root
 	$(RM) /etc/sysctl.d/99-sysctl.conf
 
 systemd-networkd: ensure_root $@
-	cp $@/* /etc/systemd/network
+	$(call LINK,$@/*,/etc/systemd/network)
 
 remove_systemd-networkd: ensure_root $@
 	$(RM) /etc/systemd/network/20-network.network
