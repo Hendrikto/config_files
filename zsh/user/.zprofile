@@ -6,7 +6,7 @@
 
 export CFLAGS='-O2 -march=native -mtune=native'
 export EDITOR='subl'
-export PATH="${PATH}:~/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
 export QT_STYLE_OVERRIDE='adwaita-dark'
 
 python_startup="${XDG_CONFIG_HOME}/python/startup.py"
