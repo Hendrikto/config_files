@@ -216,8 +216,8 @@ bindsym $mod+m move workspace to output left
 
 # Floating mode
 for_window [class="firefox" instance="Devtools" window_role="toolbox"] floating enable
-for_window [class="Tk" instance="tk"] floating enable
 for_window [class="Google-chrome" instance="google-chrome" window_role="pop-up"] floating enable
+for_window [class="Matplotlib" instance="matplotlib"] floating enable
 for_window [class="Steam" instance="Steam" title=".* - Chat"] floating enable
 
 # Disable window borders
