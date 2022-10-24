@@ -18,7 +18,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git/user i3 i3status kitty picom procps python xorg/user zsh/user
+USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -96,6 +96,14 @@ python: $@ $(XDG_CONFIG_HOME)
 
 remove_python:
 	$(RM) $(XDG_CONFIG_HOME)/python
+
+sway: $@
+	mkdir -p $(XDG_CONFIG_HOME)/sway/config.d
+	$(call LINK,$@/config,$(XDG_CONFIG_HOME)/sway)
+	cp --interactive $@/config.d/* $(XDG_CONFIG_HOME)/sway/config.d
+
+remove_sway:
+	$(RM) $(XDG_CONFIG_HOME)/sway/config
 
 xorg/user: $@
 	$(call LINK,$@/.[!.]*,~)
