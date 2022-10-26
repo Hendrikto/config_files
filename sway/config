@@ -136,6 +136,17 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move workspace between outputs
+bindsym $mod+Control+$left move workspace to left
+bindsym $mod+Control+$down move workspace to down
+bindsym $mod+Control+$up move workspace to up
+bindsym $mod+Control+$right move workspace to right
+# with arrow keys
+bindsym $mod+Control+Left move workspace to left
+bindsym $mod+Control+Down move workspace to down
+bindsym $mod+Control+Up move workspace to up
+bindsym $mod+Control+Right move workspace to right
+
 ####################################### Resizing containers ########################################
 
 mode "resize" {
