@@ -216,10 +216,12 @@ xorg/system: ensure_root $@
 remove_xorg/system: ensure_root
 	$(RM) /etc/X11/xorg.conf.d/30-touchpad.conf
 
+ZSH_SYSTEM_PREFIX := /etc/zsh
+
 zsh/system: ensure_root $@
-	mkdir -p /etc/zsh
-	$(call LINK,$@/*,/etc/zsh)
+	mkdir -p $(ZSH_SYSTEM_PREFIX)
+	$(call LINK,$@/*,$(ZSH_SYSTEM_PREFIX))
 
 remove_zsh/system: ensure_root
-	$(RM) /etc/zsh/zshrc
-	rmdir --ignore-fail-on-non-empty /etc/zsh
+	$(RM) $(ZSH_SYSTEM_PREFIX)/zshrc
+	rmdir --ignore-fail-on-non-empty $(ZSH_SYSTEM_PREFIX)
