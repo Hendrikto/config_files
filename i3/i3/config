@@ -212,7 +212,15 @@ bindsym XF86MonBrightnessUp exec --no-startup-id backlight_control +5 && $refres
 bindsym XF86MonBrightnessDown exec --no-startup-id backlight_control -5 && $refresh_i3status &
 
 # Move workspace to another monitor
-bindsym $mod+m move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output left
+bindsym $mod+Ctrl+k move workspace to output down
+bindsym $mod+Ctrl+l move workspace to output up
+bindsym $mod+Ctrl+odiaeresis move workspace to output right
+# … with arrow keys
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Down move workspace to output down
+bindsym $mod+Ctrl+Up move workspace to output up
+bindsym $mod+Ctrl+Right move workspace to output right
 
 # Floating mode
 for_window [class="firefox" instance="Devtools" window_role="toolbox"] floating enable
