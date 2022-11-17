@@ -89,6 +89,9 @@ bindsym $mod+Shift+c reload
 # exit sway
 bindsym $mod+Shift+e exec swaynag --type='warning' --message='Do you really want to exit sway? This will end your Wayland session.' --button-no-terminal 'exit sway' 'swaymsg exit'
 
+# power management
+bindsym $mod+Escape exec power_management
+
 ########################################### Layout Stuff ###########################################
 
 # split focused object
