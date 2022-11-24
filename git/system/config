@@ -4,7 +4,7 @@
 	co = checkout
 	d = diff
 	dc = diff --cached
-	fp = fetch --prune
+	f = fetch
 	h = "!f() { git show HEAD~$1; }; f ${1:-0}"
 	it = "!git init && git commit --allow-empty --date='@0 +0000' -m 'Initial commit'"
 	l = log
@@ -15,6 +15,8 @@
 	helper = cache
 [diff]
 	colorMoved = default
+[fetch]
+	prune = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
