@@ -92,6 +92,9 @@ bindsym $mod+Shift+e exec swaynag --type='warning' --message='Do you really want
 # power management
 bindsym $mod+Escape exec power_management
 
+# toggle touchpad
+bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
+
 ############################################ Brightness ############################################
 
 bindsym XF86MonBrightnessUp exec backlight_brightness 10%+
