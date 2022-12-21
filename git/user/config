@@ -3,3 +3,5 @@
 [core]
 	editor = subl --wait
 	pager = diff-so-fancy | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --tabs=4
+[interactive]
+	diffFilter = diff-so-fancy --patch
