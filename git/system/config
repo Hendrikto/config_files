@@ -6,7 +6,7 @@
 	dc = diff --cached
 	f = fetch
 	h = "!f() { git show HEAD~${1:-0} ${@:2}; }; f"
-	it = "!git init && git commit --allow-empty --date='@0 +0000' -m 'Initial commit'"
+	it = !git init && git commit --allow-empty --date='@0 +0000' -m 'Initial commit'
 	l = log
 	ll = log --format='format:%Cgreen%h %Cred%cs %<(12,trunc)%Cblue%an %Creset%s %C(yellow)%d'
 	lo = log --oneline
