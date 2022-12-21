@@ -2,6 +2,8 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 XDG_STATE_HOME ?= $(HOME)/.local/state
 
+MKDIR := mkdir --parents
+
 # Create absolute symbolic links
 LINK = ln --force --symbolic $(realpath $(wildcard $(1))) $(2)
 
@@ -28,14 +30,14 @@ user: $(USER)
 remove_user: $(REMOVE_USER)
 
 $(XDG_CONFIG_HOME):
-	mkdir -p $(XDG_CONFIG_HOME)
+	$(MKDIR) $(XDG_CONFIG_HOME)
 
 $(XDG_STATE_HOME):
-	mkdir -p --mode=750 $(XDG_STATE_HOME)
+	$(MKDIR) --mode=750 $(XDG_STATE_HOME)
 
 bash: $@ $(XDG_STATE_HOME)
 	$(call LINK,$@/.[!.]*,~)
-	mkdir -p $(XDG_STATE_HOME)/bash
+	$(MKDIR) $(XDG_STATE_HOME)/bash
 
 remove_bash:
 	$(RM) ~/.bash{rc,_profile}
@@ -48,7 +50,7 @@ remove_chrome:
 
 firefox: $@
 	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
-	mkdir -p $(profile)
+	$(MKDIR) $(profile)
 	$(call LINK,$@/*,$(profile))
 
 remove_firefox:
@@ -98,7 +100,7 @@ remove_python:
 	$(RM) $(XDG_CONFIG_HOME)/python
 
 sway: $@
-	mkdir -p $(XDG_CONFIG_HOME)/sway/config.d
+	$(MKDIR) $(XDG_CONFIG_HOME)/sway/config.d
 	$(call LINK,$@/config,$(XDG_CONFIG_HOME)/sway)
 	cp --interactive $@/config.d/* $(XDG_CONFIG_HOME)/sway/config.d
 
@@ -113,7 +115,7 @@ remove_xorg/user:
 
 zsh/user: $@ $(XDG_STATE_HOME)
 	$(call LINK,$@/.[!.]*,~)
-	mkdir -p $(XDG_STATE_HOME)/zsh
+	$(MKDIR) $(XDG_STATE_HOME)/zsh
 
 remove_zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
@@ -153,7 +155,7 @@ remove_git/system: ensure_root
 
 nftables: ensure_root $@
 	$(call LINK,$@/nftables.conf,/etc)
-	mkdir -p /etc/nftables.conf.d
+	$(MKDIR) /etc/nftables.conf.d
 	cp --interactive $@/nftables.conf.d/* /etc/nftables.conf.d
 
 remove_nftables: ensure_root
@@ -173,7 +175,7 @@ remove_pam: ensure_root
 	$(RM) /etc/security/pam_env.conf
 
 reflector: ensure_root $@
-	mkdir -p /etc/pacman.d/hooks
+	$(MKDIR) /etc/pacman.d/hooks
 	$(call LINK,$@/*,/etc/pacman.d/hooks)
 
 remove_reflector: ensure_root
@@ -210,7 +212,7 @@ remove_systemd-networkd: ensure_root $@
 	$(RM) /etc/systemd/network/20-network.network
 
 systemd-resolved: ensure_root $@
-	mkdir -p /etc/systemd/resolved.conf.d
+	$(MKDIR) /etc/systemd/resolved.conf.d
 	$(call LINK,$@/*,/etc/systemd/resolved.conf.d)
 	# enable recommended mode of operation
 	$(call LINK,/run/systemd/resolve/stub-resolv.conf,/etc/resolv.conf)
@@ -227,7 +229,7 @@ remove_xorg/system: ensure_root
 ZSH_SYSTEM_PREFIX := /etc/zsh
 
 zsh/system: ensure_root $@
-	mkdir -p $(ZSH_SYSTEM_PREFIX)
+	$(MKDIR) $(ZSH_SYSTEM_PREFIX)
 	$(call LINK,$@/*,$(ZSH_SYSTEM_PREFIX))
 
 remove_zsh/system: ensure_root
