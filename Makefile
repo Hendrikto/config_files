@@ -49,13 +49,12 @@ remove_chrome:
 	$(RM) $(XDG_CONFIG_HOME)/chrome-flags.conf
 
 firefox: $@
-	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
-	$(MKDIR) $(profile)
-	$(call LINK,$@/*,$(profile))
+	$(MKDIR) ~/.mozilla/firefox/hendrik
+	$(call LINK,$@/*,~/.mozilla/firefox/hendrik)
 
 remove_firefox:
-	$(eval profile:=$(shell find ~/.mozilla/firefox -name "*.default"))
-	$(RM) $(profile)/chrome
+	$(RM) --recursive ~/.mozilla/firefox/hendrik/chrome
+	rmdir --ignore-fail-on-non-empty ~/.mozilla/firefox/hendrik
 
 git/user: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME)/git)
