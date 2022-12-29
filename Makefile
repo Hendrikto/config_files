@@ -53,7 +53,7 @@ firefox: $@
 	$(call LINK,$@/*,~/.mozilla/firefox/hendrik)
 
 remove_firefox:
-	$(RM) --recursive ~/.mozilla/firefox/hendrik/{chrome,user.js}
+	$(RM) --recursive ~/.mozilla/firefox/hendrik/user.js
 	rmdir --ignore-fail-on-non-empty ~/.mozilla/firefox/hendrik
 
 git/user: $@ $(XDG_CONFIG_HOME)
