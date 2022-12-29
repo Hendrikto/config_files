@@ -1,3 +1,4 @@
+user_pref("browser.contentblocking.category", "strict");
 user_pref("browser.newtabpage.enabled", false);
 user_pref("browser.newtabpage.pinned", "[]");
 user_pref("browser.startup.homepage", "about:blank");
