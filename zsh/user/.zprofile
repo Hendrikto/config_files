@@ -26,6 +26,7 @@ export LESS_TERMCAP_us=$'\e[01;32m'
 #                                          Display Server                                          #
 ####################################################################################################
 
-if [[ -z "${DISPLAY}" ]] && [[ -n "${XDG_VTNR}" ]] && (( XDG_VTNR == 1 )); then
-	exec xinit
+if [[ -z "${DISPLAY}" ]] && [[ -n "${XDG_VTNR}" ]]; then
+	(( XDG_VTNR == 1 )) && exec xinit
+	(( XDG_VTNR == 2 )) && exec sway
 fi
