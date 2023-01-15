@@ -72,7 +72,7 @@ opdf() {
 # executed when the current working directory changes
 chpwd () {
 	# set title to current working directory
-	echo -en "\e]0;$(basename $(pwd))\a"
+	echo -en "\e]0;$(basename "$(pwd)")\a"
 }
 
 ################################################################################
