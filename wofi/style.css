@@ -1,0 +1,41 @@
+#entry {
+	background-color: #15141b;
+	padding: 0.5em;
+}
+#entry:selected {
+	background-color: #29263c;
+	box-shadow: inset 0 0 3px 3px #a277ff;
+}
+
+#entry arrow {
+	color: #61ffca;
+}
+#entry arrow:hover {
+	color: #a277ff;
+}
+
+#input {
+	background-color: #15141b;
+	border: none;
+	color: #edecee;
+}
+#input:focus {
+	border-color: #61ffca;
+	border-radius: 0;
+	box-shadow: inset 0 0 3px 3px #61ffca;
+}
+
+#input image {
+	color: #61ffca;
+}
+#input image.right:hover {
+	color: #a277ff;
+}
+
+#text {
+	color: #edecee;
+}
+
+#window {
+	background-color: #15141b;
+}
