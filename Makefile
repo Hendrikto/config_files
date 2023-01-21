@@ -106,6 +106,12 @@ sway: $@
 remove_sway:
 	$(RM) $(XDG_CONFIG_HOME)/sway/config
 
+wofi: $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
+
+remove_wofi:
+	$(RM) $(XDG_CONFIG_HOME)/wofi
+
 xorg/user: $@
 	$(call LINK,$@/.[!.]*,~)
 
