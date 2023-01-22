@@ -1,0 +1,4 @@
+# Documentation: `man 1 wofi`
+# Documentation: `man 5 wofi`
+
+allow_images=true
