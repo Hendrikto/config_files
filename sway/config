@@ -19,7 +19,7 @@ set $term kitty
 # application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu $term --class=launcher sway-launcher-desktop | xargs swaymsg exec --
+set $menu wofi --show=drun | xargs swaymsg exec --
 
 ############################################## Colors ##############################################
 
@@ -57,11 +57,6 @@ focus_follows_mouse always
 # if there are multiple windows, separate them with 5px borders
 gaps inner 5
 smart_gaps on
-
-############################################## Layout ##############################################
-
-# application launcher
-for_window [app_id="^launcher$"] border pixel 5, floating enable, resize set 50 ppt 50 ppt, sticky enable
 
 ####################################################################################################
 #                                           Key Bindings                                           #
