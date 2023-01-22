@@ -3,4 +3,6 @@
 
 allow_images=true
 
+key_expand=Tab
+
 drun-print_command=true
