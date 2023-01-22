@@ -2,3 +2,5 @@
 # Documentation: `man 5 wofi`
 
 allow_images=true
+
+drun-print_command=true
