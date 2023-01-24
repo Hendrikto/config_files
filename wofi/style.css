@@ -35,6 +35,10 @@
 	color: #a277ff;
 }
 
+#outer-box {
+	border: 5px solid #61ffca;
+}
+
 #text {
 	color: #edecee;
 }
