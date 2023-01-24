@@ -115,6 +115,9 @@ bindsym $mod+Shift+space floating toggle
 # swap focus between tiling area and floating area
 bindsym $mod+space focus mode_toggle
 
+# toggle stickiness
+bindsym $mod+Shift+s sticky toggle
+
 # focus parent container
 bindsym $mod+a focus parent
 
