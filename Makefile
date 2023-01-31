@@ -20,7 +20,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway xorg/user zsh/user
+USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway wofi xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
