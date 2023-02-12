@@ -139,6 +139,13 @@ bindsym $mod+a focus parent
 # toggle bar
 bindsym $mod+b bar mode toggle
 
+# move currently focused window to scratchpad
+bindsym $mod+Shift+dead_circumflex move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+dead_circumflex scratchpad show
+
 ############################################# Resizing #############################################
 
 mode "resize" {
