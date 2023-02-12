@@ -38,6 +38,10 @@ default_floating_border normal 0
 # focus window under cursor
 focus_follows_mouse yes
 
+# if there are multiple windows, separate them with 5px borders
+gaps inner 5
+smart_gaps on
+
 # font for window titles
 # also used as default bar font
 font pango:Source Code Pro 8
