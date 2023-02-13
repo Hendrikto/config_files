@@ -13,6 +13,9 @@ set $mod Mod4
 # terminal emulator
 set $term kitty
 
+# trigger i3status refresh
+set $refresh_i3status pkill -USR1 -x i3status
+
 ####################################################################################################
 #                                           Color Scheme                                           #
 ####################################################################################################
