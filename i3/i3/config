@@ -13,9 +13,6 @@ set $mod Mod4
 # terminal emulator
 set $term kitty
 
-# trigger i3status refresh
-set $refresh_i3status pkill -USR1 -x i3status
-
 ####################################################################################################
 #                                           Color Scheme                                           #
 ####################################################################################################
@@ -214,8 +211,8 @@ bindsym $mod+Ctrl+Right move workspace to output right
 
 ############################################ Brightness ############################################
 
-bindsym XF86MonBrightnessUp exec --no-startup-id backlight_control +5 && $refresh_i3status &
-bindsym XF86MonBrightnessDown exec --no-startup-id backlight_control -5 && $refresh_i3status &
+bindsym XF86MonBrightnessUp exec --no-startup-id backlight_brightness 5%+
+bindsym XF86MonBrightnessDown exec --no-startup-id backlight_brightness 5%-
 
 ############################################ Media Keys ############################################
 
