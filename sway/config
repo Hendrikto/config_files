@@ -34,11 +34,11 @@ set $c_comment #6d6d6d
 #                                           Color Scheme                                           #
 ####################################################################################################
 
-# class                  # border       # background   # text
-client.focused           $c_primary     $c_selection   $c_text
-client.focused_inactive  $c_background  $c_selection   $c_text
-client.unfocused         $c_background  $c_background  $c_text
-client.urgent            $c_secondary   $c_background  $c_secondary
+# class                  # border       # background   # text        # indicator    # child border
+client.focused           $c_primary     $c_selection   $c_text       $c_secondary   $c_primary
+client.focused_inactive  $c_background  $c_selection   $c_text       $c_background  $c_comment
+client.unfocused         $c_background  $c_background  $c_text       $c_background  $c_background
+client.urgent            $c_secondary   $c_background  $c_secondary  $c_primary     $c_secondary
 
 # See "Status Bar" section for sway-bar color configuration.
 # It has to be set inside the `bar { }` block.
@@ -47,9 +47,9 @@ client.urgent            $c_secondary   $c_background  $c_secondary
 #                                             General                                              #
 ####################################################################################################
 
-# default to 0px border with title
-default_border normal 0
-default_floating_border normal 0
+# default to 5px border without title
+default_border pixel 5
+default_floating_border normal 5
 
 # always focus window under cursor
 focus_follows_mouse always
