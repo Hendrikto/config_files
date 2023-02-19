@@ -51,6 +51,9 @@ client.urgent            $c_secondary   $c_background  $c_secondary  $c_primary 
 default_border pixel 5
 default_floating_border normal 5
 
+titlebar_padding 10 5
+titlebar_border_thickness 5
+
 # always focus window under cursor
 focus_follows_mouse always
 
