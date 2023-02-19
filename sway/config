@@ -89,6 +89,8 @@ bindsym $mod+Escape exec power_management
 bindsym XF86PowerOff exec power_management
 
 # toggle touchpad
+bindsym XF86TouchpadOn input type:touchpad events enabled
+bindsym XF86TouchpadOff input type:touchpad events disabled
 bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
 
 ############################################ Brightness ############################################
