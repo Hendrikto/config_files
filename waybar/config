@@ -1,0 +1,66 @@
+// Documentation: `man 5 waybar`
+
+{
+	"position": "top",
+	"spacing": 0,
+
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode",
+	],
+	"modules-center": [
+		"sway/window",
+	],
+	"modules-right": [
+		"backlight",
+		"pulseaudio",
+		"network",
+		"battery",
+		"clock",
+		"tray",
+	],
+
+	"backlight": {
+		"format": "{percent}% 💡",
+	},
+	"battery": {
+		"format": "{capacity}% {icon}",
+		"format-time": "{H}:{m}",
+		"tooltip-format": "Time left: {time}\nPower: {power}W",
+		"format-icons": ["", "", "", "", ""],
+	},
+	"clock": {
+		"format": "{:%Y-%m-%d  %H:%M 🕑}",
+		"locale": "en_GB.UTF-8",
+		"today-format": "<span color='#a277ff'><b>{}</b></span>",
+		"tooltip-format": "<tt>{calendar}</tt>",
+	},
+	"network": {
+		"format": "{ipaddr}/{cidr} {icon}",
+		"format-wifi": "{ipaddr}/{cidr} @ {essid} ({signalStrength}%) {icon}",
+		"tooltip-format": "<tt>Interface: {ifname}\n  Gateway: {gwaddr}\n</tt>",
+		"tooltip-format-wifi": "<tt>Interface: {ifname}\n  Gateway: {gwaddr}\nFrequency: {frequency}GHz\n   Signal: {signaldBm}dBm ({signalStrength}%)</tt>",
+		"format-icons": {
+			"default": "",
+			"ethernet": "",
+			"wifi": "",
+		},
+	},
+	"pulseaudio": {
+		"format": "{volume}% {icon} {format_source}",
+		"format-bluetooth": "{volume}% {icon} {format_source}",
+		"format-bluetooth-muted": " {icon} {format_source}",
+		"format-muted": " {format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""],
+		},
+	}
+}
