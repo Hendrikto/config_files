@@ -20,7 +20,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway wofi xorg/user zsh/user
+USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway waybar wofi xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
 .PHONY: user $(USER) remove_user $(REMOVE_USER)
@@ -105,6 +105,12 @@ sway: $@
 
 remove_sway:
 	$(RM) $(XDG_CONFIG_HOME)/sway/config
+
+waybar: $@ $(XDG_CONFIG_HOME)
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
+
+remove_waybar:
+	$(RM) $(XDG_CONFIG_HOME)/waybar
 
 wofi: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
