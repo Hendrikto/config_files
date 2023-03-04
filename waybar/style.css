@@ -1,0 +1,80 @@
+/*
+	Inspired by Caleb Bassi's waybar config [0]. Based on Aura Theme [1].
+
+	[0]: https://github.com/cjbassi/config/tree/master/.config/waybar
+	[1]: https://github.com/daltonmenezes/aura-them
+*/
+
+* {
+	font-size: 1em;
+	font-family: monospace;
+	border-radius: 0;
+}
+
+window#waybar {
+	color: #edecee; /* foreground (white) */
+	background: #000;
+}
+
+#custom-arrow-left-fg,
+#custom-arrow-right-fg {
+	color: #15141b; /* background (black) */
+}
+#custom-arrow-left-bg,
+#custom-arrow-right-bg {
+	color: #000;
+	background: #15141b; /* background (black) */
+}
+
+#backlight,
+#battery,
+#clock,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#tray,
+#workspaces {
+	background: #15141b; /* background (black) */
+	padding: 0 0.5em;
+}
+
+#mode {
+	color: #15141b; /* background (black) */
+	background: #61ffca; /* secondary (green) */
+}
+
+#workspaces  {
+	padding: 0;
+}
+#workspaces button {
+	color: #edecee; /* foreground (white) */
+	padding: 0 0.3em;
+}
+#workspaces button.focused {
+	color: #15141b; /* background (black) */
+	background: #a277ff; /* primary (purple) */
+}
+#workspaces button:hover {
+	color: #61ffca; /* secondary (green) */
+	background: #15141b; /* background (black) */
+	border: 1px solid #61ffca; /* secondary (green) */
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+
+#backlight {
+	color: #f694ff; /* pink */
+}
+#battery {
+	color: #82e2ff; /* blue */
+}
+#memory {
+	color: #ff6767; /* red */
+}
+#network {
+	color: #61ffca; /* green */
+}
+#pulseaudio {
+	color: #ffca85; /* orange */
+}

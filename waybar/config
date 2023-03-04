@@ -7,16 +7,28 @@
 	"modules-left": [
 		"sway/workspaces",
 		"sway/mode",
+		"custom/arrow-right-fg",
 	],
 	"modules-center": [
 		"sway/window",
 	],
 	"modules-right": [
+		"custom/arrow-left-fg",
 		"backlight",
+		"custom/arrow-left-bg",
+		"custom/arrow-left-fg",
 		"pulseaudio",
+		"custom/arrow-left-bg",
+		"custom/arrow-left-fg",
 		"network",
+		"custom/arrow-left-bg",
+		"custom/arrow-left-fg",
 		"battery",
+		"custom/arrow-left-bg",
+		"custom/arrow-left-fg",
 		"clock",
+		"custom/arrow-left-bg",
+		"custom/arrow-left-fg",
 		"tray",
 	],
 
@@ -62,5 +74,22 @@
 			"car": "",
 			"default": ["", "", ""],
 		},
-	}
+	},
+
+	"custom/arrow-left-fg": {
+		"format": "",
+		"tooltip": false,
+	},
+	"custom/arrow-left-bg": {
+		"format": "",
+		"tooltip": false,
+	},
+	"custom/arrow-right-fg": {
+		"format": "",
+		"tooltip": false,
+	},
+	"custom/arrow-right-bg": {
+		"format": "",
+		"tooltip": false,
+	},
 }
