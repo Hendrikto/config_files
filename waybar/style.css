@@ -51,9 +51,17 @@ window#waybar {
 	color: #edecee; /* foreground (white) */
 	padding: 0 0.3em;
 }
+#workspaces button.visible {
+	color: #15141b; /* background (black) */
+	background: #6d6d6d; /* gray */
+}
 #workspaces button.focused {
 	color: #15141b; /* background (black) */
 	background: #a277ff; /* primary (purple) */
+}
+#workspaces button.urgent {
+	color: #15141b; /* background (black) */
+	background: #61ffca; /* secondary (green) */
 }
 #workspaces button:hover {
 	color: #61ffca; /* secondary (green) */
