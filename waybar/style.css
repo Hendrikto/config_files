@@ -1,8 +1,10 @@
 /*
-	Inspired by Caleb Bassi's waybar config [0]. Based on Aura Theme [1].
+	Inspired by Caleb Bassi's waybar config [0]. Merged into Aura Theme [1].
+
+	version: 1dd0fc3d3543f06102ad37cb3a625f24b8036f1e
 
 	[0]: https://github.com/cjbassi/config/tree/master/.config/waybar
-	[1]: https://github.com/daltonmenezes/aura-them
+	[1]: https://github.com/daltonmenezes/aura-theme/blob/main/packages/waybar
 */
 
 * {
@@ -12,18 +14,18 @@
 }
 
 window#waybar {
-	color: #edecee; /* foreground (white) */
+	color: #edecee;
 	background: #000;
 }
 
 #custom-arrow-left-fg,
 #custom-arrow-right-fg {
-	color: #15141b; /* background (black) */
+	color: #15141b;
 }
 #custom-arrow-left-bg,
 #custom-arrow-right-bg {
 	color: #000;
-	background: #15141b; /* background (black) */
+	background: #15141b;
 }
 
 #backlight,
@@ -35,54 +37,54 @@ window#waybar {
 #pulseaudio,
 #tray,
 #workspaces {
-	background: #15141b; /* background (black) */
+	background: #15141b;
 	padding: 0 0.5em;
 }
 
 #mode {
-	color: #15141b; /* background (black) */
-	background: #61ffca; /* secondary (green) */
+	color: #15141b;
+	background: #61ffca;
 }
 
 #workspaces  {
 	padding: 0;
 }
 #workspaces button {
-	color: #edecee; /* foreground (white) */
+	color: #edecee;
 	padding: 0 0.3em;
 }
 #workspaces button.visible {
-	color: #15141b; /* background (black) */
-	background: #6d6d6d; /* gray */
+	color: #15141b;
+	background: #6d6d6d;
 }
 #workspaces button.focused {
-	color: #15141b; /* background (black) */
-	background: #a277ff; /* primary (purple) */
+	color: #15141b;
+	background: #a277ff;
 }
 #workspaces button.urgent {
-	color: #15141b; /* background (black) */
-	background: #61ffca; /* secondary (green) */
+	color: #15141b;
+	background: #61ffca;
 }
 #workspaces button:hover {
-	color: #61ffca; /* secondary (green) */
-	background: #15141b; /* background (black) */
-	border: 1px solid #61ffca; /* secondary (green) */
+	color: #61ffca;
+	background: #15141b;
+	border: 1px solid #61ffca;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
 
 #backlight {
-	color: #f694ff; /* pink */
+	color: #f694ff;
 }
 #battery {
-	color: #82e2ff; /* blue */
+	color: #82e2ff;
 }
 #memory {
-	color: #ff6767; /* red */
+	color: #ff6767;
 }
 #network {
-	color: #61ffca; /* green */
+	color: #61ffca;
 }
 #pulseaudio {
-	color: #ffca85; /* orange */
+	color: #ffca85;
 }
