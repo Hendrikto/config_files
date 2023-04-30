@@ -45,9 +45,14 @@ client.background        $c_background
 #                                             General                                              #
 ####################################################################################################
 
-# window borders
-default_border normal 0
-default_floating_border normal 0
+# default to 5px border without title
+default_border pixel 5
+default_floating_border normal 5
+
+# The following would be required to match the titlebar border thickness to window borders, but is
+# not supported in i3, only Sway:
+# titlebar_padding 10 5
+# titlebar_border_thickness 5
 
 # focus window under cursor
 focus_follows_mouse yes
