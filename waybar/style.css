@@ -1,7 +1,8 @@
 /*
-	Inspired by Caleb Bassi's waybar config [0]. Merged into Aura Theme [1].
+	Inspired by Caleb Bassi's waybar config [0].
+	This is a vendored Aura Theme port [1].
 
-	version: 1dd0fc3d3543f06102ad37cb3a625f24b8036f1e
+	version: 1.0.0
 
 	[0]: https://github.com/cjbassi/config/tree/master/.config/waybar
 	[1]: https://github.com/daltonmenezes/aura-theme/blob/main/packages/waybar
