@@ -21,23 +21,11 @@ set $term kitty
 # on the original workspace that the command was run on.
 set $menu wofi --show=drun | xargs swaymsg exec --
 
-############################################## Colors ##############################################
-
-set $c_primary #a277ff
-set $c_secondary #61ffca
-set $c_background #15141b
-set $c_text #edecee
-set $c_comment #6d6d6d
-
 ####################################################################################################
 #                                           Color Scheme                                           #
 ####################################################################################################
 
-# class                  # border       # background   # text   # indicator    # child border
-client.focused           $c_primary     $c_background  $c_text  $c_secondary   $c_primary
-client.focused_inactive  $c_comment     $c_background  $c_text  $c_comment     $c_comment
-client.unfocused         $c_background  $c_background  $c_text  $c_background  $c_background
-client.urgent            $c_secondary   $c_background  $c_text  $c_primary     $c_secondary
+include config.d/aura-theme.conf
 
 # See "Status Bar" section for sway-bar color configuration.
 # It has to be set inside the `bar { }` block.
