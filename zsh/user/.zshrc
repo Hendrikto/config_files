@@ -117,8 +117,8 @@ zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 
 	ahead="$(git rev-list "${hook_com[branch]}@{upstream}..HEAD" 2>'/dev/null' | wc -l)"
 	behind="$(git rev-list "HEAD..${hook_com[branch]}@{upstream}" 2>'/dev/null' | wc -l)"
-	(( ${ahead} )) && hook_com[unstaged]+="$(color_prompt 'blue' 'black' " ↑${ahead}")"
-	(( ${behind} )) && hook_com[unstaged]+="$(color_prompt 'blue' 'black' " ↓${behind}")"
+	(( ahead )) && hook_com[unstaged]+="$(color_prompt 'blue' 'black' " ↑${ahead}")"
+	(( behind )) && hook_com[unstaged]+="$(color_prompt 'blue' 'black' " ↓${behind}")"
 }
 
 venv_info() {
