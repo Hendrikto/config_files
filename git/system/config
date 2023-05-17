@@ -16,6 +16,12 @@
 	helper = cache
 [diff]
 	colorMoved = default
+	tool = kitty
+[difftool]
+	prompt = false
+	trustExitCode = true
+[difftool "kitty"]
+	cmd = kitty +kitten diff $LOCAL $REMOTE
 [fetch]
 	prune = true
 [filter "lfs"]
