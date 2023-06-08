@@ -1,8 +1,7 @@
 # Documentation: `man 5 networkd.conf`
 
 [Match]
-Driver=! veth
-Type=ether wlan
+Type=wlan
 
 [Network]
 DHCP=ipv4
@@ -11,4 +10,5 @@ DNS=1.0.0.1
 MulticastDNS=true
 
 [DHCP]
+RouteMetric=1024
 UseDNS=false

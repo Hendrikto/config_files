@@ -1,0 +1,15 @@
+# Documentation: `man 5 networkd.conf`
+
+[Match]
+Driver=! veth
+Type=ether
+
+[Network]
+DHCP=ipv4
+DNS=1.1.1.1
+DNS=1.0.0.1
+MulticastDNS=true
+
+[DHCP]
+RouteMetric=512
+UseDNS=false
