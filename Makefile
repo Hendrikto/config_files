@@ -85,12 +85,7 @@ python: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 sway: $@ $(XDG_CONFIG_HOME)
-	$(MKDIR) $(XDG_CONFIG_HOME)/sway/config.d
-	$(call LINK,$@/config,$(XDG_CONFIG_HOME)/sway)
-	cp --interactive $@/config.d/* $(XDG_CONFIG_HOME)/sway/config.d
-
-remove-sway:
-	$(RM) $(XDG_CONFIG_HOME)/sway/config
+	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
 waybar: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
