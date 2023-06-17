@@ -98,7 +98,7 @@ python: $@ $(XDG_CONFIG_HOME)
 remove_python:
 	$(RM) $(XDG_CONFIG_HOME)/python
 
-sway: $@
+sway: $@ $(XDG_CONFIG_HOME)
 	$(MKDIR) $(XDG_CONFIG_HOME)/sway/config.d
 	$(call LINK,$@/config,$(XDG_CONFIG_HOME)/sway)
 	cp --interactive $@/config.d/* $(XDG_CONFIG_HOME)/sway/config.d
