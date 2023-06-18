@@ -5,7 +5,7 @@ Dotfiles and other configuration files.
 ### Dotfiles
 #### Deploy all config files
 ```sh
-make all
+make deploy_all
 ```
 
 #### Remove all config files
@@ -15,7 +15,7 @@ make remove_all
 
 #### Deploy specific config files
 ```sh
-make <name>
+make deploy-<name>
 ```
 
 #### Remove specific config files
@@ -34,7 +34,7 @@ Currently the following distros are supported:
 * Ubuntu
 
 ## Examples:
-`make git` deploys all of git's config files
+`make deploy-git` deploys all of git's config files
 
 `make remove-git` removes all of git's config files
 
