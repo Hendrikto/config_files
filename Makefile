@@ -23,11 +23,15 @@ endif
 USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway waybar wofi xorg/user zsh/user
 REMOVE_USER := $(USER:%=remove_%)
 
-.PHONY: user $(USER) remove_user $(REMOVE_USER)
+.PHONY: user $(USER) remove_user
 
 user: $(USER)
 
 remove_user: $(REMOVE_USER)
+
+# Implicit rule for XDG-compliant user-level configuration removal
+remove_%:
+	$(RM) $(XDG_CONFIG_HOME)/$*
 
 $(XDG_CONFIG_HOME):
 	$(MKDIR) $(XDG_CONFIG_HOME)
@@ -65,38 +69,20 @@ remove_git/user:
 i3: i3/$@ $(XDG_CONFIG_HOME)
 	$(call LINK,i3/$@,$(XDG_CONFIG_HOME))
 
-remove_i3:
-	$(RM) $(XDG_CONFIG_HOME)/i3
-
 i3status: i3/$@ $(XDG_CONFIG_HOME)
 	$(call LINK,i3/$@,$(XDG_CONFIG_HOME))
-
-remove_i3status:
-	$(RM) $(XDG_CONFIG_HOME)/i3status
 
 kitty: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
-remove_kitty:
-	$(RM) $(XDG_CONFIG_HOME)/kitty
-
 picom: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
-
-remove_picom:
-	$(RM) $(XDG_CONFIG_HOME)/picom
 
 procps: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
-remove_procps:
-	$(RM) $(XDG_CONFIG_HOME)/procps
-
 python: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
-
-remove_python:
-	$(RM) $(XDG_CONFIG_HOME)/python
 
 sway: $@ $(XDG_CONFIG_HOME)
 	$(MKDIR) $(XDG_CONFIG_HOME)/sway/config.d
@@ -109,14 +95,8 @@ remove_sway:
 waybar: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
 
-remove_waybar:
-	$(RM) $(XDG_CONFIG_HOME)/waybar
-
 wofi: $@ $(XDG_CONFIG_HOME)
 	$(call LINK,$@,$(XDG_CONFIG_HOME))
-
-remove_wofi:
-	$(RM) $(XDG_CONFIG_HOME)/wofi
 
 xorg/user: $@
 	$(call LINK,$@/.[!.]*,~)
