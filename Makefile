@@ -196,7 +196,7 @@ remove-sysctl: ensure_root
 deploy-systemd-networkd: ensure_root
 	$(call LINK,systemd-networkd/*,/etc/systemd/network)
 
-remove-systemd-networkd: ensure_root $@
+remove-systemd-networkd: ensure_root
 	$(RM) /etc/systemd/network/20-network.network
 
 deploy-systemd-resolved: ensure_root
