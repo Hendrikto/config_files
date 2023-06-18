@@ -20,7 +20,7 @@ make <name>
 
 #### Remove specific config files
 ```sh
-make remove_<name>
+make remove-<name>
 ```
 
 ### Issue
@@ -36,6 +36,6 @@ Currently the following distros are supported:
 ## Examples:
 `make git` deploys all of git's config files
 
-`make remove_git` removes all of git's config files
+`make remove-git` removes all of git's config files
 
 `cd issue && make arch` deploys the issue file for Arch Linux.
