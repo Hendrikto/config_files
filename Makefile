@@ -24,7 +24,7 @@ USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway 
 DEPLOY_USER := $(USER:%=deploy-%)
 REMOVE_USER := $(USER:%=remove-%)
 
-.PHONY: deploy_user $(USER) remove_user
+.PHONY: deploy_user $(DEPLOY_USER) remove_user
 
 deploy_user: $(DEPLOY_USER)
 
