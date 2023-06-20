@@ -68,10 +68,10 @@ remove-git/user:
 	$(RM) $(XDG_CONFIG_HOME)/git
 
 deploy-i3: $(XDG_CONFIG_HOME)
-	$(call LINK,i3/i3,$(XDG_CONFIG_HOME))
+	$(call LINK,i3,$(XDG_CONFIG_HOME))
 
 deploy-i3status: $(XDG_CONFIG_HOME)
-	$(call LINK,i3/i3status,$(XDG_CONFIG_HOME))
+	$(call LINK,i3status,$(XDG_CONFIG_HOME))
 
 deploy-kitty: $(XDG_CONFIG_HOME)
 	$(call LINK,kitty,$(XDG_CONFIG_HOME))
