@@ -24,11 +24,15 @@ USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway 
 DEPLOY_USER := $(USER:%=deploy-%)
 REMOVE_USER := $(USER:%=remove-%)
 
-.PHONY: deploy_user $(DEPLOY_USER) remove_user
+.PHONY: deploy_user remove_user
 
 deploy_user: $(DEPLOY_USER)
 
 remove_user: $(REMOVE_USER)
+
+# Implicit rule for XDG-compliant user-level configuration deployment
+deploy-%: $(XDG_CONFIG_HOME)
+	$(call LINK,$*,$(XDG_CONFIG_HOME))
 
 # Implicit rule for XDG-compliant user-level configuration removal
 remove-%:
@@ -66,33 +70,6 @@ deploy-git/user: $(XDG_CONFIG_HOME)
 
 remove-git/user:
 	$(RM) $(XDG_CONFIG_HOME)/git
-
-deploy-i3: $(XDG_CONFIG_HOME)
-	$(call LINK,i3,$(XDG_CONFIG_HOME))
-
-deploy-i3status: $(XDG_CONFIG_HOME)
-	$(call LINK,i3status,$(XDG_CONFIG_HOME))
-
-deploy-kitty: $(XDG_CONFIG_HOME)
-	$(call LINK,kitty,$(XDG_CONFIG_HOME))
-
-deploy-picom: $(XDG_CONFIG_HOME)
-	$(call LINK,picom,$(XDG_CONFIG_HOME))
-
-deploy-procps: $(XDG_CONFIG_HOME)
-	$(call LINK,procps,$(XDG_CONFIG_HOME))
-
-deploy-python: $(XDG_CONFIG_HOME)
-	$(call LINK,python,$(XDG_CONFIG_HOME))
-
-deploy-sway: $(XDG_CONFIG_HOME)
-	$(call LINK,sway,$(XDG_CONFIG_HOME))
-
-deploy-waybar: $(XDG_CONFIG_HOME)
-	$(call LINK,waybar,$(XDG_CONFIG_HOME))
-
-deploy-wofi: $(XDG_CONFIG_HOME)
-	$(call LINK,wofi,$(XDG_CONFIG_HOME))
 
 deploy-xorg/user:
 	$(call LINK,xorg/user/.[!.]*,~)
