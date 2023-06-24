@@ -148,5 +148,9 @@ precmd() {
 
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
-PROMPT="$(prompt_segment '%n' "${AURA_PURPLE}" '')$(prompt_segment '%~' "${AURA_GREEN}")"'$(venv_info)%k%f
+PROMPT=\
+"$(prompt_segment '%n' "${AURA_PURPLE}" '')"\
+"$(prompt_segment '%~' "${AURA_GREEN}")"\
+'$(venv_info)'\
+'%k%f
 %(!.$.❯) '
