@@ -90,11 +90,26 @@ compinit
 # Custom prompt                                                                #
 ################################################################################
 
+AURA_BLACK='#15141b'
+AURA_GREEN='#61ffca'
+AURA_ORANGE='#ffca85'
+AURA_PURPLE='#a277ff'
+
 # disable default virtualenv prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 color_prompt() {
-	printf '%%F{%s}%%K{%s}%s%%k%%f' "${1}" "${2}" "${3}"
+	printf '%%F{%s}%%K{%s}%s' "${1}" "${2}" "${3}"
+}
+
+prompt_segment() {
+	local color=${2}
+	local prefix=${3-}
+	local suffix=${4-}
+
+	[[ -n ${prefix} ]] && echo -n "$(color_prompt "${AURA_BLACK}" 'black' "${prefix}")"
+	echo -n "$(color_prompt "${color}" "${AURA_BLACK}" " ${1} ")"
+	[[ -n ${suffix} ]] && echo -n "$(color_prompt "${AURA_BLACK}" 'black' "${suffix}")"
 }
 
 autoload -Uz 'vcs_info'
@@ -124,18 +139,15 @@ zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 
 venv_info() {
 	if [[ -n "${VIRTUAL_ENV}" ]]; then
-		venv_prompt="$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg")"
-		venv_prompt="$(color_prompt 'yellow' '208' '')$(color_prompt 'black' '208' " $venv_prompt ")$(color_prompt '208' 'black' '')"
-	else
-		venv_prompt="$(color_prompt 'yellow' 'black' '')"
+		prompt_segment "$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg" 2>&-)" "${AURA_ORANGE}"
 	fi
 }
 
 precmd() {
 	vcs_info
-	venv_info
 }
 
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
-PROMPT="$(color_prompt 'black' 'blue' ' %n ')$(color_prompt 'blue' 'yellow' '')$(color_prompt 'black' 'yellow' ' %~ ')"'${venv_prompt}'$'\n''%(!.$.❯) '
+PROMPT="$(prompt_segment '%n' "${AURA_PURPLE}" '')$(prompt_segment '%~' "${AURA_GREEN}")"'$(venv_info)%k%f
+%(!.$.❯) '
