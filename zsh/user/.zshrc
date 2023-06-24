@@ -99,7 +99,7 @@ AURA_PURPLE='#a277ff'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 color_prompt() {
-	printf '%%F{%s}%%K{%s}%s' "${1}" "${2}" "${3}"
+	echo "%F{${1}}%K{${2}}${3}"
 }
 
 prompt_segment() {
