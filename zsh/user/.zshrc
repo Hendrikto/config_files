@@ -154,3 +154,4 @@ PROMPT=\
 '$(venv_info)'\
 '%k%f
 %(!.$.❯) '
+PROMPT2='%_…❯ '
