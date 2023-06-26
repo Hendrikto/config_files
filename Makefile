@@ -66,7 +66,7 @@ remove-firefox:
 	rmdir --ignore-fail-on-non-empty ~/.mozilla/firefox/hendrik
 
 deploy-git/user: $(XDG_CONFIG_HOME)
-	$(call LINK,git/user,$(XDG_CONFIG_HOME))
+	$(call LINK,git/user,$(XDG_CONFIG_HOME)/git)
 
 remove-git/user:
 	$(RM) $(XDG_CONFIG_HOME)/git
