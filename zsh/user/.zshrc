@@ -115,8 +115,8 @@ prompt_segment() {
 autoload -Uz 'vcs_info'
 zstyle ':vcs_info:*' 'enable' 'git'
 zstyle ':vcs_info:*' 'check-for-changes' 'true'
-zstyle ':vcs_info:git*' 'formats' '%b%m%c%u'
-zstyle ':vcs_info:git*' 'actionformats' '%b%c%u %a'
+zstyle ':vcs_info:git*' 'formats' '[%b%m%c%u%k%f]'
+zstyle ':vcs_info:git*' 'actionformats' '[%b%c%u %a%k%f]'
 zstyle ':vcs_info:*' 'unstagedstr' "$(color_prompt 'yellow' 'black' '○')"
 zstyle ':vcs_info:*' 'stagedstr' "$(color_prompt 'green' 'black' '◉')"
 zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
@@ -147,7 +147,7 @@ precmd() {
 }
 
 setopt PROMPT_SUBST
-RPROMPT='[${vcs_info_msg_0_}%k%f]'
+RPROMPT='${vcs_info_msg_0_}'
 PROMPT=\
 "$(prompt_segment '%n' "${AURA_PURPLE}" '')"\
 "$(prompt_segment '%~' "${AURA_GREEN}")"\
