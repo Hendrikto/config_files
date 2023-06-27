@@ -132,9 +132,9 @@ zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 }
 
 venv_info() {
-	if [[ -n "${VIRTUAL_ENV}" ]]; then
-		prompt_segment "%F{${AURA_ORANGE}}$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg" 2>&-)"
-	fi
+	[[ -z "${VIRTUAL_ENV}" ]] && return
+
+	prompt_segment "%F{${AURA_ORANGE}}$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg" 2>&-)"
 }
 
 precmd() {
