@@ -87,6 +87,7 @@ compinit
 ################################################################################
 
 AURA_BLACK='#15141b'
+AURA_BLUE='#82e2ff'
 AURA_GREEN='#61ffca'
 AURA_ORANGE='#ffca85'
 AURA_PURPLE='#a277ff'
@@ -141,6 +142,7 @@ setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
 PROMPT=\
 "$(prompt_segment "%F{${AURA_PURPLE}}%n" '')"\
+"$(prompt_segment "%F{${AURA_BLUE}}%M")"\
 "$(prompt_segment "%F{${AURA_GREEN}}%~")"\
 '$(venv_info)'\
 '%k%f
