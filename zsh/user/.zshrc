@@ -124,8 +124,8 @@ zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 	local ahead="$(git rev-list "${hook_com[branch]}@{upstream}..HEAD" 2>'/dev/null' | wc -l)"
 	local behind="$(git rev-list "HEAD..${hook_com[branch]}@{upstream}" 2>'/dev/null' | wc -l)"
 
-	(( ahead )) && hook_com[unstaged]+='%F{blue} ↑${ahead}'
-	(( behind )) && hook_com[unstaged]+='%F{blue} ↓${behind}'
+	(( ahead )) && hook_com[unstaged]+="%F{blue} ↑${ahead}"
+	(( behind )) && hook_com[unstaged]+="%F{blue} ↓${behind}"
 }
 
 venv_info() {
