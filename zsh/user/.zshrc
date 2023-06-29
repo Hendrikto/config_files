@@ -114,8 +114,7 @@ zstyle ':vcs_info:*' 'stagedstr' '%F{green}◉'
 zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 
 +vi-git-untracked() {
-	if [[ "$(git rev-parse --is-inside-work-tree 2>'/dev/null')" == 'true' ]] && \
-		git status --porcelain | grep '??' &>'/dev/null'; then
+	if git status --porcelain 2>&- | grep '??' &>'/dev/null'; then
 		hook_com[unstaged]+='%F{red}∆'
 	fi
 }
