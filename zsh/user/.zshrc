@@ -114,7 +114,7 @@ zstyle ':vcs_info:*' 'stagedstr' '%F{green}◉'
 zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 
 +vi-git-untracked() {
-	if [[ $(git status --porcelain 2>&-) =~ '\?\?' ]]; then
+	if [[ $(git status --porcelain 2>'/dev/null') =~ '\?\?' ]]; then
 		hook_com[unstaged]+='%F{red}∆'
 	fi
 }
@@ -130,7 +130,7 @@ zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 venv_info() {
 	[[ -z "${VIRTUAL_ENV}" ]] && return
 
-	prompt_segment "%F{${AURA_ORANGE}}$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg" 2>&-)"
+	prompt_segment "%F{${AURA_ORANGE}}$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg" 2>'/dev/null')"
 }
 
 precmd() {
