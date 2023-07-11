@@ -125,15 +125,11 @@ zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
 	(( behind )) && hook_com[unstaged]+="%F{blue} ↓${behind}"
 }
 
-venv_info() {
-	[[ -z "${VIRTUAL_ENV}" ]] && return
-
-	prompt_segment "%F{${AURA_ORANGE}}$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' "${VIRTUAL_ENV}/pyvenv.cfg" 2>'/dev/null')"
-}
-
 precmd() {
 	vcs_info
 }
+
+venv_info='$([[ -n "${VIRTUAL_ENV}" ]] && echo "'"$(prompt_segment "%F{${AURA_ORANGE}}"'$(grep -oP '\''prompt\s*=\s*\K.+?(?=\s*$)'\'' "${VIRTUAL_ENV}/pyvenv.cfg" 2>/dev/null)')\")"
 
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
@@ -141,7 +137,10 @@ PROMPT=\
 "$(prompt_segment "%F{${AURA_PURPLE}}%n" '')"\
 "$(prompt_segment "%F{${AURA_BLUE}}%M")"\
 "$(prompt_segment "%F{${AURA_GREEN}}%~")"\
-'$(venv_info)'\
+"${venv_info}"\
 '%k%f
 %(!.$.❯) '
 PROMPT2='%_…❯ '
+
+unset venv_info
+unset -f prompt_segment
