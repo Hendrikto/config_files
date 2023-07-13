@@ -93,15 +93,6 @@ AURA_PURPLE='#a277ff'
 # disable default virtualenv prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-prompt_segment() {
-	local prefix=${2-}
-	local suffix=${3-}
-
-	[[ -n ${prefix} ]] && echo -n "%F{${AURA_BLACK}}%K{0}${prefix}"
-	echo -n "%K{${AURA_BLACK}} ${1} "
-	[[ -n ${suffix} ]] && echo -n "%F{${AURA_BLACK}}%K{0}${suffix}"
-}
-
 autoload -Uz 'vcs_info'
 zstyle ':vcs_info:*' 'enable' 'git'
 zstyle ':vcs_info:*' 'check-for-changes' 'true'
@@ -129,18 +120,20 @@ precmd() {
 	vcs_info
 }
 
-venv_info='$([[ -n "${VIRTUAL_ENV}" ]] && echo "'"$(prompt_segment "%F{${AURA_ORANGE}}"'$(grep -oP '\''prompt\s*=\s*\K.+?(?=\s*$)'\'' "${VIRTUAL_ENV}/pyvenv.cfg" 2>/dev/null)')\")"
+venv_info="\$([[ -n \"\${VIRTUAL_ENV}\" ]] && echo \"%F{${AURA_ORANGE}}%K{${AURA_BLACK}} \$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' \"\${VIRTUAL_ENV}/pyvenv.cfg\" 2>'/dev/null') %F{${AURA_BLACK}}%K{0}\")"
 
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
 PROMPT=\
-"$(prompt_segment "%F{${AURA_PURPLE}}%n" '')"\
-"$(prompt_segment "%F{${AURA_BLUE}}%M")"\
-"$(prompt_segment "%F{${AURA_GREEN}}%~")"\
+"%F{${AURA_PURPLE}}%K{${AURA_BLACK}} %n "\
+"%F{${AURA_BLACK}}%K{0}"\
+"%F{${AURA_BLUE}}%K{${AURA_BLACK}} %M "\
+"%F{${AURA_BLACK}}%K{0}"\
+"%F{${AURA_GREEN}}%K{${AURA_BLACK}} %~ "\
+"%F{${AURA_BLACK}}%K{0}"\
 "${venv_info}"\
 '%k%f
 %(!.$.❯) '
 PROMPT2='%_…❯ '
 
 unset venv_info
-unset -f prompt_segment
