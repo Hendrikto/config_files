@@ -4,6 +4,8 @@ table inet filter {
 
 		#tcp dport 8333 accept comment "allow Bitcoin"
 
+		#tcp dport 8384 accept comment "allow Syncthing API/UI"
+
 		#tcp dport 18080 accept comment "allow Monero"
 
 		#udp dport 34197 accept comment "allow Factorio"
