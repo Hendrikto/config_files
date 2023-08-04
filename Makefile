@@ -84,7 +84,7 @@ deploy-zsh/user: $(XDG_STATE_HOME)
 remove-zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
 
-SYSTEM := battery_warning dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sudo sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sudo sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 DEPLOY_SYSTEM := $(SYSTEM:%=deploy-%)
 REMOVE_SYSTEM := $(SYSTEM:%=remove-%)
 
@@ -93,12 +93,6 @@ REMOVE_SYSTEM := $(SYSTEM:%=remove-%)
 deploy_system: $(DEPLOY_SYSTEM)
 
 remove_system: $(REMOVE_SYSTEM)
-
-deploy-battery_warning: ensure_root
-	$(call LINK,battery_warning/battery_warning.service.d,/etc/systemd/system)
-
-remove-battery_warning: ensure_root
-	$(RM) /etc/systemd/system/battery_warning.service.d
 
 deploy-dbus: ensure_root
 	$(call LINK,dbus/dbus.service.d,/etc/systemd/system)
