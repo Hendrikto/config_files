@@ -120,7 +120,7 @@ precmd() {
 	vcs_info
 }
 
-venv_info="\$([[ -n \"\${VIRTUAL_ENV}\" ]] && echo \"%F{${AURA_ORANGE}}%K{${AURA_BLACK}} \$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' \"\${VIRTUAL_ENV}/pyvenv.cfg\" 2>'/dev/null') %F{${AURA_BLACK}}%K{0}\")"
+venv_info="\$([[ -n \"\${VIRTUAL_ENV}\" ]] && echo \"%F{${AURA_ORANGE}}%K{${AURA_BLACK}} \$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' \"\${VIRTUAL_ENV}/pyvenv.cfg\" 2>'/dev/null' || basename \"\${VIRTUAL_ENV}\") %F{${AURA_BLACK}}%K{0}\")"
 
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
