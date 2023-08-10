@@ -1,6 +1,6 @@
 table inet filter {
 	chain input {
-		#tcp dport ssh accept comment "allow ssh"
+		#tcp dport ssh accept
 
 		#tcp dport 8333 accept comment "allow Bitcoin"
 
