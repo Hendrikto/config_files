@@ -5,6 +5,7 @@ table inet filter {
 		#tcp dport 8333 accept comment "allow Bitcoin"
 
 		#tcp dport 8384 accept comment "allow Syncthing API/UI"
+		#tcp dport 22000 accept comment "allow Syncthing data transfer"
 
 		#tcp dport 9090 accept comment "allow Cockpit UI"
 
