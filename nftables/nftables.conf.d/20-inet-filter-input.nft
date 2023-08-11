@@ -2,15 +2,15 @@ table inet filter {
 	chain input {
 		#tcp dport ssh accept
 
-		#tcp dport 8333 accept comment "allow Bitcoin"
+		#tcp dport 8333 accept comment "Bitcoin"
 
-		#tcp dport 8384 accept comment "allow Syncthing API/UI"
-		#tcp dport 22000 accept comment "allow Syncthing data transfer"
+		#tcp dport 8384 accept comment "Syncthing API/UI"
+		#tcp dport 22000 accept comment "Syncthing data transfer"
 
-		#tcp dport 9090 accept comment "allow Cockpit UI"
+		#tcp dport 9090 accept comment "Cockpit"
 
-		#tcp dport 18080 accept comment "allow Monero"
+		#tcp dport 18080 accept comment "Monero"
 
-		#udp dport 34197 accept comment "allow Factorio"
+		#udp dport 34197 accept comment "Factorio"
 	}
 }
