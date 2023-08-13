@@ -113,13 +113,10 @@ remove-git/system: ensure_root
 	$(RM) /etc/gitconfig
 
 deploy-nftables: ensure_root
-	$(call LINK,nftables/nftables.conf,/etc)
-	$(MKDIR) /etc/nftables.conf.d
-	cp --interactive nftables/nftables.conf.d/* /etc/nftables.conf.d
+	$(call LINK,nftables/*,/etc)
 
 remove-nftables: ensure_root
-	$(RM) /etc/nftables.conf
-	rmdir --ignore-fail-on-non-empty /etc/nftables.conf.d
+	$(RM) /etc/nftables.conf{,.d}
 
 deploy-nsswitch: ensure_root
 	$(call LINK,nsswitch/*,/etc)
