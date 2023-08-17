@@ -84,7 +84,7 @@ deploy-zsh/user: $(XDG_STATE_HOME)
 remove-zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
 
-SYSTEM := dbus fontconfig git/system nftables nsswitch pam reflector shadow.service shell sudo sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := dbus fontconfig git/system nftables nsswitch openssh pam reflector shadow.service shell sudo sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 DEPLOY_SYSTEM := $(SYSTEM:%=deploy-%)
 REMOVE_SYSTEM := $(SYSTEM:%=remove-%)
 
@@ -123,6 +123,12 @@ deploy-nsswitch: ensure_root
 
 remove-nsswitch: ensure_root
 	$(RM) /etc/nsswitch.conf
+
+deploy-openssh: ensure_root
+	$(call LINK,openssh/sshd_config.d/*,/etc/ssh/sshd_config.d/)
+
+remove-openssh: ensure_root
+	$(RM) /etc/ssh/sshd_config.d/50-authentication.conf
 
 deploy-pam: ensure_root
 	$(call LINK,pam/pam_env.conf,/etc/security)
