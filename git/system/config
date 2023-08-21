@@ -4,6 +4,8 @@
 	co = checkout
 	d = diff
 	dc = diff --cached
+	dhu = diff ..@{upstream}
+	duh = diff @{upstream}..
 	f = fetch
 	h = "!f() { git show HEAD~${1:-0} ${@:2}; }; f"
 	it = !git init && git commit --allow-empty --date='@0 +0000' -m 'Initial commit'
