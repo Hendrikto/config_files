@@ -5,13 +5,13 @@ table inet filter {
 		#tcp dport 8333 accept comment "Bitcoin"
 
 		#tcp dport 8384 accept comment "Syncthing — API/UI"
-		#tcp dport 22000 accept comment "Syncthing — data transfer"
+		tcp dport 22000 accept comment "Syncthing — data transfer"
 
 		#tcp dport 9090 accept comment "Cockpit"
 
 		#tcp dport 18080 accept comment "Monero"
 
-		#udp dport 4698 accept comment "Iriun Webcam — discovery"
+		udp dport 4698 accept comment "Iriun Webcam — discovery"
 
 		#udp dport 34197 accept comment "Factorio"
 	}
