@@ -11,7 +11,7 @@ table inet filter {
 
 		#tcp dport 18080 accept comment "Monero"
 
-		#udp dport 4698 accept comment "Iriun Webcam — discovery"
+		udp dport 4698 accept comment "Iriun Webcam — discovery"
 
 		#udp dport 34197 accept comment "Factorio"
 	}
