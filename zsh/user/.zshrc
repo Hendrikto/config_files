@@ -84,12 +84,6 @@ compinit
 # Custom prompt                                                                #
 ################################################################################
 
-AURA_BLACK='#15141b'
-AURA_BLUE='#82e2ff'
-AURA_GREEN='#61ffca'
-AURA_ORANGE='#ffca85'
-AURA_PURPLE='#a277ff'
-
 # disable default virtualenv prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -120,20 +114,7 @@ precmd() {
 	vcs_info
 }
 
-venv_info="\$([[ -n \"\${VIRTUAL_ENV}\" ]] && echo \"%F{${AURA_ORANGE}}%K{${AURA_BLACK}} \$(grep -oP 'prompt\s*=\s*\K.+?(?=\s*$)' \"\${VIRTUAL_ENV}/pyvenv.cfg\" 2>'/dev/null' || basename \"\${VIRTUAL_ENV}\") %F{${AURA_BLACK}}%K{0}\")"
-
 setopt PROMPT_SUBST
 RPROMPT='${vcs_info_msg_0_}'
-PROMPT=\
-"%F{${AURA_PURPLE}}%K{${AURA_BLACK}} %n "\
-"%F{${AURA_BLACK}}%K{0}"\
-"%F{${AURA_BLUE}}%K{${AURA_BLACK}} %M "\
-"%F{${AURA_BLACK}}%K{0}"\
-"%F{${AURA_GREEN}}%K{${AURA_BLACK}} %~ "\
-"%F{${AURA_BLACK}}%K{0}"\
-"${venv_info}"\
-'%k%f
-%(!.$.❯) '
+PROMPT='$(STARSHIP_SHELL='zsh' /usr/bin/starship prompt)'
 PROMPT2='%_…❯ '
-
-unset venv_info
