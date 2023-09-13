@@ -87,34 +87,6 @@ compinit
 # disable default virtualenv prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-autoload -Uz 'vcs_info'
-zstyle ':vcs_info:*' 'enable' 'git'
-zstyle ':vcs_info:*' 'check-for-changes' 'true'
-zstyle ':vcs_info:git*' 'formats' '[%b%m%c%u%f]'
-zstyle ':vcs_info:git*' 'actionformats' '[%b%c%u%f %a]'
-zstyle ':vcs_info:*' 'unstagedstr' '%F{yellow}○'
-zstyle ':vcs_info:*' 'stagedstr' '%F{green}◉'
-zstyle ':vcs_info:git*+set-message:*' 'hooks' 'git-untracked' 'git-remote-diff'
-
-+vi-git-untracked() {
-	if [[ $(git status --porcelain 2>'/dev/null') =~ '\?\?' ]]; then
-		hook_com[unstaged]+='%F{red}∆'
-	fi
-}
-
-+vi-git-remote-diff() {
-	local ahead="$(git rev-list --count '@{upstream}..' 2>'/dev/null')"
-	local behind="$(git rev-list --count '..@{upstream}' 2>'/dev/null')"
-
-	(( ahead )) && hook_com[unstaged]+="%F{blue} ↑${ahead}"
-	(( behind )) && hook_com[unstaged]+="%F{blue} ↓${behind}"
-}
-
-precmd() {
-	vcs_info
-}
-
 setopt PROMPT_SUBST
-RPROMPT='${vcs_info_msg_0_}'
 PROMPT='$(STARSHIP_SHELL='zsh' /usr/bin/starship prompt)'
 PROMPT2='%_…❯ '
