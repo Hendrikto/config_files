@@ -1,0 +1,47 @@
+# Documentation: https://starship.rs/config
+
+####################################################################################################
+#                                              Prompt                                              #
+####################################################################################################
+
+format = '''
+${username}${hostname}${directory}${python}
+${character}
+'''
+
+add_newline = false
+
+palette = 'aura'
+
+[palettes.aura]
+black = '#15141b'
+blue = '#82e2ff'
+gray = '#6d6d6d'
+green = '#61ffca'
+orange = '#ffca85'
+pink = '#f694ff'
+purple = '#a277ff'
+red = '#ff6767'
+white = '#edecee'
+
+####################################################################################################
+#                                             Modules                                              #
+####################################################################################################
+
+[character]
+format = '${symbol} '
+
+[directory]
+format = '[](fg:black bg:#000000)[ ${path} ](green bg:black)[](fg:black bg:#000000)'
+truncation_symbol = '…/'
+
+[hostname]
+format = '[](fg:black bg:#000000)[ ${hostname} ](blue bg:black)[](fg:black bg:#000000)'
+ssh_only = false
+
+[python]
+format = '[](fg:black bg:#000000)[ ${virtualenv} ](orange bg:black)[](fg:black bg:#000000)'
+
+[username]
+format = '[ ${user} ](purple bg:black)[](fg:black bg:#000000)'
+show_always = true

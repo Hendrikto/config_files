@@ -20,7 +20,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git/user i3 i3status kitty picom procps python sway waybar wofi xorg/user zsh/user
+USER := bash chrome firefox git/user i3 i3status kitty picom procps python starship sway waybar wofi xorg/user zsh/user
 DEPLOY_USER := $(USER:%=deploy-%)
 REMOVE_USER := $(USER:%=remove-%)
 
@@ -70,6 +70,12 @@ deploy-git/user: $(XDG_CONFIG_HOME)
 
 remove-git/user:
 	$(RM) $(XDG_CONFIG_HOME)/git
+
+deploy-starship: $(XDG_CONFIG_HOME)
+	$(call LINK,starship/*,$(XDG_CONFIG_HOME))
+
+remove-starship:
+	$(RM) $(XDG_CONFIG_HOME)/starship.toml
 
 deploy-xorg/user:
 	$(call LINK,xorg/user/.[!.]*,~)
