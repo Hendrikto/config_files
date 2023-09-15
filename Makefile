@@ -20,7 +20,7 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash chrome firefox git/user i3 i3status kitty picom procps python starship sway waybar wofi xorg/user zsh/user
+USER := bash/user chrome firefox git/user i3 i3status kitty picom procps python starship sway waybar wofi xorg/user zsh/user
 DEPLOY_USER := $(USER:%=deploy-%)
 REMOVE_USER := $(USER:%=remove-%)
 
@@ -44,11 +44,11 @@ $(XDG_CONFIG_HOME):
 $(XDG_STATE_HOME):
 	$(MKDIR) --mode=750 $(XDG_STATE_HOME)
 
-deploy-bash: $(XDG_STATE_HOME)
-	$(call LINK,bash/.[!.]*,~)
+deploy-bash/user: $(XDG_STATE_HOME)
+	$(call LINK,bash/user/.[!.]*,~)
 	$(MKDIR) $(XDG_STATE_HOME)/bash
 
-remove-bash:
+remove-bash/user:
 	$(RM) ~/.bash{rc,_profile}
 
 deploy-chrome: $(XDG_CONFIG_HOME)
