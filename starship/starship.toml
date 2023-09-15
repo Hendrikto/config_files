@@ -5,7 +5,7 @@
 ####################################################################################################
 
 format = '''
-${username}${hostname}${directory}${python}([](fg:black bg:#000000)[${git_branch}${git_status}${git_state} ](bg:black)[](fg:black bg:#000000))
+${username}${hostname}${directory}${python}([](fg:black bg:none)[${git_branch}${git_status}${git_state} ](bg:black)[](fg:black bg:none))
 ${character}
 '''
 
@@ -32,7 +32,7 @@ white = '#edecee'
 format = '${symbol} '
 
 [directory]
-format = '[](fg:black bg:#000000)[ ${path} ](green bg:black)[](fg:black bg:#000000)'
+format = '[](fg:black bg:none)[ ${path} ](green bg:black)[](fg:black bg:none)'
 truncation_symbol = '…/'
 
 [git_branch]
@@ -58,12 +58,12 @@ staged = '◉'
 untracked = '∆'
 
 [hostname]
-format = '[](fg:black bg:#000000)[ ${hostname} ](blue bg:black)[](fg:black bg:#000000)'
+format = '[](fg:black bg:none)[ ${hostname} ](blue bg:black)[](fg:black bg:none)'
 ssh_only = false
 
 [python]
-format = '[](fg:black bg:#000000)[ ${virtualenv} ](orange bg:black)[](fg:black bg:#000000)'
+format = '[](fg:black bg:none)[ ${virtualenv} ](orange bg:black)[](fg:black bg:none)'
 
 [username]
-format = '[ ${user} ](purple bg:black)[](fg:black bg:#000000)'
+format = '[ ${user} ](purple bg:black)[](fg:black bg:none)'
 show_always = true
