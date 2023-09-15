@@ -1,6 +1,3 @@
-# If not running interactively, don't do anything
-[[ "${-}" != *i* ]] && return
-
 HISTFILE="${XDG_STATE_HOME}/bash/history"
 
 PS1='$(/usr/bin/starship prompt)'

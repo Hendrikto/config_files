@@ -1,1 +1,1 @@
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ "${-}" = *i* ]] && [[ -f ~/.bashrc ]] && . ~/.bashrc
