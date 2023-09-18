@@ -244,6 +244,15 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle &
 
+########################################### Screenshots ############################################
+
+# copy
+bindsym Print exec --no-startup-id maim --hidecursor --select | xclip -selection clipboard -target image/png
+# edit
+bindsym Shift+Print exec --no-startup-id maim --hidecursor --select | xclip -selection clipboard -target image/png && exec drawing --edit-clipboard
+# save
+bindsym Control+Print exec --no-startup-id maim --hidecursor --select $(xdg-user-dir PICTURES)/screenshot$(date +%s).png
+
 ######################################### Power Management #########################################
 
 mode "system state" {
