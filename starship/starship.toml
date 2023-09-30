@@ -62,7 +62,7 @@ format = '[](fg:black bg:none)[ ${hostname} ](blue bg:black)[](fg:black bg
 ssh_only = false
 
 [python]
-format = '[](fg:black bg:none)[ ${virtualenv} ](orange bg:black)[](fg:black bg:none)'
+format = '([](fg:black bg:none)[ ${virtualenv} ](orange bg:black)[](fg:black bg:none))'
 
 [username]
 format = '[ ${user} ](purple bg:black)[](fg:black bg:none)'
