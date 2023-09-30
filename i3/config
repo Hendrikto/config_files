@@ -277,6 +277,10 @@ bar {
 	status_command i3status
 	tray_output primary
 
+	# disable workspace switching on scroll
+	bindsym button4 nop
+	bindsym button5 nop
+
 	colors {
 		# This is based on the Aura Theme Waybar port [0].
 		#
