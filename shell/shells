@@ -1,0 +1,13 @@
+# Documentation: `man 5 shells`
+
+/bin/bash
+/usr/bin/bash
+
+/bin/rbash
+/usr/bin/rbash
+
+/bin/sh
+/usr/bin/sh
+
+/bin/zsh
+/usr/bin/zsh

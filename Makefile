@@ -162,10 +162,10 @@ remove-shadow.service: ensure_root
 	$(RM) /etc/systemd/system/shadow.service.d
 
 deploy-shell: ensure_root
-	$(call LINK,shell/shellrc.d,/etc)
+	$(call LINK,shell/*,/etc)
 
 remove-shell: ensure_root
-	$(RM) /etc/shellrc.d
+	$(RM) /etc/{shellrc.d,shells}
 
 deploy-sudo: ensure_root
 	$(call LINK,sudo/sudoers.d/*,/etc/sudoers.d)
