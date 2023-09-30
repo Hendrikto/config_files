@@ -1,6 +1,8 @@
 # Documentation: `man 1 zsh` (STARTUP/SHUTDOWN FILES)
 
 setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+
 SAVEHIST=1000
 HISTFILE="${XDG_STATE_HOME}/zsh/history"
 
