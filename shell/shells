@@ -3,11 +3,8 @@
 /bin/bash
 /usr/bin/bash
 
-/bin/rbash
-/usr/bin/rbash
-
-/bin/sh
-/usr/bin/sh
+/bin/git-shell
+/usr/bin/git-shell
 
 /bin/zsh
 /usr/bin/zsh
