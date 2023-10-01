@@ -8,7 +8,7 @@
 	duh = diff @{upstream}..
 	f = fetch
 	h = "!f() { git show HEAD~${1:-0} ${@:2}; }; f"
-	it = !git init && git commit --allow-empty --allow-empty-message --date='@0 +0000' -m ''
+	it = !git init && git commit --allow-empty --allow-empty-message --date='@0 +0000' --message=''
 	l = log
 	ll = log --format='format:%Cgreen%h %Cred%cs %<(12,trunc)%Cblue%an %Creset%s %C(yellow)%d'
 	lo = log --oneline
