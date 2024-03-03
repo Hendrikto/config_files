@@ -2,6 +2,7 @@ user_pref("browser.contentblocking.category", "strict");
 user_pref("browser.newtabpage.enabled", false);
 user_pref("browser.newtabpage.pinned", "[]");
 user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.startup.page", 3); // resume previous session
 user_pref("browser.theme.content-theme", 0); // dark
 user_pref("browser.toolbars.bookmarks.visibility", "never");
 user_pref("browser.uidensity", 1); // compact
