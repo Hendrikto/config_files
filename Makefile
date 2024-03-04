@@ -137,6 +137,7 @@ remove-nsswitch: ensure_root
 	$(RM) /etc/nsswitch.conf
 
 deploy-openssh: ensure_root
+	$(MKDIR) /etc/ssh/sshd_config.d
 	$(call LINK,openssh/sshd_config.d/*,/etc/ssh/sshd_config.d/)
 
 remove-openssh: ensure_root
