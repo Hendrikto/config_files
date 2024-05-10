@@ -42,9 +42,17 @@
 		"format-icons": ["", "", "", "", ""],
 	},
 	"clock": {
+		"calendar": {
+			"format": {
+				"months": "<span color='#ffca85'>{}</span>",
+				"today": "<span color='#a277ff'><b><u>{}</u></b></span>",
+				"weekdays": "<span color='#61ffca'>{}</span>",
+			},
+			"mode": "year",
+			"mode-mon-col": 3,
+		},
+		// "locale": "en_GB.UTF-8", // start weeks on Monday
 		"format": "{:%Y-%m-%d  %H:%M 🕑}",
-		"locale": "en_GB.UTF-8",
-		"today-format": "<span color='#a277ff'><b>{}</b></span>",
 		"tooltip-format": "<tt>{calendar}</tt>",
 	},
 	"network": {
