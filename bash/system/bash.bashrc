@@ -7,3 +7,7 @@ if [[ -d '/etc/shellrc.d' ]]; then
 		[[ -r "${script}" ]] && source "${script}"
 	done
 fi
+
+if [[ -r '/usr/share/bash-completion/bash_completion' ]]; then
+	source '/usr/share/bash-completion/bash_completion'
+fi
