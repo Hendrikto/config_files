@@ -150,11 +150,12 @@ remove-pam: ensure_root
 	$(RM) /etc/security/pam_env.conf
 
 deploy-reflector: ensure_root
-	$(MKDIR) /etc/pacman.d/hooks
-	$(call LINK,reflector/*,/etc/pacman.d/hooks)
+	$(call LINK,reflector/*,/etc/xdg/reflector)
+	systemctl enable reflector.timer
 
 remove-reflector: ensure_root
-	$(RM) /etc/pacman.d/hooks/mirrorupgrade.hook
+	systemctl disable reflector.timer
+	$(RM) /etc/xdg/reflector/reflector.conf
 
 deploy-shadow.service: ensure_root
 	$(call LINK,shadow.service/shadow.service.d,/etc/systemd/system)
