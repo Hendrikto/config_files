@@ -28,5 +28,5 @@ export LESS_TERMCAP_us=$'\e[01;32m'
 
 if [[ -z "${DISPLAY}" ]] && [[ -n "${XDG_VTNR}" ]]; then
 	(( XDG_VTNR == 1 )) && exec xinit
-	(( XDG_VTNR == 2 )) && exec sway
+	(( XDG_VTNR == 2 )) && exec sway --unsupported-gpu
 fi
