@@ -11,6 +11,8 @@
 	it = !git init && git commit --allow-empty --allow-empty-message --date='@0 +0000' --message=''
 	l = log
 	ll = log --format='format:%Cgreen%h %Cred%cs %<(12,trunc)%Cblue%an %Creset%s %C(yellow)%d'
+	# the format is duplicated, because git does not allow recursive aliases
+	llm = log --format='format:%Cgreen%h %Cred%cs %<(12,trunc)%Cblue%an %Creset%s %C(yellow)%d' master^..
 	purge = "!f() { git push -d \"$(git config branch.\"$1\".remote)\" \"$1\"; git branch -d \"$1\"; }; f"
 	s = status --short --branch
 [credential]
