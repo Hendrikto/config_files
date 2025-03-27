@@ -39,6 +39,8 @@
 	defaultBranch = master
 [push]
 	default = simple
+[rebase]
+	autoStash = true
 [user]
 	name = Hendrikto
 	email = hendrik.to@gmail.com
