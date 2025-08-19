@@ -20,7 +20,22 @@ ifneq ($(shell id -u), 0)
 	@exit 1
 endif
 
-USER := bash/user chrome firefox git/user i3 i3status kitty picom procps python starship sway waybar wofi xorg/user zsh/user
+USER := bash/user \
+	chrome \
+	firefox \
+	git/user \
+	i3 \
+	i3status \
+	kitty \
+	picom \
+	procps \
+	python \
+	starship \
+	sway \
+	waybar \
+	wofi \
+	xorg/user \
+	zsh/user
 DEPLOY_USER := $(USER:%=deploy-%)
 REMOVE_USER := $(USER:%=remove-%)
 
@@ -90,7 +105,24 @@ deploy-zsh/user: $(XDG_STATE_HOME)
 remove-zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
 
-SYSTEM := bash/system dbus fontconfig git/system nftables nsswitch openssh pam reflector shadow.service shell sudo swap sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := bash/system \
+	dbus \
+	fontconfig \
+	git/system \
+	nftables \
+	nsswitch \
+	openssh \
+	pam \
+	reflector \
+	shadow.service \
+	shell \
+	sudo \
+	swap \
+	sysctl \
+	systemd-networkd \
+	systemd-resolved \
+	xorg/system \
+	zsh/system
 DEPLOY_SYSTEM := $(SYSTEM:%=deploy-%)
 REMOVE_SYSTEM := $(SYSTEM:%=remove-%)
 
