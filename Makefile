@@ -90,7 +90,7 @@ deploy-zsh/user: $(XDG_STATE_HOME)
 remove-zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
 
-SYSTEM := bash/system dbus fontconfig git/system nftables nsswitch openssh pam reflector shadow.service shell sudo sysctl systemd-networkd systemd-resolved xorg/system zsh/system
+SYSTEM := bash/system dbus fontconfig git/system nftables nsswitch openssh pam reflector shadow.service shell sudo swap sysctl systemd-networkd systemd-resolved xorg/system zsh/system
 DEPLOY_SYSTEM := $(SYSTEM:%=deploy-%)
 REMOVE_SYSTEM := $(SYSTEM:%=remove-%)
 
@@ -174,6 +174,12 @@ deploy-sudo: ensure_root
 
 remove-sudo: ensure_root
 	$(RM) /etc/sudoers.d/group-wheel
+
+deploy-swap: ensure_root
+	$(call LINK,swap/*,/etc/systemd/system)
+
+remove-swap: ensure_root
+	$(RM) /etc/systemd/system/var-swapfile.swap
 
 deploy-sysctl: ensure_root
 	$(call LINK,sysctl/*,/etc/sysctl.d)

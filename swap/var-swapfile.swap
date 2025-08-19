@@ -1,0 +1,9 @@
+[Unit]
+Description=file at /var/swapfile
+Documentation=man:systemd.swap(5)
+
+[Swap]
+What=/var/swapfile
+
+[Install]
+WantedBy=swap.target
