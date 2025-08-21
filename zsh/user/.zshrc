@@ -18,8 +18,7 @@ src() {
 }
 
 src '/usr/share/chruby/chruby.sh'
-src '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' # Arch
-src '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' # Fedora
+src '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 
 unset -f src
 
