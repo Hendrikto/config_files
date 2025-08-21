@@ -35,11 +35,11 @@ include config.d/aura-theme.conf
 ####################################################################################################
 
 # default to 5px border without title
-default_border pixel 5
-default_floating_border normal 5
+default_border pixel 2
+default_floating_border normal 2
 
 titlebar_padding 10 5
-titlebar_border_thickness 5
+titlebar_border_thickness 2
 
 # always focus window under cursor
 focus_follows_mouse always
