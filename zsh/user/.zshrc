@@ -8,12 +8,6 @@ REPORTTIME=5
 SAVEHIST=1000
 
 ################################################################################
-# Scripts                                                                      #
-################################################################################
-
-source '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-
-################################################################################
 # Terminal control codes                                                       #
 ################################################################################
 
@@ -81,3 +75,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 setopt PROMPT_SUBST
 PROMPT='$(STARSHIP_SHELL='zsh' /usr/bin/starship prompt)'
 PROMPT2='%_…❯ '
+
+source '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
