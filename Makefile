@@ -109,6 +109,7 @@ SYSTEM := bash/system \
 	dbus \
 	fontconfig \
 	git/system \
+	mkinitcpio \
 	nftables \
 	nsswitch \
 	openssh \
@@ -155,6 +156,12 @@ deploy-git/system: ensure_root
 
 remove-git/system: ensure_root
 	$(RM) /etc/gitconfig
+
+deploy-mkinitcpio: ensure_root
+	$(call LINK,mkinitcpio/mkinitcpio.conf.d/*,/etc/mkinitcpio.conf.d)
+
+remove-mkinitcpio: ensure_root
+	$(RM) /etc/mkinitcpio.conf.d/override.conf
 
 deploy-nftables: ensure_root
 	$(call LINK,nftables/*,/etc)
