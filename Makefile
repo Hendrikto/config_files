@@ -2,6 +2,7 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 XDG_STATE_HOME ?= $(HOME)/.local/state
 
+CP := cp
 MKDIR := mkdir --parents
 
 # Create absolute symbolic links
@@ -120,6 +121,7 @@ SYSTEM := bash/system \
 	sudo \
 	swap \
 	sysctl \
+	systemd-boot \
 	systemd-networkd \
 	systemd-resolved \
 	xorg/system \
@@ -226,6 +228,12 @@ deploy-sysctl: ensure_root
 
 remove-sysctl: ensure_root
 	$(RM) /etc/sysctl.d/99-sysctl.conf
+
+deploy-systemd-boot: ensure_root
+	$(CP) systemd-boot/loader.conf /boot/loader
+
+remove-systemd-boot: ensure_root
+	$(RM) /boot/loader/loader.conf
 
 deploy-systemd-networkd: ensure_root
 	$(call LINK,systemd-networkd/*,/etc/systemd/network)
