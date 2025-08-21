@@ -159,9 +159,10 @@ remove-git/system: ensure_root
 
 deploy-mkinitcpio: ensure_root
 	$(call LINK,mkinitcpio/mkinitcpio.conf.d/*,/etc/mkinitcpio.conf.d)
+	$(call LINK,mkinitcpio/mkinitcpio.d/*,/etc/mkinitcpio.d)
 
 remove-mkinitcpio: ensure_root
-	$(RM) /etc/mkinitcpio.conf.d/override.conf
+	$(RM) /etc/mkinitcpio.conf.d/override.conf /etc/mkinitcpio.d/linux.preset
 
 deploy-nftables: ensure_root
 	$(call LINK,nftables/*,/etc)
