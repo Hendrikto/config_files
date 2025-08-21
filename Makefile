@@ -107,6 +107,7 @@ remove-zsh/user:
 	$(RM) ~/.{zprofile,zshrc}
 
 SYSTEM := bash/system \
+	crypttab \
 	dbus \
 	fontconfig \
 	git/system \
@@ -140,6 +141,12 @@ deploy-bash/system: ensure_root
 
 remove-bash/system: ensure_root
 	$(RM) /etc/bash.bashrc
+
+deploy-crypttab: ensure_root
+	$(call LINK,crypttab/*,/etc)
+
+remove-crypttab: ensure_root
+	$(RM) /etc/crypttab.initramfs
 
 deploy-dbus: ensure_root
 	$(call LINK,dbus/dbus.service.d,/etc/systemd/system)
