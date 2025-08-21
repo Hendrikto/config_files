@@ -11,15 +11,7 @@ SAVEHIST=1000
 # Scripts                                                                      #
 ################################################################################
 
-src() {
-	if [[ -r "${1}" ]]; then
-		source "${1}"
-	fi
-}
-
-src '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-
-unset -f src
+source '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 
 ################################################################################
 # Terminal control codes                                                       #
