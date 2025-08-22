@@ -5,7 +5,7 @@ ALL_kver='/boot/vmlinuz-linux'
 PRESETS=('default' 'fallback')
 
 default_uki='/boot/EFI/Linux/arch-linux.efi'
-default_options='--splash /usr/share/systemd/bootctl/splash-arch.bmp'
+default_options='--no-cmdline --splash /usr/share/systemd/bootctl/splash-arch.bmp'
 
 fallback_uki='/boot/EFI/Linux/arch-linux-fallback.efi'
-fallback_options='--skiphooks autodetect'
+fallback_options='--no-cmdline --skiphooks autodetect'
