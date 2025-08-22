@@ -65,5 +65,7 @@ ssh_only = false
 format = '([](fg:black bg:none)[ ${virtualenv} ](orange bg:black)[](fg:black bg:none))'
 
 [username]
-format = '[ ${user} ](purple bg:black)[](fg:black bg:none)'
+format = '[ ${user} ](${style})[](fg:black bg:none)'
+style_user = 'purple bg:black'
+style_root = 'red bg:black'
 show_always = true
