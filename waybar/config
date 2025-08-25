@@ -83,6 +83,14 @@
 			"default": ["", "", ""],
 		},
 	},
+	"wireplumber": {
+		"format": "{volume}% {icon} {format_source}",
+		"format-muted": "{volume}%  {format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "{volume}% ",
+		"format-icons": ["", "", ""],
+		"tooltip-format": "  Sink: {node_name}\nSource: {source_desc}",
+	},
 
 	"custom/arrow-left-fg": {
 		"format": "",
