@@ -62,7 +62,7 @@
 		"tooltip-format-wifi": "<tt>Interface: {ifname}\n  Gateway: {gwaddr}\nFrequency: {frequency}GHz\n   Signal: {signaldBm}dBm ({signalStrength}%)</tt>",
 		"format-icons": {
 			"default": "",
-			"ethernet": "",
+			"ethernet": "🖧",
 			"wifi": "",
 		},
 	},
