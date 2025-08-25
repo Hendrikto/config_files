@@ -86,6 +86,7 @@ window#waybar {
 #network {
 	color: #61ffca;
 }
-#pulseaudio {
+#pulseaudio,
+#wireplumber {
 	color: #ffca85;
 }
