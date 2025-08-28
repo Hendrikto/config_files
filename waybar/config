@@ -92,6 +92,7 @@
 		"tooltip-format": "  Sink: {node_name}\nSource: {source_desc}",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+		"on-click-middle": "audio_switch sink",
 	},
 
 	"custom/arrow-left-fg": {
