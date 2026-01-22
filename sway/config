@@ -48,6 +48,9 @@ focus_follows_mouse always
 gaps inner 5
 smart_gaps on
 
+# disable borders if there is only a single window
+smart_borders on
+
 ####################################################################################################
 #                                           Key Bindings                                           #
 ####################################################################################################
