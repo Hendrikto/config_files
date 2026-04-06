@@ -75,7 +75,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # exit sway
-bindsym $mod+Shift+e exec swaynag --type='warning' --message='Do you really want to exit sway? This will end your Wayland session.' --button-no-terminal 'exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag --type='warning' --message='Do you really want to exit sway? This will end your Wayland session.' --button-no-terminal 'exit sway' 'systemctl --user stop sway-session.target && swaymsg exit'
 
 # power management
 bindsym $mod+Escape exec power_management
@@ -242,3 +242,9 @@ include /etc/sway/config.d/*
 
 # user
 include ${XDG_CONFIG_HOME}/sway/config.d/*
+
+####################################################################################################
+#                                           Sway Session                                           #
+####################################################################################################
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK && systemctl --user start sway-session.target
