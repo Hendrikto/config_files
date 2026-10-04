@@ -146,7 +146,7 @@ deploy-crypttab: ensure_root
 	$(call LINK,crypttab/*,/etc)
 
 remove-crypttab: ensure_root
-	$(RM) /etc/crypttab.initramfs
+	$(RM) /etc/crypttab
 
 deploy-dbus: ensure_root
 	$(call LINK,dbus/dbus.service.d,/etc/systemd/system)

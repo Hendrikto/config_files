@@ -1,1 +1,0 @@
-root /dev/gpt-auto-root-luks - luks,fido2-device=auto
