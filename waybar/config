@@ -39,7 +39,10 @@
 		"format": "{capacity}% {icon}",
 		"format-time": "{H}:{m}",
 		"tooltip-format": "Time left: {time}\nPower: {power}W",
-		"format-icons": ["", "", "", "", ""],
+		"format-icons": {
+			"default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+			"charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+		},
 	},
 	"clock": {
 		"calendar": {
